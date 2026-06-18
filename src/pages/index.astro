@@ -1,0 +1,47 @@
+---
+// Root entry: no German default anymore — redirect to /en/ or /zh/
+// based on a remembered manual choice, then the browser's languages.
+const base = import.meta.env.BASE_URL;
+const enHref = `${base}en/`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>SafeCh</title>
+    <meta http-equiv="refresh" content={`0;url=${enHref}`} />
+    <link rel="canonical" href={enHref} />
+    <link rel="alternate" hreflang="en" href={`${base}en/`} />
+    <link rel="alternate" hreflang="zh" href={`${base}zh/`} />
+    <link rel="alternate" hreflang="x-default" href={`${base}en/`} />
+    <script is:inline define:vars={{ base }}>
+      (function () {
+        try {
+          var stored = localStorage.getItem('preferred-lang');
+          var target = base + 'en/';
+          if (stored === 'zh') target = base + 'zh/';
+          else if (stored === 'en') target = base + 'en/';
+          else {
+            var langs = (navigator.languages && navigator.languages.length)
+              ? navigator.languages
+              : [navigator.language || ''];
+            for (var i = 0; i < langs.length; i++) {
+              var l = (langs[i] || '').toLowerCase();
+              if (l.indexOf('zh') === 0) { target = base + 'zh/'; break; }
+              if (l.indexOf('en') === 0) { target = base + 'en/'; break; }
+            }
+          }
+          window.location.replace(target);
+        } catch (e) {
+          window.location.replace(base + 'en/');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <p>Redirecting to <a href={enHref}>SafeCh</a>…</p>
+  </body>
+</html>

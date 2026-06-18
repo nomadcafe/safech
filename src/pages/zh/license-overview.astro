@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../../components/layout/BaseLayout.astro';
+import SearchModal from '../../components/ui/SearchModal.astro';
+---
+
+<BaseLayout title="许可证概览 – SafeCh" description="了解最常见的开源许可证：MIT、GPL、AGPL、Apache、MPL 等。">
+  <SearchModal />
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+    <h1 class="text-4xl font-bold mb-4" style="color: var(--color-text-primary)">
+      <span class="gradient-text">许可证概览</span>
+    </h1>
+    <p class="text-lg mb-12" style="color: var(--color-text-secondary)">
+      开源许可证一览 —— 你可以做什么、必须做什么以及不能做什么。
+    </p>
+
+    <div class="space-y-6">
+      <div class="card p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="badge badge-mit">MIT</span>
+          <h2 class="text-lg font-semibold" style="color: var(--color-text-primary)">MIT 许可证</h2>
+        </div>
+        <p class="text-sm mb-3" style="color: var(--color-text-secondary)">最宽松的标准许可证。只要保留版权声明，几乎允许一切行为。</p>
+        <div class="grid grid-cols-3 gap-4 text-xs">
+          <div><strong class="text-green-400">允许：</strong><br/><span style="color: var(--color-text-muted)">商业使用、修改、分发、私人使用</span></div>
+          <div><strong class="text-yellow-400">要求：</strong><br/><span style="color: var(--color-text-muted)">附带许可证和版权声明</span></div>
+          <div><strong class="text-red-400">禁止：</strong><br/><span style="color: var(--color-text-muted)">追究作者责任</span></div>
+        </div>
+      </div>
+
+      <div class="card p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="badge badge-apache">Apache-2.0</span>
+          <h2 class="text-lg font-semibold" style="color: var(--color-text-primary)">Apache 许可证 2.0</h2>
+        </div>
+        <p class="text-sm mb-3" style="color: var(--color-text-secondary)">与 MIT 类似，但附带明确的专利授权。非常适合企业使用。</p>
+        <div class="grid grid-cols-3 gap-4 text-xs">
+          <div><strong class="text-green-400">允许：</strong><br/><span style="color: var(--color-text-muted)">商业使用、修改、分发、专利使用</span></div>
+          <div><strong class="text-yellow-400">要求：</strong><br/><span style="color: var(--color-text-muted)">附带许可证、记录变更</span></div>
+          <div><strong class="text-red-400">禁止：</strong><br/><span style="color: var(--color-text-muted)">使用商标、追究责任</span></div>
+        </div>
+      </div>
+
+      <div class="card p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="badge badge-gpl">GPL-3.0</span>
+          <h2 class="text-lg font-semibold" style="color: var(--color-text-primary)">GNU 通用公共许可证 v3</h2>
+        </div>
+        <p class="text-sm mb-3" style="color: var(--color-text-secondary)">Copyleft 许可证：衍生作品也必须以 GPL 发布。旨在保护软件自由。</p>
+        <div class="grid grid-cols-3 gap-4 text-xs">
+          <div><strong class="text-green-400">允许：</strong><br/><span style="color: var(--color-text-muted)">商业使用、修改、分发</span></div>
+          <div><strong class="text-yellow-400">要求：</strong><br/><span style="color: var(--color-text-muted)">公开源代码、使用相同许可证</span></div>
+          <div><strong class="text-red-400">禁止：</strong><br/><span style="color: var(--color-text-muted)">追究责任、专有再许可</span></div>
+        </div>
+      </div>
+
+      <div class="card p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="badge badge-agpl">AGPL-3.0</span>
+          <h2 class="text-lg font-semibold" style="color: var(--color-text-primary)">GNU Affero 通用公共许可证 v3</h2>
+        </div>
+        <p class="text-sm mb-3" style="color: var(--color-text-secondary)">与 GPL 类似，但同样适用于服务器软件：如果你通过网络提供该软件，则必须提供源代码。</p>
+        <div class="grid grid-cols-3 gap-4 text-xs">
+          <div><strong class="text-green-400">允许：</strong><br/><span style="color: var(--color-text-muted)">商业使用、修改、分发</span></div>
+          <div><strong class="text-yellow-400">要求：</strong><br/><span style="color: var(--color-text-muted)">提供源代码（即使是网络使用）</span></div>
+          <div><strong class="text-red-400">禁止：</strong><br/><span style="color: var(--color-text-muted)">追究责任、专有再许可</span></div>
+        </div>
+      </div>
+
+      <div class="card p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="badge badge-lgpl">LGPL-3.0</span>
+          <h2 class="text-lg font-semibold" style="color: var(--color-text-primary)">GNU 宽通用公共许可证 v3</h2>
+        </div>
+        <p class="text-sm mb-3" style="color: var(--color-text-secondary)">较弱的 Copyleft：库本身保持自由，但使用它的程序可以是专有的。</p>
+        <div class="grid grid-cols-3 gap-4 text-xs">
+          <div><strong class="text-green-400">允许：</strong><br/><span style="color: var(--color-text-muted)">商业使用、与专有代码链接</span></div>
+          <div><strong class="text-yellow-400">要求：</strong><br/><span style="color: var(--color-text-muted)">公开对库的修改</span></div>
+          <div><strong class="text-red-400">禁止：</strong><br/><span style="color: var(--color-text-muted)">追究责任</span></div>
+        </div>
+      </div>
+
+      <div class="card p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="badge badge-mpl">MPL-2.0</span>
+          <h2 class="text-lg font-semibold" style="color: var(--color-text-primary)">Mozilla 公共许可证 2.0</h2>
+        </div>
+        <p class="text-sm mb-3" style="color: var(--color-text-secondary)">文件级 Copyleft：修改过的文件必须保持 MPL，新文件可以是专有的。</p>
+        <div class="grid grid-cols-3 gap-4 text-xs">
+          <div><strong class="text-green-400">允许：</strong><br/><span style="color: var(--color-text-muted)">商业使用、修改、与专有代码混合</span></div>
+          <div><strong class="text-yellow-400">要求：</strong><br/><span style="color: var(--color-text-muted)">公开修改过的 MPL 文件</span></div>
+          <div><strong class="text-red-400">禁止：</strong><br/><span style="color: var(--color-text-muted)">追究责任、使用商标</span></div>
+        </div>
+      </div>
+
+      <div class="card p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="badge badge-bsd">BSD-2/3-Clause</span>
+          <h2 class="text-lg font-semibold" style="color: var(--color-text-primary)">BSD 许可证</h2>
+        </div>
+        <p class="text-sm mb-3" style="color: var(--color-text-secondary)">非常宽松，与 MIT 类似。3-Clause 变体额外禁止使用项目名称进行宣传。</p>
+        <div class="grid grid-cols-3 gap-4 text-xs">
+          <div><strong class="text-green-400">允许：</strong><br/><span style="color: var(--color-text-muted)">商业使用、修改、分发</span></div>
+          <div><strong class="text-yellow-400">要求：</strong><br/><span style="color: var(--color-text-muted)">附带版权声明</span></div>
+          <div><strong class="text-red-400">禁止：</strong><br/><span style="color: var(--color-text-muted)">追究责任</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

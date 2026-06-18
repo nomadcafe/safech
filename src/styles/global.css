@@ -1,0 +1,371 @@
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
+@import '@fontsource/jetbrains-mono/400.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bg-primary: #0a0a0a;
+    --color-bg-secondary: #111111;
+    --color-bg-tertiary: #1a1a1a;
+    --color-bg-card: #141414;
+    --color-border: #2a2a2a;
+    --color-border-accent: #dc2626;
+    --color-primary: #ef4444;
+    --color-primary-hover: #dc2626;
+    --color-primary-glow: rgba(239, 68, 68, 0.15);
+    --color-accent-green: #22c55e;
+    --color-accent-green-glow: rgba(34, 197, 94, 0.1);
+    --color-accent-purple: #f87171;
+    --color-accent-orange: #f97316;
+    --color-accent-cyan: #fb923c;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #d1d5db;
+    --color-text-muted: #9ca3af;
+    --color-text-accent: #f87171;
+  }
+
+  [data-theme='light'] {
+    --color-bg-primary: #ffffff;
+    --color-bg-secondary: #f9fafb;
+    --color-bg-tertiary: #f3f4f6;
+    --color-bg-card: #ffffff;
+    --color-border: #e5e7eb;
+    --color-border-accent: #dc2626;
+    --color-text-primary: #111827;
+    --color-text-secondary: #374151;
+    --color-text-muted: #6b7280;
+    --color-text-accent: #dc2626;
+  }
+
+  html {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  body,
+  .card,
+  .badge,
+  nav,
+  a,
+  button,
+  input {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  }
+
+  ::selection {
+    background-color: rgba(239, 68, 68, 0.3);
+    color: #ffffff;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  a {
+    color: var(--color-text-accent);
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    background: linear-gradient(135deg, #ef4444 0%, #f87171 50%, #fca5a5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-bg-hero {
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(239, 68, 68, 0.12) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(248, 113, 113, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 80%, rgba(252, 165, 165, 0.06) 0%, transparent 50%),
+      var(--color-bg-primary);
+    background-size: 200% 200%;
+    animation: gradientShift 15s ease infinite;
+  }
+
+  /* Hero background images. The image fills the section and uses
+     object-fit:cover so any aspect-ratio mismatch crops the image
+     (decorative outer hexagons), never the layout.
+
+     Visibility is driven by CSS custom properties so the build's CSS
+     minifier (LightningCSS) can't merge / strip the ancestor selectors:
+     it tried to optimise the previous explicit-ancestor rules and
+     broke dark mode by dropping the [data-theme] qualifier. */
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  :root {
+    --hero-dark-display: block;
+    --hero-light-display: none;
+    /* Scrim: subtle inner dim/lift centred where the hero text sits, so
+       headline + body stay readable regardless of where the hero image's
+       red hexagons fall. Driven by custom properties so the build's CSS
+       minifier doesn't strip the [data-theme] qualifier. */
+    --hero-scrim-color: 0, 0, 0;
+    --hero-scrim-strength: 0.55;
+  }
+  [data-theme='light'] {
+    --hero-dark-display: none;
+    --hero-light-display: block;
+    --hero-scrim-color: 255, 255, 255;
+    --hero-scrim-strength: 0.6;
+  }
+  .hero-bg.hero-bg-dark {
+    display: var(--hero-dark-display);
+  }
+  .hero-bg.hero-bg-light {
+    display: var(--hero-light-display);
+  }
+  /* Animated mobile-dark variant: only shown on mobile in dark theme.
+     Sits on top of the .hero-bg-dark <picture>, which still renders
+     desktop-dark.png on wider viewports and serves as a poster
+     fallback before the video starts playing or if it fails. */
+  .hero-bg.hero-bg-dark-video {
+    display: none;
+    object-fit: cover;
+    object-position: center;
+  }
+  @media (max-width: 767px) {
+    [data-theme='dark'] .hero-bg.hero-bg-dark-video {
+      display: block;
+    }
+  }
+  .hero-scrim {
+    background:
+      radial-gradient(
+        ellipse 60% 55% at center,
+        rgba(var(--hero-scrim-color), var(--hero-scrim-strength)) 0%,
+        rgba(var(--hero-scrim-color), calc(var(--hero-scrim-strength) * 0.45)) 55%,
+        rgba(var(--hero-scrim-color), 0) 100%
+      );
+  }
+
+  /* Soft bottom transition: fade the hero image into the page background
+     so there is no hard horizontal edge between the hero and the next
+     section. Uses var(--color-bg-primary) so the same rule works in
+     both themes. */
+  .hero-fade-bottom {
+    height: clamp(80px, 14vh, 160px);
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      var(--color-bg-primary) 100%
+    );
+  }
+
+  @keyframes gradientShift {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    25% {
+      background-position: 50% 0%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    75% {
+      background-position: 50% 100%;
+    }
+  }
+
+  .card {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    transition: all 200ms ease-out;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 30px var(--color-primary-glow);
+    border-color: var(--color-border-accent);
+  }
+
+  /* Polished card variant: tighter padding, subtler hover (no glow, slim
+     elevation lift), used by ToolCard / CategoryCard. References:
+     Vercel Templates, Raycast Store, Godly. */
+  .card-polish {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    padding: 1rem 1.125rem 0.875rem;
+    transition: transform 180ms ease-out, border-color 180ms ease-out,
+      box-shadow 180ms ease-out, background-color 180ms ease-out;
+  }
+  .card-polish:hover {
+    transform: translateY(-2px);
+    border-color: rgba(239, 68, 68, 0.35);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35),
+      0 0 0 1px rgba(239, 68, 68, 0.08);
+  }
+  [data-theme='light'] .card-polish:hover {
+    box-shadow: 0 4px 24px rgba(15, 23, 42, 0.08),
+      0 0 0 1px rgba(220, 38, 38, 0.12);
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border: 1px solid transparent;
+  }
+
+  .badge-mit {
+    background-color: rgba(34, 197, 94, 0.2);
+    color: #4ade80;
+    border-color: rgba(34, 197, 94, 0.3);
+  }
+
+  .badge-apache {
+    background-color: rgba(59, 130, 246, 0.2);
+    color: #60a5fa;
+    border-color: rgba(59, 130, 246, 0.3);
+  }
+
+  .badge-gpl {
+    background-color: rgba(239, 68, 68, 0.2);
+    color: #fca5a5;
+    border-color: rgba(239, 68, 68, 0.3);
+  }
+
+  .badge-agpl {
+    background-color: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+    border-color: rgba(239, 68, 68, 0.25);
+  }
+
+  .badge-lgpl {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #fca5a5;
+    border-color: rgba(239, 68, 68, 0.2);
+  }
+
+  .badge-mpl {
+    background-color: rgba(249, 115, 22, 0.2);
+    color: #fb923c;
+    border-color: rgba(249, 115, 22, 0.3);
+  }
+
+  .badge-bsd {
+    background-color: rgba(34, 197, 94, 0.2);
+    color: #4ade80;
+    border-color: rgba(34, 197, 94, 0.3);
+  }
+
+  .badge-selfhost {
+    background-color: rgba(239, 68, 68, 0.15);
+    color: #fca5a5;
+    border-color: rgba(239, 68, 68, 0.25);
+  }
+
+  .badge-foss {
+    background-color: rgba(34, 197, 94, 0.2);
+    color: #86efac;
+    border-color: rgba(34, 197, 94, 0.3);
+  }
+
+  .badge-easy {
+    background-color: rgba(34, 197, 94, 0.2);
+    color: #4ade80;
+  }
+
+  .badge-medium {
+    background-color: rgba(234, 179, 8, 0.2);
+    color: #facc15;
+  }
+
+  .badge-hard {
+    background-color: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+  }
+
+  .glass {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background-color: rgba(10, 10, 10, 0.85);
+  }
+
+  [data-theme='light'] .glass {
+    background-color: rgba(255, 255, 255, 0.85);
+  }
+
+  .icon-chip {
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--color-primary);
+    color: white;
+    padding: 8px 16px;
+    z-index: 100;
+    transition: top 0.2s;
+  }
+
+  .skip-link:focus {
+    top: 0;
+  }
+
+  .stagger-fade > * {
+    opacity: 0;
+    animation: fadeInUp 0.5s ease-out forwards;
+  }
+
+  .stagger-fade > *:nth-child(1) { animation-delay: 0.05s; }
+  .stagger-fade > *:nth-child(2) { animation-delay: 0.1s; }
+  .stagger-fade > *:nth-child(3) { animation-delay: 0.15s; }
+  .stagger-fade > *:nth-child(4) { animation-delay: 0.2s; }
+  .stagger-fade > *:nth-child(5) { animation-delay: 0.25s; }
+  .stagger-fade > *:nth-child(6) { animation-delay: 0.3s; }
+  .stagger-fade > *:nth-child(7) { animation-delay: 0.35s; }
+  .stagger-fade > *:nth-child(8) { animation-delay: 0.4s; }
+  .stagger-fade > *:nth-child(9) { animation-delay: 0.45s; }
+  .stagger-fade > *:nth-child(10) { animation-delay: 0.5s; }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

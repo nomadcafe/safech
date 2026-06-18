@@ -1,0 +1,73 @@
+---
+import type { Category } from '../../data/types';
+import { Icon } from 'astro-icon/components';
+import { getCategoryColor } from '../../utils/categories';
+import { getLangFromUrl, useTranslations, getCategoryName, getCategoryDescription, getCategoryReplaces } from '../../i18n/utils';
+
+interface Props {
+  category: Category;
+}
+
+const { category } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const colorClasses = getCategoryColor(category.color);
+const categoryPath = t('path.category');
+
+const displayName = getCategoryName(category.slug, lang) || category.name;
+const displayDescription = getCategoryDescription(category.slug, lang) || category.description;
+const displayReplaces = getCategoryReplaces(category.slug, lang) || category.replacesCategory;
+
+const categoryIconMap: Record<string, string> = {
+  'monitor': 'lucide:monitor', 'file-text': 'lucide:file-text', 'globe': 'lucide:globe',
+  'mail': 'lucide:mail', 'mailbox': 'lucide:inbox', 'cloud': 'lucide:cloud',
+  'key': 'lucide:key', 'message-circle': 'lucide:message-circle', 'video': 'lucide:video',
+  'calendar': 'lucide:calendar', 'search': 'lucide:search', 'smartphone': 'lucide:smartphone',
+  'git-branch': 'lucide:git-branch', 'refresh-cw': 'lucide:refresh-cw', 'package': 'lucide:package',
+  'database': 'lucide:database', 'layout': 'lucide:layout', 'shopping-cart': 'lucide:shopping-cart',
+  'bar-chart': 'lucide:bar-chart-2', 'activity': 'lucide:activity', 'shield': 'lucide:shield',
+  'flame': 'lucide:flame', 'cpu': 'lucide:cpu', 'edit': 'lucide:pencil',
+  'check-square': 'lucide:square-check', 'film': 'lucide:film', 'palette': 'lucide:palette',
+  'clock': 'lucide:clock', 'factory': 'lucide:building-2', 'handshake': 'lucide:handshake',
+  'book-open': 'lucide:book-open', 'save': 'lucide:save', 'ban': 'lucide:ban',
+  'archive': 'lucide:archive', 'music': 'lucide:music', 'terminal': 'lucide:terminal',
+  'settings': 'lucide:settings', 'rocket': 'lucide:rocket', 'map': 'lucide:map',
+  'camera': 'lucide:camera',
+};
+
+const iconName = categoryIconMap[category.icon] ?? 'lucide:folder';
+---
+
+<a
+  href={`${base}${categoryPath}/${category.slug}/`}
+  class:list={[
+    'category-card-v2 group block rounded-xl p-4 border bg-gradient-to-br transition-all duration-200 no-underline hover:no-underline',
+    'hover:-translate-y-0.5',
+    colorClasses,
+  ]}
+>
+  <div class="flex items-start gap-3">
+    <div class="flex-shrink-0" style="color: var(--color-text-primary)">
+      <Icon name={iconName} size={22} />
+    </div>
+    <div class="min-w-0 flex-1">
+      <div class="flex items-center gap-2 min-w-0">
+        <h3 class="font-semibold text-sm truncate" style="color: var(--color-text-primary)">
+          {displayName}
+        </h3>
+        {category.toolCount !== undefined && category.toolCount > 0 && (
+          <span class="flex-shrink-0 inline-flex items-center px-1.5 py-0.5 rounded-md text-[10px] font-medium tabular-nums bg-red-500/15 text-red-300 border border-red-500/20">
+            {category.toolCount}
+          </span>
+        )}
+      </div>
+      <p class="text-xs line-clamp-2 mt-1.5" style="color: var(--color-text-muted)">
+        {displayDescription}
+      </p>
+      <p class="text-[11px] mt-2 truncate" style="color: var(--color-accent-orange)">
+        {t('category.replaces')} {displayReplaces}
+      </p>
+    </div>
+  </div>
+</a>

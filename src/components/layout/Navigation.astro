@@ -1,0 +1,256 @@
+---
+import LanguageToggle from '../ui/LanguageToggle.astro';
+import { getLangFromUrl, useTranslations, getHomeHref, getLocalizedPath } from '../../i18n/utils';
+
+const base = import.meta.env.BASE_URL;
+const currentPath = Astro.url.pathname;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const homeHref = getHomeHref(lang);
+const targetLang = lang === 'zh' ? 'en' : 'zh';
+const targetLangPath = getLocalizedPath(Astro.url, targetLang);
+const targetLangLabel = targetLang === 'zh' ? '中文' : 'EN';
+const langSwitchAria = lang === 'zh' ? 'Switch to English' : '切换到中文';
+
+const navLinks = [
+  { href: `${base}${t('nav.href.categories')}`, label: t('nav.categories') },
+  { href: `${base}${t('nav.href.tools')}`, label: t('nav.tools') },
+  { href: `${base}${t('nav.href.comparison')}`, label: t('nav.comparison') },
+  { href: `${base}${t('nav.href.guides')}`, label: t('nav.guides') },
+  { href: `${base}${t('nav.href.about')}`, label: t('nav.about') },
+];
+
+function isActive(href: string): boolean {
+  return currentPath.startsWith(href);
+}
+---
+
+<nav
+  id="main-nav"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+  role="navigation"
+  aria-label={t('nav.mainNav')}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a
+        href={homeHref}
+        class="flex items-center gap-2 no-underline hover:no-underline"
+        aria-label={t('nav.home')}
+      >
+        <img src={`${base}icon.png`} alt="SafeCh" class="w-8 h-8 rounded-lg" />
+        <span class="font-bold text-lg" style="color: var(--color-text-primary)">
+          Safe<span class="nav-logo-gradient">Ch</span>
+        </span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-1">
+        {navLinks.map(link => (
+          <a
+            href={link.href}
+            class:list={[
+              'px-3 py-2 rounded-lg text-sm font-medium no-underline hover:no-underline transition-colors',
+              isActive(link.href)
+                ? 'text-red-400 bg-red-500/10'
+                : 'hover:bg-white/5'
+            ]}
+            style={!isActive(link.href) ? 'color: var(--color-text-secondary)' : undefined}
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+
+      <!-- Right side: Lang Toggle + Search + Theme Toggle -->
+      <div class="flex items-center gap-2">
+        <!-- Language Toggle (desktop) -->
+        <div class="hidden sm:block">
+          <LanguageToggle />
+        </div>
+
+        <!-- Compact language switch (mobile) -->
+        <a
+          href={targetLangPath}
+          class="sm:hidden inline-flex items-center justify-center w-9 h-9 rounded-lg text-xs font-semibold no-underline hover:no-underline hover:bg-white/5 transition-colors"
+          style="border: 1px solid var(--color-border); color: var(--color-text-secondary)"
+          aria-label={langSwitchAria}
+        >
+          {targetLangLabel}
+        </a>
+
+        <!-- Search Button -->
+        <button
+          id="search-trigger"
+          class="flex items-center gap-2 px-3 py-1.5 rounded-lg border text-sm"
+          style="border-color: var(--color-border); color: var(--color-text-muted)"
+          aria-label={t('nav.searchOpen')}
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+          <span class="hidden sm:inline">{t('nav.search')}</span>
+          <kbd class="hidden sm:inline-flex items-center gap-1 px-1.5 py-0.5 text-xs rounded" style="background: var(--color-bg-tertiary); color: var(--color-text-muted)" id="search-shortcut-hint">
+            ⌘K
+          </kbd>
+        </button>
+
+        <!-- Theme Toggle -->
+        <button
+          id="theme-toggle"
+          class="p-2 rounded-lg hover:bg-white/5 transition-colors"
+          aria-label={t('nav.themeToggle')}
+        >
+          <svg class="w-5 h-5 sun-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--color-text-secondary)">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+          </svg>
+          <svg class="w-5 h-5 moon-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--color-text-secondary)">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+          </svg>
+        </button>
+
+        <!-- Mobile Menu Button -->
+        <button
+          id="mobile-menu-btn"
+          class="md:hidden p-2 rounded-lg hover:bg-white/5"
+          aria-label={t('nav.menuOpen')}
+          aria-expanded="false"
+        >
+          <svg class="w-6 h-6 menu-open" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--color-text-primary)">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <svg class="w-6 h-6 menu-close hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--color-text-primary)">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="md:hidden hidden border-t"
+    style="background: var(--color-bg-secondary); border-color: var(--color-border)"
+  >
+    <div class="px-4 py-3 space-y-1">
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          class:list={[
+            'block px-3 py-2 rounded-lg text-sm font-medium no-underline hover:no-underline',
+            isActive(link.href)
+              ? 'text-red-400 bg-red-500/10'
+              : 'hover:bg-white/5'
+          ]}
+          style={!isActive(link.href) ? 'color: var(--color-text-secondary)' : undefined}
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Scroll-based glass effect
+  const nav = document.getElementById('main-nav');
+  if (nav) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        nav.classList.add('glass');
+        nav.style.borderBottom = `1px solid var(--color-border)`;
+      } else {
+        nav.classList.remove('glass');
+        nav.style.borderBottom = 'none';
+      }
+    });
+  }
+
+  // Theme toggle
+  const themeToggle = document.getElementById('theme-toggle');
+  if (themeToggle) {
+    const updateIcons = () => {
+      const theme = document.documentElement.getAttribute('data-theme');
+      const sunIcon = themeToggle.querySelector('.sun-icon') as HTMLElement;
+      const moonIcon = themeToggle.querySelector('.moon-icon') as HTMLElement;
+      if (sunIcon && moonIcon) {
+        if (theme === 'light') {
+          sunIcon.classList.remove('hidden');
+          moonIcon.classList.add('hidden');
+        } else {
+          sunIcon.classList.add('hidden');
+          moonIcon.classList.remove('hidden');
+        }
+      }
+    };
+
+    updateIcons();
+
+    themeToggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      updateIcons();
+    });
+  }
+
+  // Mobile menu
+  const mobileBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (mobileBtn && mobileMenu) {
+    mobileBtn.addEventListener('click', () => {
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden');
+      const openIcon = mobileBtn.querySelector('.menu-open') as HTMLElement;
+      const closeIcon = mobileBtn.querySelector('.menu-close') as HTMLElement;
+      if (openIcon && closeIcon) {
+        openIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      }
+      mobileBtn.setAttribute('aria-expanded', String(!isOpen));
+    });
+  }
+
+  // Dynamic shortcut hint
+  const shortcutHint = document.getElementById('search-shortcut-hint');
+  if (shortcutHint && !/(Mac|iPhone|iPad|iPod)/i.test(navigator.userAgent)) {
+    shortcutHint.textContent = 'Ctrl+K';
+  }
+
+  // Search trigger
+  const searchTrigger = document.getElementById('search-trigger');
+  if (searchTrigger) {
+    searchTrigger.addEventListener('click', () => {
+      const modal = document.getElementById('search-modal');
+      if (modal) modal.classList.remove('hidden');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        const modal = document.getElementById('search-modal');
+        if (modal) modal.classList.remove('hidden');
+      }
+    });
+  }
+</script>
+
+<style>
+  /* Logo gradient: white → red, opposite of the .gradient-text
+     used by section headlines. */
+  .nav-logo-gradient {
+    background: linear-gradient(135deg, #ffffff 0%, #fca5a5 60%, #ef4444 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  [data-theme='light'] .nav-logo-gradient {
+    background: linear-gradient(135deg, #1f2937 0%, #f87171 60%, #ef4444 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+</style>

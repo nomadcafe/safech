@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../../components/layout/BaseLayout.astro';
+import SearchModal from '../../components/ui/SearchModal.astro';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="关于 – SafeCh" description="了解更多关于 SafeCh 项目以及我们追求数字自由的使命。">
+  <SearchModal />
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+    <h1 class="text-4xl font-bold mb-4" style="color: var(--color-text-primary)">
+      关于 <span class="gradient-text">SafeCh</span>
+    </h1>
+    <p class="text-lg mb-12" style="color: var(--color-text-secondary)">
+      你的自由。你的代码。你的未来。
+    </p>
+
+    <div class="space-y-8">
+      <section class="card p-6">
+        <h2 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary)">我们的使命</h2>
+        <p class="leading-relaxed" style="color: var(--color-text-secondary)">
+          SafeCh 是一个社区项目，旨在让每个人都能用上高质量的自由开源软件。我们相信，软件自由是数字社会的一项基本权利。
+        </p>
+        <p class="leading-relaxed mt-3" style="color: var(--color-text-secondary)">
+          我们精心整理的合集帮助个人、企业和组织从专有方案切换到开放替代品——没有供应商锁定，没有监控，没有隐藏费用。
+        </p>
+      </section>
+
+      <section class="card p-6">
+        <h2 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary)">为什么选择开源？</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm" style="color: var(--color-text-secondary)">
+          <div class="p-4 rounded-lg" style="background: var(--color-bg-tertiary)">
+            <strong style="color: var(--color-text-primary)">透明</strong>
+            <p class="mt-1">源代码公开可见。任何人都能验证软件的行为——没有隐藏的追踪器或后门。</p>
+          </div>
+          <div class="p-4 rounded-lg" style="background: var(--color-bg-tertiary)">
+            <strong style="color: var(--color-text-primary)">安全</strong>
+            <p class="mt-1">成千上万双眼睛审查代码，安全漏洞能被迅速发现并修复。</p>
+          </div>
+          <div class="p-4 rounded-lg" style="background: var(--color-bg-tertiary)">
+            <strong style="color: var(--color-text-primary)">社区</strong>
+            <p class="mt-1">开源软件由全球社区共同开发和改进——为所有人，由所有人。</p>
+          </div>
+          <div class="p-4 rounded-lg" style="background: var(--color-bg-tertiary)">
+            <strong style="color: var(--color-text-primary)">可持续</strong>
+            <p class="mt-1">FOSS 不会被随意停止维护。即使公司消失，代码也会延续下去。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card p-6">
+        <h2 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary)">参与贡献</h2>
+        <p class="leading-relaxed mb-4" style="color: var(--color-text-secondary)">
+          SafeCh 是一个社区驱动的目录，依靠大家的反馈不断完善。你可以通过多种方式参与：
+        </p>
+        <ul class="space-y-2 text-sm" style="color: var(--color-text-secondary)">
+          <li>推荐新工具或更新现有条目</li>
+          <li>报告 Bug 或提交改进</li>
+          <li>翻译网站或润色文案</li>
+          <li>分享本项目，让更多人知道</li>
+        </ul>
+        <div class="mt-6 flex flex-col sm:flex-row gap-3">
+          <a
+            href="mailto:hello@safech.com"
+            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium no-underline hover:no-underline bg-red-600 hover:bg-red-500 text-white transition-all"
+          >
+            推荐工具 →
+          </a>
+        </div>
+      </section>
+
+      <section class="card p-6">
+        <h2 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary)">许可协议</h2>
+        <p class="text-sm" style="color: var(--color-text-secondary)">
+          <strong>内容：</strong>Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+        </p>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

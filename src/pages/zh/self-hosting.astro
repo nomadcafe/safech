@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../../components/layout/BaseLayout.astro';
+import SearchModal from '../../components/ui/SearchModal.astro';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="自托管 – 为什么与如何 – FOSS 替代方案" description="了解为什么自托管能保护你的隐私，以及如何用开源软件搭建属于你自己的基础设施。">
+  <SearchModal />
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+    <h1 class="text-4xl font-bold mb-4" style="color: var(--color-text-primary)">
+      自<span class="gradient-text">托管</span>
+    </h1>
+    <p class="text-lg mb-12" style="color: var(--color-text-secondary)">
+      为什么你应该运行自己的基础设施——以及如何上手。
+    </p>
+
+    <article class="prose-custom space-y-8">
+      <section class="card p-6">
+        <h2 class="text-xl font-semibold mb-4" style="color: var(--color-text-primary)">为什么要自托管？</h2>
+        <div class="space-y-3 text-sm leading-relaxed" style="color: var(--color-text-secondary)">
+          <p><strong style="color: var(--color-text-primary)">隐私与数据保护：</strong>你的数据保留在你自己的服务器上。任何第三方都无法访问你的邮件、文件或消息。</p>
+          <p><strong style="color: var(--color-text-primary)">完全掌控：</strong>更新、配置和访问权限都由你说了算。不会有意料之外的服务条款变更。</p>
+          <p><strong style="color: var(--color-text-primary)">节省成本：</strong>许多 FOSS 工具是免费的。唯一的开销是服务器运营成本，往往比 SaaS 订阅更便宜。</p>
+          <p><strong style="color: var(--color-text-primary)">数字主权：</strong>你不依赖于单一供应商，没有厂商锁定的烦恼。</p>
+          <p><strong style="color: var(--color-text-primary)">学习收获：</strong>自托管能让你学到关于网络、服务器管理和 IT 安全的宝贵知识。</p>
+        </div>
+      </section>
+
+      <section class="card p-6">
+        <h2 class="text-xl font-semibold mb-4" style="color: var(--color-text-primary)">如何上手？</h2>
+        <div class="space-y-4 text-sm" style="color: var(--color-text-secondary)">
+          <div class="flex gap-4">
+            <span class="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold bg-red-500/20 text-red-300">1</span>
+            <div>
+              <h3 class="font-medium mb-1" style="color: var(--color-text-primary)">选择一台服务器</h3>
+              <p>可以从 Hetzner、Netcup 或 Contabo 提供的实惠 VPS（虚拟专用服务器）起步。一台 2 vCPU、4 GB 内存的服务器足以运行许多服务。</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <span class="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold bg-red-500/20 text-red-300">2</span>
+            <div>
+              <h3 class="font-medium mb-1" style="color: var(--color-text-primary)">安装操作系统</h3>
+              <p>安装一个 Linux 系统，例如 Ubuntu Server 或 Debian。大多数 FOSS 工具在 Linux 上运行得最好。</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <span class="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold bg-red-500/20 text-red-300">3</span>
+            <div>
+              <h3 class="font-medium mb-1" style="color: var(--color-text-primary)">安装 Docker</h3>
+              <p>Docker 让安装大多数 FOSS 服务变得轻而易举。通常只需一条简单的 <code class="px-1.5 py-0.5 rounded text-xs font-mono" style="background: var(--color-bg-tertiary)">docker compose up -d</code> 就够了。</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <span class="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold bg-red-500/20 text-red-300">4</span>
+            <div>
+              <h3 class="font-medium mb-1" style="color: var(--color-text-primary)">配置反向代理</h3>
+              <p>使用 Caddy、Traefik 或 Nginx 作为反向代理，在同一个域名下运行多个服务，并自动启用 HTTPS。</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <span class="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold bg-red-500/20 text-red-300">5</span>
+            <div>
+              <h3 class="font-medium mb-1" style="color: var(--color-text-primary)">别忘了备份！</h3>
+              <p>设置自动备份，例如使用 <a href={`${base}zh/tool/restic/`}>Restic</a> 或 <a href={`${base}zh/tool/borgbackup/`}>BorgBackup</a>。并定期测试你的恢复流程。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card p-6">
+        <h2 class="text-xl font-semibold mb-4" style="color: var(--color-text-primary)">推荐的入门技术栈</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr style="border-bottom: 1px solid var(--color-border)">
+                <th class="text-left py-2 font-medium" style="color: var(--color-text-muted)">使用场景</th>
+                <th class="text-left py-2 font-medium" style="color: var(--color-text-muted)">FOSS 方案</th>
+                <th class="text-left py-2 font-medium" style="color: var(--color-text-muted)">替代</th>
+              </tr>
+            </thead>
+            <tbody style="color: var(--color-text-secondary)">
+              <tr style="border-bottom: 1px solid var(--color-border)">
+                <td class="py-2">云存储</td>
+                <td class="py-2"><a href={`${base}zh/tool/nextcloud/`}>Nextcloud</a></td>
+                <td class="py-2">Google Drive、Dropbox</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--color-border)">
+                <td class="py-2">密码管理</td>
+                <td class="py-2"><a href={`${base}zh/tool/vaultwarden/`}>Vaultwarden</a></td>
+                <td class="py-2">LastPass、1Password</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--color-border)">
+                <td class="py-2">聊天</td>
+                <td class="py-2"><a href={`${base}zh/tool/element/`}>Element/Matrix</a></td>
+                <td class="py-2">Slack、Teams</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--color-border)">
+                <td class="py-2">监控</td>
+                <td class="py-2"><a href={`${base}zh/tool/uptime-kuma/`}>Uptime Kuma</a></td>
+                <td class="py-2">Pingdom、StatusCake</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--color-border)">
+                <td class="py-2">分析统计</td>
+                <td class="py-2"><a href={`${base}zh/tool/umami/`}>Umami</a></td>
+                <td class="py-2">Google Analytics</td>
+              </tr>
+              <tr>
+                <td class="py-2">DNS/广告拦截</td>
+                <td class="py-2"><a href={`${base}zh/tool/pi-hole/`}>Pi-hole</a></td>
+                <td class="py-2">Google DNS</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <div class="text-center pt-4">
+        <a
+          href={`${base}zh/tools/`}
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium no-underline hover:no-underline bg-red-600 hover:bg-red-500 text-white transition-all"
+        >
+          探索所有可自托管的工具 →
+        </a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>

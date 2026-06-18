@@ -1,0 +1,406 @@
+---
+import type { Tool, Category } from '../../data/types';
+import { Icon } from 'astro-icon/components';
+import { getLicenseBadgeClass, getDifficultyBadgeClass, getRelatedTools } from '../../utils/tools';
+import { getSimpleIcon } from '../../utils/icons';
+import MaintenanceBadge from '../ui/MaintenanceBadge.astro';
+import ToolCard from './ToolCard.astro';
+import { getLangFromUrl, useTranslations, getHomeHref, getCategoryName } from '../../i18n/utils';
+
+interface Props {
+  tool: Tool;
+  allTools: Tool[];
+  categories: Category[];
+}
+
+const { tool, allTools, categories } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const homeHref = getHomeHref(lang);
+const licenseBadge = getLicenseBadgeClass(tool.license);
+const diffBadge = getDifficultyBadgeClass(tool.difficulty);
+const diffLabel = t(`difficulty.${tool.difficulty}` as any);
+const relatedTools = getRelatedTools(allTools, tool, 3);
+const simpleIcon = getSimpleIcon(tool.simpleIconsSlug ?? tool.slug);
+
+const lastUpdatedDate = tool.lastUpdated ? new Date(tool.lastUpdated) : null;
+const monthsAgo = lastUpdatedDate ? Math.floor((Date.now() - lastUpdatedDate.getTime()) / (1000 * 60 * 60 * 24 * 30)) : 0;
+const isStale = monthsAgo > 18;
+
+const toolCategories = categories.filter(c => tool.categories.includes(c.slug));
+const toolPath = t('path.tool');
+const categoryPath = t('path.category');
+
+const platformMeta: Record<string, { icon: string; label: string }> = {
+  linux: { icon: 'simple-icons:linux', label: 'Linux' },
+  windows: { icon: 'simple-icons:windows', label: 'Windows' },
+  macos: { icon: 'simple-icons:apple', label: 'macOS' },
+  android: { icon: 'simple-icons:android', label: 'Android' },
+  ios: { icon: 'simple-icons:apple', label: 'iOS' },
+  web: { icon: 'lucide:globe', label: 'Web' },
+  docker: { icon: 'simple-icons:docker', label: 'Docker' },
+};
+
+function getToolColor(name: string): string {
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) {
+    hash = name.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  const colors = ['#6366f1', '#a855f7', '#06b6d4', '#22c55e', '#f97316', '#ef4444', '#eab308', '#ec4899', '#8b5cf6', '#14b8a6'];
+  return colors[Math.abs(hash) % colors.length];
+}
+
+const toolColor = getToolColor(tool.name);
+
+const previewImageUrl = tool.previewImage || `https://s.wordpress.com/mshots/v1/${encodeURIComponent(tool.website)}?w=1280&h=800`;
+
+const categoryIconMap: Record<string, string> = {
+  'monitor': 'lucide:monitor', 'file-text': 'lucide:file-text', 'globe': 'lucide:globe',
+  'mail': 'lucide:mail', 'mailbox': 'lucide:inbox', 'cloud': 'lucide:cloud',
+  'key': 'lucide:key', 'message-circle': 'lucide:message-circle', 'video': 'lucide:video',
+  'calendar': 'lucide:calendar', 'search': 'lucide:search', 'smartphone': 'lucide:smartphone',
+  'git-branch': 'lucide:git-branch', 'refresh-cw': 'lucide:refresh-cw', 'package': 'lucide:package',
+  'database': 'lucide:database', 'layout': 'lucide:layout', 'shopping-cart': 'lucide:shopping-cart',
+  'bar-chart': 'lucide:bar-chart-2', 'activity': 'lucide:activity', 'shield': 'lucide:shield',
+  'flame': 'lucide:flame', 'cpu': 'lucide:cpu', 'edit': 'lucide:pencil',
+  'check-square': 'lucide:square-check', 'film': 'lucide:film', 'palette': 'lucide:palette',
+  'clock': 'lucide:clock', 'factory': 'lucide:building-2', 'handshake': 'lucide:handshake',
+  'book-open': 'lucide:book-open', 'save': 'lucide:save', 'ban': 'lucide:ban',
+  'archive': 'lucide:archive', 'music': 'lucide:music', 'terminal': 'lucide:terminal',
+  'settings': 'lucide:settings', 'rocket': 'lucide:rocket', 'map': 'lucide:map',
+};
+---
+
+<article>
+  <nav class="mb-6 text-sm" aria-label="Breadcrumb">
+    <ol class="flex items-center gap-2" style="color: var(--color-text-muted)">
+      <li><a href={homeHref} class="hover:text-red-400">{t('detail.home')}</a></li>
+      <li>/</li>
+      {toolCategories[0] && (
+        <>
+          <li><a href={`${base}${categoryPath}/${toolCategories[0].slug}/`} class="hover:text-red-400">{getCategoryName(toolCategories[0].slug, lang) || toolCategories[0].name}</a></li>
+          <li>/</li>
+        </>
+      )}
+      <li style="color: var(--color-text-primary)">{tool.name}</li>
+    </ol>
+  </nav>
+
+  <div class="flex flex-col sm:flex-row items-start gap-6 mb-8">
+    <div
+      class="icon-chip w-20 h-20 rounded-2xl flex items-center justify-center flex-shrink-0 overflow-hidden"
+    >
+      {simpleIcon ? (
+        <div class="w-10 h-10 flex items-center justify-center" style={`color: ${simpleIcon.color}`} set:html={simpleIcon.svg} />
+      ) : (
+        <>
+          <img
+            src={`${base}logos/${tool.slug}.png`}
+            data-logo-url={tool.logoUrl ?? ''}
+            alt=""
+            class="w-14 h-14 object-contain tool-logo-detail"
+          />
+          <span
+            class="tool-logo-detail-fallback hidden items-center justify-center w-full h-full text-3xl font-bold text-white rounded-2xl"
+            style={`background: ${toolColor}`}
+          >
+            {tool.name.charAt(0).toUpperCase()}
+          </span>
+        </>
+      )}
+    </div>
+    <div class="flex-1">
+      <div class="flex flex-wrap items-center gap-3 mb-2">
+        <h1 class="text-3xl font-bold" style="color: var(--color-text-primary)">{tool.name}</h1>
+        <span class="badge badge-foss inline-flex items-center gap-1">
+          <Icon name="lucide:shield-check" size={14} />
+          Open Source
+        </span>
+        <span class:list={['badge', licenseBadge]}>{tool.license}</span>
+        {tool.maintenanceStatus && <MaintenanceBadge status={tool.maintenanceStatus} note={tool.maintenanceNote} />}
+      </div>
+      <p class="text-lg" style="color: var(--color-text-secondary)">{tool.taglineEn || tool.tagline}</p>
+    </div>
+  </div>
+
+  {(tool.maintenanceStatus === 'restricted' || tool.maintenanceStatus === 'archived') && tool.maintenanceNote && (
+    <div class="rounded-lg border border-orange-500/30 bg-orange-500/10 p-4 mb-8">
+      <div class="flex items-start gap-3">
+        <span class="text-orange-400 text-lg flex-shrink-0">&#9888;</span>
+        <div>
+          <p class="font-semibold text-sm text-orange-400 mb-1">
+            {tool.maintenanceStatus === 'restricted' ? t('detail.restricted') : t('detail.archived')}
+          </p>
+          <p class="text-sm" style="color: var(--color-text-secondary)">{tool.maintenanceNote}</p>
+          {tool.deprecatedReason && (
+            <p class="text-xs mt-2" style="color: var(--color-text-muted)">{t('detail.reason')} {tool.deprecatedReason}</p>
+          )}
+        </div>
+      </div>
+    </div>
+  )}
+
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+    <div class="card p-4">
+      <div class="text-xs mb-1" style="color: var(--color-text-muted)">{t('detail.website')}</div>
+      <a href={tool.website} target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-red-400 hover:text-red-300 truncate block">
+        {tool.website.replace('https://', '').replace('http://', '').replace(/\/$/, '')}
+      </a>
+    </div>
+    {tool.github && (
+      <div class="card p-4">
+        <div class="text-xs mb-1" style="color: var(--color-text-muted)">{t('detail.github')}</div>
+        <a href={tool.github} target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-red-400 hover:text-red-300 truncate block">
+          {tool.github.replace('https://github.com/', '')}
+        </a>
+      </div>
+    )}
+    <div class="card p-4">
+      <div class="text-xs mb-1" style="color: var(--color-text-muted)">{t('detail.difficulty')}</div>
+      <span class:list={['badge', diffBadge]}>{diffLabel}</span>
+    </div>
+    <div class="card p-4">
+      <div class="text-xs mb-1" style="color: var(--color-text-muted)">{t('detail.lastCheck')}</div>
+      <span class:list={['text-sm font-medium', isStale ? 'text-orange-400' : '']} style={isStale ? '' : 'color: var(--color-text-primary)'}>
+        {tool.lastUpdated}
+        {isStale && <span class="text-xs block mt-1">{t('detail.staleWarning')}</span>}
+      </span>
+    </div>
+  </div>
+
+  <div class="card p-6 mb-8">
+    <h2 class="text-lg font-semibold mb-3" style="color: var(--color-text-primary)">{t('detail.description')}</h2>
+    <p class="leading-relaxed" style="color: var(--color-text-secondary)">{tool.descriptionEn || tool.description}</p>
+  </div>
+
+  <div class="card p-6 mb-8" data-preview-card>
+    <h2 class="text-lg font-semibold mb-4 flex items-center gap-2" style="color: var(--color-text-primary)">
+      <Icon name="lucide:monitor" size={20} />
+      {t('detail.preview')}
+    </h2>
+    <div class="relative rounded-lg overflow-hidden border" style="border-color: var(--color-border)">
+      <img
+        src={previewImageUrl}
+        alt={`${tool.name} Preview`}
+        class="w-full h-auto tool-preview-img"
+        loading="lazy"
+        style="background: #111; min-height: 200px;"
+      />
+      <div class="tool-preview-shimmer absolute inset-0 pointer-events-none flex items-center justify-center text-xs" style="color: var(--color-text-muted); background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent); display: none;">
+        <span class="px-2 py-1 rounded-md" style="background: rgba(0,0,0,0.6)">
+          <Icon name="lucide:loader" size={14} class="inline mr-1 animate-spin" />
+          {tool.name}…
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card p-6 mb-8">
+    <h2 class="text-lg font-semibold mb-3" style="color: var(--color-text-primary)">{t('detail.platforms')}</h2>
+    <div class="flex flex-wrap gap-2">
+      {tool.platforms.map(p => {
+        const meta = platformMeta[p];
+        return (
+          <span class="badge bg-slate-500/20 text-slate-300 border-slate-500/30 inline-flex items-center gap-1.5">
+            {meta ? <Icon name={meta.icon} size={14} /> : null}
+            {meta?.label ?? p}
+          </span>
+        );
+      })}
+    </div>
+  </div>
+
+  {tool.replacesTools.length > 0 && (
+    <div class="card p-6 mb-8">
+      <h2 class="text-lg font-semibold mb-3" style="color: var(--color-text-primary)">
+        {t('detail.replacesTools')}
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+        {tool.replacesTools.map(r => (
+          <div class="flex items-center gap-3 p-3 rounded-lg" style="background: var(--color-bg-tertiary)">
+            <span class="text-red-400"><Icon name="lucide:x-circle" size={18} /></span>
+            <span class="text-sm line-through" style="color: var(--color-text-muted)">{r}</span>
+            <span style="color: var(--color-text-muted)">&rarr;</span>
+            <span class="text-green-400"><Icon name="lucide:check-circle" size={18} /></span>
+            <span class="text-sm font-medium" style="color: var(--color-text-primary)">{tool.name}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  )}
+
+  {tool.selfHostable && (
+    <div class="card p-6 mb-8 border-red-500/30">
+      <h2 class="text-lg font-semibold mb-3 flex items-center gap-2" style="color: var(--color-text-primary)">
+        <Icon name="lucide:home" size={20} />
+        {t('detail.selfHost')}
+      </h2>
+      <p class="text-sm mb-3" style="color: var(--color-text-secondary)">
+        {tool.name} {t('detail.selfHostText')}
+      </p>
+      <a
+        href={tool.website}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium no-underline hover:no-underline bg-red-600 hover:bg-red-500 text-white transition-colors"
+      >
+        {t('detail.toDocs')}
+      </a>
+    </div>
+  )}
+
+  <div class="card p-6 mb-8">
+    <h2 class="text-lg font-semibold mb-3" style="color: var(--color-text-primary)">{t('detail.categories')}</h2>
+    <div class="flex flex-wrap gap-2">
+      {toolCategories.map(cat => (
+        <a
+          href={`${base}${categoryPath}/${cat.slug}/`}
+          class="badge bg-red-500/20 text-red-300 border-red-500/30 no-underline hover:no-underline hover:bg-red-500/30 inline-flex items-center gap-1.5"
+        >
+          {categoryIconMap[cat.icon] && <Icon name={categoryIconMap[cat.icon]} size={14} />}
+          {getCategoryName(cat.slug, lang) || cat.name}
+        </a>
+      ))}
+    </div>
+  </div>
+
+  {tool.tags.length > 0 && (
+    <div class="card p-6 mb-8">
+      <h2 class="text-lg font-semibold mb-3" style="color: var(--color-text-primary)">{t('detail.tags')}</h2>
+      <div class="flex flex-wrap gap-2">
+        {tool.tags.map(tag => (
+          <span class="px-2.5 py-1 rounded-full text-xs" style="background: var(--color-bg-tertiary); color: var(--color-text-muted)">
+            #{tag}
+          </span>
+        ))}
+      </div>
+    </div>
+  )}
+
+  {relatedTools.length > 0 && (
+    <div class="mb-8">
+      <h2 class="text-lg font-semibold mb-4" style="color: var(--color-text-primary)">{t('detail.relatedTools')}</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {relatedTools.map(rt => (
+          <ToolCard tool={rt} />
+        ))}
+      </div>
+    </div>
+  )}
+
+  {toolCategories[0] && (
+    <a
+      href={`${base}${categoryPath}/${toolCategories[0].slug}/`}
+      class="inline-flex items-center gap-2 text-sm font-medium text-red-400 hover:text-red-300 no-underline hover:no-underline"
+    >
+      {t('detail.backTo')} {getCategoryName(toolCategories[0].slug, lang) || toolCategories[0].name}
+    </a>
+  )}
+</article>
+
+<script>
+  document.querySelectorAll('.tool-logo-detail').forEach(node => {
+    const img = node as HTMLImageElement;
+    const handleError = () => {
+      const logoUrl = img.dataset.logoUrl;
+      if (logoUrl && !img.dataset.triedLogoUrl) {
+        img.dataset.triedLogoUrl = 'true';
+        img.src = logoUrl;
+        return;
+      }
+      img.style.display = 'none';
+      const fallback = img.nextElementSibling as HTMLElement | null;
+      if (fallback) fallback.style.display = 'flex';
+    };
+    img.addEventListener('error', handleError);
+    if (img.complete && img.naturalWidth === 0) handleError();
+  });
+
+  document.querySelectorAll('.tool-preview-img').forEach(node => {
+    const img = node as HTMLImageElement;
+    const originalSrc = img.src;
+    // mshots returns a small "still generating" placeholder on the first
+    // request to a fresh URL (typically 400x300 px). It can also return
+    // a transient error mid-generation. Poll on either condition until
+    // the real screenshot arrives, with a visible loading state so the
+    // page never looks broken.
+    const isMshots = /s\.wordpress\.com\/mshots\//.test(originalSrc);
+    const placeholderThreshold = 800; // narrower naturalWidth than this = placeholder
+    const maxAttempts = 12;
+    let attempt = 0;
+    let timer: number | undefined;
+    let settled = false;
+
+    const card = img.closest('[data-preview-card]') as HTMLElement | null;
+    const shimmer = card?.querySelector('.tool-preview-shimmer') as HTMLElement | null;
+
+    const showLoading = () => {
+      img.style.opacity = '0.55';
+      img.style.filter = 'blur(2px)';
+      img.style.transition = 'opacity 200ms ease-out, filter 200ms ease-out';
+      if (shimmer) shimmer.style.display = 'flex';
+    };
+    const clearLoading = () => {
+      img.style.opacity = '';
+      img.style.filter = '';
+      if (shimmer) shimmer.style.display = 'none';
+    };
+
+    const isPlaceholder = () =>
+      img.naturalWidth > 0 && img.naturalWidth < placeholderThreshold;
+
+    const giveUp = () => {
+      settled = true;
+      clearLoading();
+      if (card) card.style.display = 'none';
+    };
+
+    const refetch = () => {
+      if (settled) return;
+      if (!isMshots || attempt >= maxAttempts) {
+        giveUp();
+        return;
+      }
+      attempt++;
+      showLoading();
+      const sep = originalSrc.includes('?') ? '&' : '?';
+      img.src = `${originalSrc}${sep}cb=${Date.now()}`;
+    };
+
+    const onLoad = () => {
+      if (settled) return;
+      if (isMshots && isPlaceholder()) {
+        showLoading();
+        const delay = Math.min(1500 + attempt * 1000, 6000);
+        timer = window.setTimeout(refetch, delay);
+        return;
+      }
+      settled = true;
+      clearLoading();
+    };
+
+    const onError = () => {
+      if (settled) return;
+      // Transient mshots errors (504s during generation are common). Retry
+      // them like placeholders rather than hiding the card immediately.
+      if (isMshots && attempt < maxAttempts) {
+        showLoading();
+        const delay = Math.min(2000 + attempt * 1000, 6000);
+        timer = window.setTimeout(refetch, delay);
+        return;
+      }
+      giveUp();
+    };
+
+    img.addEventListener('load', onLoad);
+    img.addEventListener('error', onError);
+    if (img.complete) {
+      if (img.naturalWidth === 0) onError();
+      else onLoad();
+    } else if (isMshots) {
+      // Show loading hint immediately while the first request is in flight.
+      showLoading();
+    }
+  });
+</script>

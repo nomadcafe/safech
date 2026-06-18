@@ -1,0 +1,104 @@
+---
+import Navigation from './Navigation.astro';
+import Footer from './Footer.astro';
+import '../../styles/global.css';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../../i18n/utils';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const { title, description = t('layout.defaultDescription'), ogImage } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const base = import.meta.env.BASE_URL;
+const ogImageUrl = ogImage ?? `${Astro.site}${base}og-image.png`.replace(/\/\//g, '/').replace('https:/', 'https://');
+
+const enUrl = new URL(getLocalizedPath(Astro.url, 'en'), Astro.site);
+const zhUrl = new URL(getLocalizedPath(Astro.url, 'zh'), Astro.site);
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" type="image/png" href={`${base}icon.png`} />
+    <link rel="apple-touch-icon" href={`${base}icon.png`} />
+    <link rel="sitemap" href={`${base}sitemap-index.xml`} />
+    <link rel="alternate" type="application/rss+xml" title="SafeCh RSS" href={`${base}rss.xml`} />
+
+    <!-- hreflang tags for SEO -->
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="zh" href={zhUrl} />
+    <link rel="alternate" hreflang="x-default" href={enUrl} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:locale" content={lang === 'zh' ? 'zh_CN' : 'en_US'} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <title>{title}</title>
+
+    <!-- Theme initialization (prevent flash) -->
+    <script is:inline>
+      (function() {
+        const theme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <a href="#main-content" class="skip-link">{t('layout.skipToContent')}</a>
+    <Navigation />
+    <main id="main-content" class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+
+    <!-- Scroll-to-Top Button -->
+    <button
+      id="scroll-to-top"
+      class="fixed bottom-6 right-6 z-50 hidden w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 text-white shadow-lg transition-all duration-300 items-center justify-center"
+      aria-label={t('layout.backToTop')}
+      title={t('layout.backToTop')}
+    >
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+      </svg>
+    </button>
+    <script is:inline>
+      (function() {
+        var btn = document.getElementById('scroll-to-top');
+        if (!btn) return;
+        window.addEventListener('scroll', function() {
+          if (window.scrollY > 300) {
+            btn.style.display = 'flex';
+          } else {
+            btn.style.display = 'none';
+          }
+        });
+        btn.addEventListener('click', function() {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      })();
+    </script>
+  </body>
+</html>

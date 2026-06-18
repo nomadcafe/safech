@@ -1,0 +1,72 @@
+---
+import { getLangFromUrl, getLocalizedPath } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+
+const options = [
+  { code: 'en', label: 'EN', aria: 'Switch to English' },
+  { code: 'zh', label: '中文', aria: '切换到中文' },
+] as const;
+
+const links = options.map((o) => ({
+  ...o,
+  href: getLocalizedPath(Astro.url, o.code),
+  active: lang === o.code,
+}));
+---
+
+<div class="lang-toggle-wrapper" role="group" aria-label="Language">
+  {links.map((l) => (
+    <a
+      href={l.href}
+      data-lang={l.code}
+      class:list={['lang-toggle-link', l.active && 'lang-toggle-link--active']}
+      aria-label={l.aria}
+      aria-current={l.active ? 'true' : undefined}
+    >{l.label}</a>
+  ))}
+</div>
+
+<script is:inline>
+  // Remember a manual language choice so auto-detection on the root respects it
+  document.querySelectorAll('.lang-toggle-link[data-lang]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      try { localStorage.setItem('preferred-lang', a.getAttribute('data-lang')); } catch (e) {}
+    });
+  });
+</script>
+
+<style>
+  .lang-toggle-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .lang-toggle-link {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--color-text-muted);
+    transition: color 0.3s ease, background-color 0.3s ease;
+    user-select: none;
+    line-height: 1;
+    padding: 0.25rem 0.375rem;
+    border-radius: 0.375rem;
+    text-decoration: none;
+  }
+
+  .lang-toggle-link:hover {
+    color: var(--color-text-primary);
+  }
+
+  .lang-toggle-link--active {
+    color: var(--color-primary);
+    background-color: var(--color-primary-glow);
+  }
+
+  .lang-toggle-link:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+</style>
