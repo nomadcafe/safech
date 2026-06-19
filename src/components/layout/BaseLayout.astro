@@ -22,7 +22,7 @@ const zhUrl = new URL(getLocalizedPath(Astro.url, 'zh'), Astro.site);
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={lang} data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -59,7 +59,7 @@ const zhUrl = new URL(getLocalizedPath(Astro.url, 'zh'), Astro.site);
     <!-- Theme initialization (prevent flash) -->
     <script is:inline>
       (function() {
-        const theme = localStorage.getItem('theme') || 'dark';
+        const theme = localStorage.getItem('theme') || 'light';
         document.documentElement.setAttribute('data-theme', theme);
       })();
     </script>
