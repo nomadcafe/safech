@@ -502,6 +502,36 @@ export const categoryTranslations: Record<string, { name: string; description: s
     description: 'Self-hosted photo management and gallery solutions for private photo collections. Privacy-friendly alternatives to Google Photos, iCloud Photos and Amazon Photos.',
     replaces: 'Google Photos, iCloud Photos, Amazon Photos',
   },
+  'email-aliasing': {
+    name: 'Email Aliasing & Masking',
+    description: 'Services that generate disposable email aliases to hide your real address and stop spam and tracking. Open-source alternatives to Apple Hide My Email and Firefox Relay.',
+    replaces: 'Hide My Email, Firefox Relay',
+  },
+  '2fa-authenticator': {
+    name: 'Two-Factor Authenticators',
+    description: 'Open-source TOTP/2FA authenticator apps with encrypted backups and no account lock-in. Privacy-friendly alternatives to Google Authenticator and Authy.',
+    replaces: 'Google Authenticator, Authy',
+  },
+  'file-encryption': {
+    name: 'File Encryption',
+    description: 'Open-source tools to encrypt files, folders and cloud storage with strong, audited cryptography. Independent alternatives to BitLocker and proprietary archive encryption.',
+    replaces: 'BitLocker, 7-Zip encryption',
+  },
+  'privacy-frontends': {
+    name: 'Privacy Frontends',
+    description: 'Lightweight, ad-free alternative front-ends that let you browse YouTube, Reddit and other platforms without tracking, accounts or JavaScript. Self-hostable proxies for the big platforms.',
+    replaces: 'YouTube, Reddit, X/Twitter',
+  },
+  'secure-sharing': {
+    name: 'Secure Sharing & Pastebins',
+    description: 'Encrypted, ephemeral file-sharing and pastebin tools for sending data without handing it to a third party. Privacy-friendly alternatives to WeTransfer and Pastebin.',
+    replaces: 'WeTransfer, Pastebin',
+  },
+  'metadata-removal': {
+    name: 'Metadata Removal',
+    description: 'Tools that strip hidden metadata such as EXIF location data, author names and timestamps from photos and documents before you share them. Protect yourself from accidental data leaks.',
+    replaces: 'manual EXIF editing',
+  },
 };
 
 // Chinese category translations
@@ -705,5 +735,35 @@ export const categoryTranslationsZh: Record<string, { name: string; description:
     name: '照片管理',
     description: '面向私人照片收藏的自托管照片管理与相册方案。注重隐私，可替代 Google Photos、iCloud Photos 和 Amazon Photos。',
     replaces: 'Google Photos, iCloud Photos, Amazon Photos',
+  },
+  'email-aliasing': {
+    name: '邮箱别名与隐藏',
+    description: '生成一次性邮箱别名，隐藏真实邮箱地址，阻挡垃圾邮件和追踪。开源方案，可替代 Apple Hide My Email 和 Firefox Relay。',
+    replaces: 'Hide My Email, Firefox Relay',
+  },
+  '2fa-authenticator': {
+    name: '两步验证器',
+    description: '开源的 TOTP/两步验证器应用，支持加密备份、无账号绑定。注重隐私，可替代 Google Authenticator 和 Authy。',
+    replaces: 'Google Authenticator, Authy',
+  },
+  'file-encryption': {
+    name: '文件加密',
+    description: '使用经过审计的强加密算法，对文件、文件夹及云存储进行加密的开源工具。独立可控，可替代 BitLocker 及专有压缩包加密。',
+    replaces: 'BitLocker, 7-Zip encryption',
+  },
+  'privacy-frontends': {
+    name: '隐私前端',
+    description: '轻量、无广告的替代前端，让你无需追踪、账号或 JavaScript 即可浏览 YouTube、Reddit 等平台。可自托管的平台代理。',
+    replaces: 'YouTube, Reddit, X/Twitter',
+  },
+  'secure-sharing': {
+    name: '安全分享与 Pastebin',
+    description: '加密、阅后即焚的文件分享与 Pastebin 工具，无需把数据交给第三方。注重隐私，可替代 WeTransfer 和 Pastebin。',
+    replaces: 'WeTransfer, Pastebin',
+  },
+  'metadata-removal': {
+    name: '元数据清除',
+    description: '在分享前清除照片和文档中隐藏的元数据，如 EXIF 位置信息、作者姓名和时间戳，避免意外泄露隐私。',
+    replaces: 'manual EXIF editing',
   },
 };

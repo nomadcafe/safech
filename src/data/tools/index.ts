@@ -39,6 +39,12 @@ import { backendFrameworksTools } from './backend-frameworks';
 import { ssgTools } from './ssg';
 import { kartenTools } from './karten';
 import { fotosTools } from './fotos';
+import { emailAliasingTools } from './email-aliasing';
+import { twoFactorAuthTools } from './2fa-authenticator';
+import { fileEncryptionTools } from './file-encryption';
+import { privacyFrontendsTools } from './privacy-frontends';
+import { secureSharingTools } from './secure-sharing';
+import { metadataRemovalTools } from './metadata-removal';
 import { curatedClassicsTools } from './curated-classics';
 import { autoDiscoveredTools } from './auto-tools';
 
@@ -83,6 +89,12 @@ export const allTools: Tool[] = [
   ...ssgTools,
   ...kartenTools,
   ...fotosTools,
+  ...emailAliasingTools,
+  ...twoFactorAuthTools,
+  ...fileEncryptionTools,
+  ...privacyFrontendsTools,
+  ...secureSharingTools,
+  ...metadataRemovalTools,
   ...curatedClassicsTools,
   ...autoDiscoveredTools,
 ];

@@ -164,6 +164,15 @@ export const TOOL_ICON_MAP: Record<string, string> = {
   'payload': 'payloadcms',
   'tinacms': 'tina',
   'grafana-operator': 'grafana',
+  // Privacy tools (consumer)
+  'simplelogin': 'simplelogin',
+  'addy-io': 'addydotio',
+  'aegis-authenticator': 'aegisauthenticator',
+  'ente-auth': 'ente',
+  'cryptomator': 'cryptomator',
+  'gnupg': 'gnuprivacyguard',
+  'invidious': 'invidious',
+  'piped': 'piped',
 };
 
 export function getSimpleIcon(toolSlug: string): { svg: string; color: string } | null {

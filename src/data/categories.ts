@@ -441,4 +441,70 @@ export const categories: Category[] = [
     replacesCategory: 'Google Photos, iCloud Photos, Amazon Photos',
     color: 'rose',
   },
+  {
+    id: 'email-aliasing',
+    slug: 'email-aliasing',
+    name: 'Email Aliasing & Masking',
+    description:
+      'Services that generate disposable email aliases to hide your real address and stop spam and tracking. Open-source alternatives to Apple Hide My Email and Firefox Relay.',
+    icon: 'at-sign',
+    emoji: '🎭',
+    replacesCategory: 'Hide My Email, Firefox Relay',
+    color: 'pink',
+  },
+  {
+    id: '2fa-authenticator',
+    slug: '2fa-authenticator',
+    name: 'Two-Factor Authenticators',
+    description:
+      'Open-source TOTP/2FA authenticator apps with encrypted backups and no account lock-in. Privacy-friendly alternatives to Google Authenticator and Authy.',
+    icon: 'shield-check',
+    emoji: '🔐',
+    replacesCategory: 'Google Authenticator, Authy',
+    color: 'emerald',
+  },
+  {
+    id: 'file-encryption',
+    slug: 'file-encryption',
+    name: 'File Encryption',
+    description:
+      'Open-source tools to encrypt files, folders and cloud storage with strong, audited cryptography. Independent alternatives to BitLocker and proprietary archive encryption.',
+    icon: 'lock',
+    emoji: '🔒',
+    replacesCategory: 'BitLocker, 7-Zip encryption',
+    color: 'violet',
+  },
+  {
+    id: 'privacy-frontends',
+    slug: 'privacy-frontends',
+    name: 'Privacy Frontends',
+    description:
+      'Lightweight, ad-free alternative front-ends that let you browse YouTube, Reddit and other platforms without tracking, accounts or JavaScript. Self-hostable proxies for the big platforms.',
+    icon: 'tv',
+    emoji: '🪞',
+    replacesCategory: 'YouTube, Reddit, X/Twitter',
+    color: 'fuchsia',
+  },
+  {
+    id: 'secure-sharing',
+    slug: 'secure-sharing',
+    name: 'Secure Sharing & Pastebins',
+    description:
+      'Encrypted, ephemeral file-sharing and pastebin tools for sending data without handing it to a third party. Privacy-friendly alternatives to WeTransfer and Pastebin.',
+    icon: 'share-2',
+    emoji: '📤',
+    replacesCategory: 'WeTransfer, Pastebin',
+    color: 'teal',
+  },
+  {
+    id: 'metadata-removal',
+    slug: 'metadata-removal',
+    name: 'Metadata Removal',
+    description:
+      'Tools that strip hidden metadata such as EXIF location data, author names and timestamps from photos and documents before you share them. Protect yourself from accidental data leaks.',
+    icon: 'eraser',
+    emoji: '🧹',
+    replacesCategory: 'manual EXIF editing',
+    color: 'lime',
+  },
 ];

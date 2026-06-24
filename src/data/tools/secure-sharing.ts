@@ -1,0 +1,48 @@
+import type { Tool } from '../types';
+
+export const secureSharingTools: Tool[] = [
+  {
+    id: 'onionshare',
+    name: 'OnionShare',
+    slug: 'onionshare',
+    tagline: 'Share files anonymously over the Tor network',
+    description:
+      'OnionShare lets you securely and anonymously share files, host a website or chat with others directly from your own computer using the Tor network. It spins up a temporary onion service so the recipient connects straight to you over Tor, with no third-party server storing your data and no account required. Transfers are end-to-end encrypted by Tor, and you can password-protect shares or make them disappear after the first download. OnionShare is a privacy-first alternative to WeTransfer and Dropbox links for sensitive files.',
+    website: 'https://onionshare.org',
+    github: 'https://github.com/onionshare/onionshare',
+    license: 'GPL-3.0',
+    categories: ['secure-sharing'],
+    replacesTools: ['WeTransfer', 'Dropbox links'],
+    selfHostable: false,
+    logoPlaceholderEmoji: '🧅',
+    stars: 6700,
+    lastUpdated: '2026-05-22',
+    tags: ['file-sharing', 'tor', 'anonymous', 'e2e', 'no-server', 'privacy'],
+    difficulty: 'einfach',
+    platforms: ['linux', 'windows', 'macos'],
+    featured: true,
+    addedDate: '2026-06-24',
+  },
+  {
+    id: 'privatebin',
+    name: 'PrivateBin',
+    slug: 'privatebin',
+    tagline: 'Minimalist, zero-knowledge encrypted pastebin',
+    description:
+      'PrivateBin is an open-source, minimalist pastebin where the server has zero knowledge of the data you paste. Content is encrypted and decrypted in the browser using AES-256, and the decryption key lives only in the URL fragment, so the server never sees your plaintext. You can set expiration times, enable burn-after-reading, password-protect pastes, and allow encrypted discussions. It is trivial to self-host and is a privacy-respecting alternative to Pastebin and pastebin features in chat tools.',
+    website: 'https://privatebin.info',
+    github: 'https://github.com/PrivateBin/PrivateBin',
+    license: 'Zlib',
+    categories: ['secure-sharing'],
+    replacesTools: ['Pastebin', 'GitHub Gist'],
+    selfHostable: true,
+    logoPlaceholderEmoji: '📋',
+    stars: 7000,
+    lastUpdated: '2026-06-06',
+    tags: ['pastebin', 'zero-knowledge', 'aes', 'self-hosted', 'burn-after-reading', 'privacy'],
+    difficulty: 'einfach',
+    platforms: ['web', 'linux', 'docker'],
+    featured: false,
+    addedDate: '2026-06-24',
+  },
+];
