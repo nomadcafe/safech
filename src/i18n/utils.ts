@@ -61,12 +61,18 @@ export function getLocalizedPath(url: URL, targetLang: Lang): string {
     pathname = pathname.slice(0, -1);
   }
 
+  const segments = pathname.split('/').filter(Boolean);
+  const hasLocalePrefix = segments[0] === 'en' || segments[0] === 'zh';
   const currentLang = getLangFromUrl(url);
-  if (currentLang === targetLang) return url.pathname;
+
+  // Only short-circuit to the current URL for genuinely localized pages.
+  // Unlocalized apex pages (e.g. the root /404) have no locale segment, so
+  // getLangFromUrl falls back to the default and would otherwise return a
+  // dead path like /404/ — always give them a proper locale prefix instead.
+  if (hasLocalePrefix && currentLang === targetLang) return url.pathname;
 
   // Drop the current language prefix, keep the rest, then prefix the target language
-  const segments = pathname.split('/').filter(Boolean);
-  const rest = segments[0] === currentLang ? segments.slice(1) : segments;
+  const rest = hasLocalePrefix ? segments.slice(1) : segments;
   const path = rest.length > 0 ? rest.join('/') + '/' : '';
   return `${base}${targetLang}/${path}`;
 }
