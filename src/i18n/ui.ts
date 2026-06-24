@@ -54,7 +54,7 @@ export const ui = {
     // BaseLayout
     'layout.skipToContent': 'Skip to content',
     'layout.backToTop': 'Back to top',
-    'layout.defaultDescription': 'SafeCh – Safe, GDPR-friendly open-source alternatives to proprietary software. Self-hostable, transparent, free. Your freedom. Your code. Your future.',
+    'layout.defaultDescription': 'SafeCh – Safe, GDPR-friendly open-source alternatives to proprietary software. Self-hostable, transparent, open-source. Your freedom. Your code. Your future.',
 
     // ToolCard
     'tool.selfHostable': 'Self-hostable',
@@ -200,7 +200,7 @@ export const ui = {
     // BaseLayout
     'layout.skipToContent': '跳转到内容',
     'layout.backToTop': '返回顶部',
-    'layout.defaultDescription': 'SafeCh — 安全、符合欧盟 GDPR 的开源软件替代品。可自托管、透明、免费。你的自由。你的代码。你的未来。',
+    'layout.defaultDescription': 'SafeCh — 安全、符合欧盟 GDPR 的开源软件替代品。可自托管、透明、开源。你的自由。你的代码。你的未来。',
 
     // ToolCard
     'tool.selfHostable': '可自托管',
