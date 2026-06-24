@@ -130,6 +130,7 @@ export const bildbearbeitungTools: Tool[] = [
     slug: 'penpot',
     tagline: 'Open-Source-Design- und Prototyping-Plattform',
     taglineEn: 'Open-source design and prototyping platform',
+    taglineZh: '开源的设计与原型协作平台',
     description:
       'Penpot ist die erste quelloffene Design- und Prototyping-Plattform fuer Teams. Sie basiert auf offenen Webstandards (SVG) und bietet Echtzeit-Kollaboration, Komponentenbibliotheken, interaktive Prototypen und ein responsives Design-System.',
     descriptionEn: 'Penpot is the first open-source design and prototyping platform for teams. It is based on open web standards (SVG) and offers real-time collaboration, component libraries, interactive prototypes, and a responsive design system.',

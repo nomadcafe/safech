@@ -7,6 +7,7 @@ export const socialMediaTools: Tool[] = [
     slug: 'mastodon',
     tagline: 'Dezentrales soziales Netzwerk auf Basis von ActivityPub',
     taglineEn: 'Decentralized social network based on ActivityPub',
+    taglineZh: '基于 ActivityPub 的去中心化社交网络',
     description:
       'Mastodon ist ein dezentrales, quelloffenes soziales Netzwerk, das auf dem ActivityPub-Protokoll basiert. Es besteht aus tausenden unabhaengigen Servern (Instanzen), die miteinander kommunizieren und zusammen das Fediverse bilden. Mastodon bietet chronologische Timelines ohne Algorithmen, keine Werbung und starke Moderationswerkzeuge. Nutzer koennen ihre eigene Instanz betreiben oder einer bestehenden beitreten.',
     descriptionEn:

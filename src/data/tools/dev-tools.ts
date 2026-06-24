@@ -32,6 +32,7 @@ export const devToolsTools: Tool[] = [
     slug: 'neovim',
     tagline: 'Hypererweiterbarer Vim-basierter Texteditor',
     taglineEn: 'Hyper-extensible Vim-based text editor',
+    taglineZh: '高度可扩展的 Vim 系文本编辑器',
     description:
       'Neovim ist ein hypererweiterbarer Texteditor, der auf Vim aufbaut und moderne Funktionen wie Lua-Scripting, eingebauten LSP-Client, Tree-sitter-Integration und asynchrone Plugin-Architektur bietet. Er ist extrem schnell und vollstaendig ueber Konfiguration anpassbar.',
     descriptionEn:
@@ -133,6 +134,7 @@ export const devToolsTools: Tool[] = [
     slug: 'zed',
     tagline: 'Blitzschneller Code-Editor mit KI-Integration',
     taglineEn: 'Lightning-fast code editor with AI integration',
+    taglineZh: '集成 AI 的极速代码编辑器',
     description:
       'Zed ist ein hochperformanter, in Rust geschriebener Code-Editor mit Fokus auf Geschwindigkeit und Zusammenarbeit. Er bietet Echtzeit-Kollaboration, integrierte KI-Unterstuetzung, Tree-sitter-basierte Syntaxhervorhebung, LSP-Support und GPU-beschleunigtes Rendering.',
     descriptionEn:

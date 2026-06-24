@@ -7,6 +7,7 @@ export const passwortManagerTools: Tool[] = [
     slug: 'vaultwarden',
     tagline: 'Leichtgewichtige selbstgehostete Bitwarden-kompatible Passwortverwaltung',
     taglineEn: 'Lightweight self-hosted Bitwarden-compatible password management',
+    taglineZh: '轻量、可自托管、兼容 Bitwarden 的密码管理',
     description:
       'Vaultwarden (frueher Bitwarden_RS) ist eine leichtgewichtige, in Rust geschriebene Implementierung der Bitwarden-Server-API. Es ermoeglicht das Selbsthosten eines vollstaendigen Passwort-Managers, der mit allen offiziellen Bitwarden-Clients kompatibel ist. Vaultwarden verbraucht deutlich weniger Ressourcen als der offizielle Bitwarden-Server und bietet dennoch alle Premium-Funktionen wie TOTP, Dateiabhaenge und Organisationen. Ideal fuer Privatpersonen und kleine Teams, die ihre Passwoerter selbst verwalten moechten.',
     descriptionEn:

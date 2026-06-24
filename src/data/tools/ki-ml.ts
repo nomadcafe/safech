@@ -7,6 +7,7 @@ export const kiMlTools: Tool[] = [
     slug: 'ollama',
     tagline: 'Große Sprachmodelle lokal und unkompliziert ausführen',
     taglineEn: 'Run large language models locally with ease',
+    taglineZh: '在本地轻松运行大语言模型',
     description:
       'Ollama ermöglicht es, große Sprachmodelle wie Llama, Mistral, Gemma und viele weitere lokal auf dem eigenen Rechner auszuführen. Die Installation ist denkbar einfach, und Modelle können mit einem einzigen Befehl heruntergeladen und gestartet werden. Ollama bietet eine REST-API und ist kompatibel mit der OpenAI-API, was die Integration in bestehende Anwendungen erleichtert.',
     descriptionEn:
@@ -60,6 +61,7 @@ export const kiMlTools: Tool[] = [
     slug: 'stable-diffusion-webui',
     tagline: 'Leistungsstarke Benutzeroberfläche für KI-Bildgenerierung',
     taglineEn: 'Powerful user interface for AI image generation',
+    taglineZh: '强大的 AI 图像生成可视化界面',
     description:
       'Stable Diffusion WebUI (AUTOMATIC1111) ist die beliebteste Benutzeroberfläche zur lokalen Ausführung von Stable-Diffusion-Modellen für KI-Bildgenerierung. Es bietet Text-zu-Bild, Bild-zu-Bild, Inpainting, Outpainting, Upscaling und zahlreiche Erweiterungen. Mit ControlNet, LoRA-Unterstützung und einem integrierten Modell-Browser bietet es professionelle Werkzeuge für kreative KI-Arbeit.',
     descriptionEn:
@@ -112,6 +114,7 @@ export const kiMlTools: Tool[] = [
     slug: 'hugging-face-transformers',
     tagline: 'Die führende Bibliothek für vortrainierte KI-Modelle',
     taglineEn: 'The leading library for pre-trained AI models',
+    taglineZh: '领先的预训练 AI 模型库',
     description:
       'Hugging Face Transformers ist die umfassendste Open-Source-Bibliothek für Natural Language Processing, Computer Vision und Audioverarbeitung. Sie bietet Zugang zu Tausenden vortrainierter Modelle, eine einheitliche API für Training und Inferenz sowie nahtlose Integration mit PyTorch, TensorFlow und JAX. Transformers ist der De-facto-Standard für die Arbeit mit modernen KI-Modellen.',
     descriptionEn:
@@ -165,6 +168,7 @@ export const kiMlTools: Tool[] = [
     slug: 'open-webui',
     tagline: 'Elegante Benutzeroberfläche für Ollama und OpenAI-kompatible APIs',
     taglineEn: 'Elegant user interface for Ollama and OpenAI-compatible APIs',
+    taglineZh: '为 Ollama 及 OpenAI 兼容 API 打造的精美界面',
     description:
       'Open WebUI (ehemals Ollama WebUI) ist eine funktionsreiche und benutzerfreundliche selbstgehostete Web-Oberfläche für die Interaktion mit LLMs. Es unterstützt Ollama und OpenAI-kompatible APIs, bietet Chatverlauf, Modellverwaltung, RAG-Integration, Websuche und eine Prompt-Bibliothek. Die Oberfläche erinnert an ChatGPT und macht den Umstieg auf lokale Modelle besonders einfach.',
     descriptionEn:
@@ -243,6 +247,7 @@ export const kiMlTools: Tool[] = [
     slug: 'mempalace',
     tagline: 'Lokales Langzeit-Gedächtnis für KI-Agenten',
     taglineEn: 'Local long-term memory for AI agents',
+    taglineZh: '为 AI 智能体提供本地长期记忆',
     description:
       'MemPalace ist ein Open-Source-Gedächtnissystem für KI-Agenten, das Gespräche wortgetreu speichert und per semantischer Suche abruft. Der Speicher läuft komplett lokal auf Basis von ChromaDB und SQLite, ohne API-Kosten. Integration mit Claude Code, ChatGPT und Cursor ist über MCP möglich. Auf dem LongMemEval-Benchmark erreicht MemPalace 96,6 % R@5 (Rohwert) und 100 % im Hybrid-Modus.',
     descriptionEn:
@@ -269,6 +274,7 @@ export const kiMlTools: Tool[] = [
     slug: 'openclaw',
     tagline: 'Persönlicher KI-Assistent auf eigenen Geräten',
     taglineEn: 'Personal AI assistant on your own devices',
+    taglineZh: '运行在你自己设备上的个人 AI 助手',
     description:
       'OpenClaw ist ein lokal laufender KI-Assistent, der sich direkt in gängige Messenger wie WhatsApp, Telegram, Slack, Discord, Signal und iMessage einklinkt. Auf macOS, iOS und Android ist ein Sprach-Wake-Modus samt Canvas-Interface verfügbar. Skills kommen aus dem Community-Registry ClawHub, das bereits über 5.700 Einträge enthält. Sandboxing erfolgt über Docker.',
     descriptionEn:
@@ -347,6 +353,7 @@ export const kiMlTools: Tool[] = [
     slug: 'browser-use',
     tagline: 'KI-Agenten steuern den Browser per natürlicher Sprache',
     taglineEn: 'AI agents control the browser via natural language',
+    taglineZh: '用自然语言让 AI 智能体操控浏览器',
     description:
       'Browser Use ist ein Framework, mit dem KI-Agenten Web-Aufgaben automatisieren, indem sie einen Browser programmgesteuert über natürliche Sprache bedienen. Unter der Haube kommt Playwright zum Einsatz. Typische Einsatzfelder sind Scraping, End-to-End-Tests, Formular-Ausfüllung, Recherche und Workflow-Automation – mit anbindbarem LLM.',
     descriptionEn:
@@ -373,6 +380,7 @@ export const kiMlTools: Tool[] = [
     slug: 'hermes-agent',
     tagline: 'Selbst­lernender KI-Agent mit persistentem Skill-Aufbau',
     taglineEn: 'Self-learning AI agent with persistent skill building',
+    taglineZh: '可自我学习、持续积累技能的 AI 智能体',
     description:
       'Hermes Agent von Nous Research ist ein KI-Agent, der durch eingebaute Lern-Loops aus eigener Erfahrung Skills bildet. Er läuft auf einem VPS, in Serverless-Umgebungen oder lokal und integriert sich mit gängigen Messaging-Plattformen. Unterstützte Modelle reichen von Claude und GPT über Anthropic-Kompatible bis hin zu Nous-eigenen Modellen, Tool-Aufrufe erfolgen über MCP.',
     descriptionEn:

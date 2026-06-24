@@ -7,6 +7,7 @@ export const fotosTools: Tool[] = [
     slug: 'immich',
     tagline: 'Selbst gehostete Foto- und Videoverwaltung mit mobiler App',
     taglineEn: 'Self-hosted photo and video management with mobile app',
+    taglineZh: '可自托管的照片与视频管理，配套移动应用',
     description:
       'Immich ist eine leistungsstarke, selbst gehostete Loesung fuer Foto- und Videoverwaltung mit automatischem Backup von Mobilgeraeten. Es bietet Gesichtserkennung, Kartenansicht, Shared Albums und eine moderne Benutzeroberflaeche, die Google Photos sehr aehnlich ist.',
     descriptionEn:
@@ -33,6 +34,7 @@ export const fotosTools: Tool[] = [
     slug: 'photoprism',
     tagline: 'KI-gestuetzte Fotoverwaltung fuer dezentrale Speicherung',
     taglineEn: 'AI-powered photo management for decentralized storage',
+    taglineZh: 'AI 驱动的照片管理，面向去中心化存储',
     description:
       'PhotoPrism ist eine KI-gestuetzte Foto-App fuer die dezentrale Speicherung. Sie bietet automatische Bild-Klassifizierung, Gesichtserkennung, Geo-Tagging und unterstuetzt RAW-Formate. PhotoPrism laeuft auf Servern, NAS-Systemen und in der Cloud.',
     descriptionEn:

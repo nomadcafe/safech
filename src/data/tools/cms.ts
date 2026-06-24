@@ -34,6 +34,7 @@ export const cmsTools: Tool[] = [
     slug: 'ghost',
     tagline: 'Moderne Publishing-Plattform für professionelle Inhalte',
     taglineEn: 'Modern publishing platform for professional content',
+    taglineZh: '面向专业内容的现代发布平台',
     description:
       'Ghost ist eine leistungsstarke Open-Source-Publishing-Plattform, die speziell für professionelle Blogger, Journalisten und Content-Ersteller entwickelt wurde. Mit integriertem Newsletter-Versand, Mitgliederverwaltung und Bezahlsystem eignet sich Ghost ideal für den Aufbau einer unabhängigen Medienpräsenz.',
     descriptionEn:
@@ -61,6 +62,7 @@ export const cmsTools: Tool[] = [
     slug: 'strapi',
     tagline: 'Führendes Open-Source-Headless-CMS für Entwickler',
     taglineEn: 'Leading open-source headless CMS for developers',
+    taglineZh: '面向开发者的领先开源无头 CMS',
     description:
       'Strapi ist ein flexibles, quelloffenes Headless-CMS, das Entwicklern vollständige Kontrolle über ihre API gibt. Mit einer intuitiven Administrationsoberfläche können Inhalte einfach verwaltet werden, während die API-First-Architektur die nahtlose Integration in beliebige Frontend-Frameworks ermöglicht.',
     descriptionEn:

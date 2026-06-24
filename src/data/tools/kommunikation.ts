@@ -84,6 +84,7 @@ export const kommunikationTools: Tool[] = [
     slug: 'rocket-chat',
     tagline: 'Vielseitige Team-Kommunikationsplattform mit umfangreichen Integrationen',
     taglineEn: 'Versatile team communication platform with extensive integrations',
+    taglineZh: '功能全面、集成丰富的团队沟通平台',
     description:
       'Rocket.Chat ist eine umfassende Open-Source-Kommunikationsplattform, die Team-Messaging, Sprach- und Videoanrufe, Dateifreigabe und Automatisierung in einer Anwendung vereint. Es bietet Kanaele, Direktnachrichten, Threads, Omnichannel-Kundenservice und eine Vielzahl von Integrationen mit Drittanbieter-Diensten. Rocket.Chat kann auf eigenen Servern gehostet werden und bietet Ende-zu-Ende-Verschluesselung, LDAP/SAML-Authentifizierung und umfangreiche Verwaltungsfunktionen.',
     descriptionEn:
@@ -111,6 +112,7 @@ export const kommunikationTools: Tool[] = [
     slug: 'mattermost',
     tagline: 'Sichere Slack-Alternative fuer Unternehmen und DevOps-Teams',
     taglineEn: 'Secure Slack alternative for enterprises and DevOps teams',
+    taglineZh: '面向企业与 DevOps 团队的安全 Slack 替代品',
     description:
       'Mattermost ist eine selbstgehostete Messaging-Plattform, die als sichere Alternative zu Slack fuer Unternehmen entwickelt wurde. Es bietet Kanaele, Direktnachrichten, Dateifreigabe, Sprach- und Videoanrufe sowie umfangreiche DevOps-Integrationen mit Jira, GitLab, Jenkins und vielen weiteren Tools. Mattermost unterstuetzt Playbooks fuer Incident Management, Boards fuer Projektmanagement und bietet eine leistungsstarke API. Die Team Edition ist kostenlos und vollstaendig selbst hostbar.',
     descriptionEn:

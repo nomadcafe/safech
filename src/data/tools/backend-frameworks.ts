@@ -7,6 +7,7 @@ export const backendFrameworksTools: Tool[] = [
     slug: 'supabase',
     tagline: 'Open-Source-Alternative zu Firebase',
     taglineEn: 'Open-source alternative to Firebase',
+    taglineZh: 'Firebase 的开源替代品',
     description:
       'Supabase ist eine quelloffene Backend-as-a-Service-Plattform, die auf PostgreSQL aufbaut. Sie bietet Echtzeit-Datenbank, Authentifizierung, Dateispeicher, Edge Functions und automatisch generierte APIs. Supabase ermoeglicht es Entwicklern, schnell vollstaendige Backends aufzubauen.',
     descriptionEn:
@@ -34,6 +35,7 @@ export const backendFrameworksTools: Tool[] = [
     slug: 'appwrite',
     tagline: 'Backend-Server fuer Web-, Mobil- und Flutter-Entwickler',
     taglineEn: 'Backend server for web, mobile, and Flutter developers',
+    taglineZh: '面向 Web、移动与 Flutter 开发者的后端服务',
     description:
       'Appwrite ist eine quelloffene Backend-Plattform, die Authentifizierung, Datenbanken, Dateispeicher, Cloud Functions und Echtzeit-Kommunikation in einer einheitlichen API bereitstellt. Sie unterstuetzt zahlreiche Programmiersprachen und Frameworks fuer plattformuebergreifende Entwicklung.',
     descriptionEn:
@@ -61,6 +63,7 @@ export const backendFrameworksTools: Tool[] = [
     slug: 'pocketbase',
     tagline: 'Backend in einer einzigen Datei mit integrierter Datenbank',
     taglineEn: 'Backend in a single file with integrated database',
+    taglineZh: '单文件后端，内置数据库',
     description:
       'PocketBase ist ein leichtgewichtiges Open-Source-Backend, das als einzelne ausfuehrbare Datei ausgeliefert wird. Es enthaelt eine eingebettete SQLite-Datenbank, Echtzeit-Subscriptions, Authentifizierung, Dateispeicher und eine Administrationsoberflaeche. Perfekt fuer kleine bis mittelgrosse Projekte, die ein schnelles und unkompliziertes Backend benoetigen.',
     descriptionEn:
@@ -88,6 +91,7 @@ export const backendFrameworksTools: Tool[] = [
     slug: 'nocodb',
     tagline: 'Open-Source-Alternative zu Airtable',
     taglineEn: 'Open-source alternative to Airtable',
+    taglineZh: 'Airtable 的开源替代品',
     description:
       'NocoDB verwandelt jede Datenbank in eine intelligente Tabellenkalkulation. Es bietet eine Airtable-aehnliche Oberflaeche, Formulare, Kanban-Ansichten, Galerieansichten, API-Zugang und Automatisierungen. NocoDB unterstuetzt PostgreSQL, MySQL, SQLite und weitere Datenbanken.',
     descriptionEn:

@@ -153,6 +153,7 @@ export const videoAudioTools: Tool[] = [
     slug: 'obs-studio',
     tagline: 'Das Standardtool fuer Streaming und Bildschirmaufnahme',
     taglineEn: 'The standard tool for streaming and screen recording',
+    taglineZh: '直播与录屏的标准工具',
     description:
       'OBS Studio ist die weltweit fuehrende Open-Source-Software fuer Video-Streaming und Bildschirmaufnahme. Sie bietet Echtzeit-Quellenmischung, Szenenkomposition, Encoding und Streaming zu Plattformen wie Twitch, YouTube und mehr.',
     descriptionEn: 'OBS Studio is the world-leading open-source software for video streaming and screen recording. It offers real-time source mixing, scene composition, encoding, and streaming to platforms like Twitch, YouTube, and more.',

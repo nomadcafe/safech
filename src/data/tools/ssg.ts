@@ -7,6 +7,7 @@ export const ssgTools: Tool[] = [
     slug: 'astro',
     tagline: 'Das Web-Framework fuer inhaltsgetriebene Websites',
     taglineEn: 'The web framework for content-driven websites',
+    taglineZh: '面向内容驱动型网站的 Web 框架',
     description:
       'Astro ist ein modernes Web-Framework, das standardmaessig minimales JavaScript ausliefert und auf Content-Websites optimiert ist. Es unterstuetzt Islands-Architektur, beliebige UI-Frameworks (React, Vue, Svelte), Markdown/MDX und bietet herausragende Performance durch serverseitiges Rendering.',
     descriptionEn:
@@ -34,6 +35,7 @@ export const ssgTools: Tool[] = [
     slug: 'hugo',
     tagline: 'Der schnellste Static-Site-Generator der Welt',
     taglineEn: 'The world\'s fastest static site generator',
+    taglineZh: '全球最快的静态网站生成器',
     description:
       'Hugo ist der schnellste Static-Site-Generator, geschrieben in Go. Er erzeugt komplette Websites in Millisekunden und bietet flexible Vorlagen, Taxonomien, Mehrsprachigkeit, Asset-Pipelines und ein ausgereiftes Theme-Oekosystem fuer Blogs, Dokumentation und mehr.',
     descriptionEn:
@@ -138,6 +140,7 @@ export const ssgTools: Tool[] = [
     slug: 'nextjs',
     tagline: 'Das React-Framework fuer Produktion',
     taglineEn: 'The React framework for production',
+    taglineZh: '面向生产环境的 React 框架',
     description:
       'Next.js ist ein leistungsstarkes React-Framework, das statische Generierung, serverseitiges Rendering und inkrementelle statische Regenerierung vereint. Es bietet Datei-basiertes Routing, API-Routes, Bildoptimierung, integrierte CSS-Unterstuetzung und Edge-Runtime fuer moderne Webanwendungen.',
     descriptionEn:

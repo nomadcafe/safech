@@ -34,6 +34,7 @@ export const codeHostingTools: Tool[] = [
     slug: 'gitea',
     tagline: 'Schmerzfrei selbst gehosteter Git-Service',
     taglineEn: 'Painless self-hosted Git service',
+    taglineZh: '轻松省心的自托管 Git 服务',
     description:
       'Gitea ist ein leichtgewichtiger, selbst hostbarer Git-Service, der in Go geschrieben ist. Er bietet eine umfassende Weboberlaeche mit Repository-Verwaltung, Issue-Tracking, Pull-Requests, Code-Review, CI/CD (Gitea Actions), Pakete-Registry und Wiki. Gitea zeichnet sich durch seinen geringen Ressourcenverbrauch aus und laesst sich sogar auf einem Raspberry Pi betreiben.',
     descriptionEn:

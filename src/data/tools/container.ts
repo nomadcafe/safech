@@ -7,6 +7,7 @@ export const containerTools: Tool[] = [
     slug: 'docker-moby',
     tagline: 'Die Open-Source-Container-Engine hinter Docker',
     taglineEn: 'The open-source container engine behind Docker',
+    taglineZh: 'Docker 背后的开源容器引擎',
     description:
       'Moby ist das quelloffene Projekt hinter Docker und stellt die Kernkomponenten fuer die Container-Erstellung und -Verwaltung bereit. Es umfasst die Container-Runtime, Build-Tools, Netzwerk- und Speichertreiber sowie Orchestrierungsfunktionen. Moby ermoeglicht es Entwicklern, Anwendungen in leichtgewichtigen, portablen Containern zu verpacken und auf jeder Infrastruktur auszufuehren.',
     descriptionEn:
@@ -85,6 +86,7 @@ export const containerTools: Tool[] = [
     slug: 'kubernetes',
     tagline: 'Container-Orchestrierung im Industriestandard',
     taglineEn: 'Industry-standard container orchestration',
+    taglineZh: '业界标准的容器编排系统',
     description:
       'Kubernetes (K8s) ist die fuehrende Open-Source-Plattform zur Automatisierung der Bereitstellung, Skalierung und Verwaltung von containerisierten Anwendungen. Urspruenglich von Google entwickelt, wird es heute von der Cloud Native Computing Foundation verwaltet. Kubernetes bietet Service-Discovery, Load-Balancing, automatische Skalierung, Rolling Updates, Konfigurationsmanagement und Self-Healing. Es ist der De-facto-Standard fuer Container-Orchestrierung.',
     descriptionEn:
@@ -136,6 +138,7 @@ export const containerTools: Tool[] = [
     slug: 'portainer-ce',
     tagline: 'Webbasierte Verwaltungsoberflaeche fuer Container',
     taglineEn: 'Web-based management interface for containers',
+    taglineZh: '基于 Web 的容器管理界面',
     description:
       'Portainer Community Edition ist eine webbasierte Verwaltungsoberflaeche fuer Docker, Docker Swarm und Kubernetes. Es ermoeglicht die Verwaltung von Containern, Images, Netzwerken und Volumes ueber eine intuitive grafische Oberflaeche, ohne Kommandozeilenkenntnisse zu erfordern. Portainer bietet Benutzerverwaltung, Rollenbasierte Zugriffskontrolle, Stack-Verwaltung und App-Templates fuer die schnelle Bereitstellung gaengiger Anwendungen.',
     descriptionEn:

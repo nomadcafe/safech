@@ -7,6 +7,7 @@ export const medienserverTools: Tool[] = [
     slug: 'jellyfin',
     tagline: 'Der freie Medienserver fuer Filme, Serien und Musik',
     taglineEn: 'The free media server for movies, TV shows, and music',
+    taglineZh: '免费开源的影视、剧集与音乐媒体服务器',
     description:
       'Jellyfin ist ein vollstaendig freier und quelloffener Medienserver ohne jegliche Premium-Funktionen hinter einer Paywall. Er organisiert und streamt Filme, Serien, Musik und Live-TV an alle Geraete. Jellyfin bietet Benutzerverwaltung, Transkodierung und umfangreiche Metadaten.',
     descriptionEn:

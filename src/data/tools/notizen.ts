@@ -7,6 +7,7 @@ export const notizenTools: Tool[] = [
     slug: 'joplin',
     tagline: 'Sichere Open-Source-Notizen mit Ende-zu-Ende-Verschlüsselung',
     taglineEn: 'Secure open-source notes with end-to-end encryption',
+    taglineZh: '端到端加密的安全开源笔记',
     description:
       'Joplin ist eine quelloffene Notiz- und Aufgabenverwaltung mit Markdown-Unterstützung und Ende-zu-Ende-Verschlüsselung. Notizen können über verschiedene Cloud-Dienste synchronisiert werden, darunter Nextcloud, Dropbox und OneDrive. Joplin bietet einen Web-Clipper für Browser, Tagging, Notizbücher und die Möglichkeit, Notizen als verschiedene Formate zu exportieren.',
     descriptionEn:
@@ -34,6 +35,7 @@ export const notizenTools: Tool[] = [
     slug: 'logseq',
     tagline: 'Lokales Wissensmanagement mit bidirektionalen Verknüpfungen',
     taglineEn: 'Local knowledge management with bidirectional linking',
+    taglineZh: '支持双向链接的本地知识管理',
     description:
       'Logseq ist ein datenschutzfreundliches Wissensmanagement-Tool, das Notizen als lokale Markdown- und Org-Mode-Dateien speichert. Es unterstützt bidirektionale Verknüpfungen, einen Wissensgraphen, Flashcards, Aufgabenverwaltung und eine Block-basierte Struktur. Logseq eignet sich hervorragend für persönliches Wissensmanagement, Zettelkasten und vernetzte Notizen.',
     descriptionEn:
@@ -61,6 +63,7 @@ export const notizenTools: Tool[] = [
     slug: 'appflowy',
     tagline: 'Open-Source-Alternative zu Notion mit KI-Integration',
     taglineEn: 'Open-source alternative to Notion with AI integration',
+    taglineZh: '集成 AI 的 Notion 开源替代品',
     description:
       'AppFlowy ist eine leistungsstarke Open-Source-Alternative zu Notion, die Datenschutz und Datenkontrolle in den Vordergrund stellt. Es bietet einen Block-Editor, Datenbanken, Kanban-Boards, einen Kalender und KI-gestützte Funktionen. AppFlowy ist in Rust und Flutter geschrieben, was für hohe Performance und native Benutzererfahrung auf allen Plattformen sorgt.',
     descriptionEn:

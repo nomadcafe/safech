@@ -7,6 +7,7 @@ export const monitoringTools: Tool[] = [
     slug: 'grafana-oss',
     tagline: 'Das führende Open-Source-Dashboard für Monitoring und Observability',
     taglineEn: 'The leading open-source dashboard for monitoring and observability',
+    taglineZh: '领先的开源监控与可观测性仪表盘',
     description:
       'Grafana ist die weltweit meistgenutzte Open-Source-Plattform für Monitoring und Observability. Sie ermöglicht die Visualisierung von Metriken, Logs und Traces aus zahlreichen Datenquellen in anpassbaren Dashboards. Mit leistungsstarken Alarmierungsfunktionen, Annotationen und Team-Zusammenarbeit ist Grafana das Herzstück moderner Monitoring-Stacks.',
     descriptionEn:
@@ -34,6 +35,7 @@ export const monitoringTools: Tool[] = [
     slug: 'prometheus',
     tagline: 'Cloud-natives Monitoring- und Alerting-System',
     taglineEn: 'Cloud-native monitoring and alerting system',
+    taglineZh: '云原生的监控与告警系统',
     description:
       'Prometheus ist ein leistungsstarkes Open-Source-Monitoring-System, das speziell für Cloud-native Umgebungen entwickelt wurde. Es sammelt Metriken über ein Pull-Modell, speichert sie in einer effizienten Zeitreihendatenbank und bietet eine mächtige Abfragesprache (PromQL). Als CNCF-Graduierungsprojekt ist Prometheus der De-facto-Standard für Kubernetes-Monitoring.',
     descriptionEn:
@@ -191,6 +193,7 @@ export const monitoringTools: Tool[] = [
     slug: 'netdata',
     tagline: 'Echtzeit-Performance-Monitoring mit automatischen Dashboards',
     taglineEn: 'Real-time performance monitoring with automatic dashboards',
+    taglineZh: '实时性能监控，自动生成仪表盘',
     description:
       'Netdata ist ein leistungsstarkes Echtzeit-Monitoring-Tool, das Tausende von Metriken pro Sekunde erfasst und in sofort verfügbaren Dashboards visualisiert. Die Installation dauert nur wenige Sekunden, und Netdata erkennt automatisch Anwendungen, Container und Systemdienste. Mit Machine-Learning-basierter Anomalieerkennung bietet es intelligente Einblicke in die Systemgesundheit.',
     descriptionEn:
@@ -217,6 +220,7 @@ export const monitoringTools: Tool[] = [
     slug: 'uptime-kuma',
     tagline: 'Selbstgehostetes Uptime-Monitoring mit elegantem Dashboard',
     taglineEn: 'Self-hosted uptime monitoring with an elegant dashboard',
+    taglineZh: '可自托管的在线状态监控，界面精美',
     description:
       'Uptime Kuma ist ein benutzerfreundliches, selbstgehostetes Monitoring-Tool, das die Verfügbarkeit von Websites, APIs und Diensten überwacht. Mit einer modernen Oberfläche, Unterstützung für HTTP, TCP, DNS, MQTT und viele weitere Protokolle sowie integrierten Benachrichtigungen über zahlreiche Kanäle ist Uptime Kuma die ideale Lösung für einfaches Verfügbarkeitsmonitoring.',
     descriptionEn:

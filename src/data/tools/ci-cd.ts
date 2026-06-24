@@ -32,6 +32,7 @@ export const ciCdTools: Tool[] = [
     slug: 'drone-ci',
     tagline: 'Container-native CI/CD-Plattform mit YAML-Pipelines',
     taglineEn: 'Container-native CI/CD platform with YAML pipelines',
+    taglineZh: '容器原生、基于 YAML 流水线的 CI/CD 平台',
     description:
       'Drone ist eine moderne, container-native CI/CD-Plattform, die Pipelines in isolierten Docker-Containern ausfuehrt. Die Konfiguration erfolgt ueber eine einzige YAML-Datei im Repository, und jeder Schritt laeuft in einem eigenen Container. Drone unterstuetzt zahlreiche Quellcode-Verwaltungen, bietet ein Plugin-System und skaliert von Einzelprojekten bis hin zu Unternehmensumgebungen.',
     descriptionEn:

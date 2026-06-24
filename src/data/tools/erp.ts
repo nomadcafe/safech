@@ -7,6 +7,7 @@ export const erpTools: Tool[] = [
     slug: 'odoo-ce',
     tagline: 'Umfassende Open-Source-ERP-Suite',
     taglineEn: 'Comprehensive open-source ERP suite',
+    taglineZh: '全面的开源 ERP 套件',
     description:
       'Odoo Community Edition ist eine modulare, quelloffene ERP-Suite mit ueber 30 Kernmodulen fuer Buchhaltung, Lagerverwaltung, Fertigung, Einkauf und Vertrieb. Das belgische Unternehmen bietet ein riesiges Oekosystem an Erweiterungen und eine aktive Community.',
     descriptionEn: 'Odoo Community Edition is a modular, open-source ERP suite with over 30 core modules for accounting, warehouse management, manufacturing, procurement, and sales. The Belgian company offers a vast ecosystem of extensions and an active community.',

@@ -7,6 +7,7 @@ export const dnsAdblockTools: Tool[] = [
     slug: 'pi-hole',
     tagline: 'Netzwerkweiter Werbeblocker auf DNS-Ebene',
     taglineEn: 'Network-wide ad blocker at the DNS level',
+    taglineZh: 'DNS 层面的全网广告拦截器',
     description:
       'Pi-hole ist ein netzwerkweiter Werbeblocker, der als DNS-Sinkhole fungiert. Er blockiert Werbung und Tracker fuer alle Geraete im Netzwerk ohne clientseitige Software. Pi-hole bietet ein uebersichtliches Web-Dashboard, detaillierte Statistiken und anpassbare Blocklisten.',
     descriptionEn:

@@ -87,6 +87,7 @@ export const cloudSpeicherTools: Tool[] = [
     slug: 'syncthing',
     tagline: 'Dezentrale Dateisynchronisation ohne Cloud-Server',
     taglineEn: 'Decentralized file synchronization without cloud servers',
+    taglineZh: '去中心化文件同步，无需云服务器',
     description:
       'Syncthing ist ein dezentrales, kontinuierliches Dateisynchronisations-Programm, das Dateien direkt zwischen Geraeten synchronisiert – ohne zentralen Server. Alle Daten werden mit TLS verschluesselt uebertragen und verlassen niemals die eigenen Geraete. Syncthing bietet Versionierung, selektive Synchronisation, Ignorierungsmuster und eine webbasierte Benutzeroberflaeche. Es eignet sich hervorragend als Dropbox-Ersatz fuer Nutzer, die volle Kontrolle ueber ihre Daten behalten moechten.',
     descriptionEn:

@@ -34,6 +34,7 @@ export const kartenTools: Tool[] = [
     slug: 'leafletjs',
     tagline: 'Leichtgewichtige JavaScript-Kartenbibliothek',
     taglineEn: 'Lightweight JavaScript map library',
+    taglineZh: '轻量级 JavaScript 地图库',
     description:
       'Leaflet.js ist die fuehrende leichtgewichtige JavaScript-Bibliothek fuer interaktive Karten. Mit nur 42 KB bietet sie Marker, Popups, Tile-Layer, GeoJSON-Unterstuetzung und ein reiches Plugin-Oekosystem. Leaflet ist mobilfreundlich und funktioniert in allen modernen Browsern.',
     descriptionEn:

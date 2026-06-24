@@ -86,6 +86,7 @@ export const projektmanagementTools: Tool[] = [
     slug: 'plane',
     tagline: 'Moderne Open-Source-Alternative zu Jira',
     taglineEn: 'Modern open-source alternative to Jira',
+    taglineZh: '现代的 Jira 开源替代品',
     description:
       'Plane ist ein modernes, quelloffenes Projektmanagement-Werkzeug, das als direkte Alternative zu Jira entwickelt wurde. Es bietet Issue-Tracking, Zyklen, Module und eine ansprechende Benutzeroberflaeche fuer agile Teams.',
     descriptionEn:
