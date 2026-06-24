@@ -120,7 +120,7 @@ const categoryIconMap: Record<string, string> = {
         <span class:list={['badge', licenseBadge]}>{tool.license}</span>
         {tool.maintenanceStatus && <MaintenanceBadge status={tool.maintenanceStatus} note={tool.maintenanceNote} />}
       </div>
-      <p class="text-lg" style="color: var(--color-text-secondary)">{tool.taglineEn || tool.tagline}</p>
+      <p class="text-lg" style="color: var(--color-text-secondary)">{(lang === 'zh' && tool.taglineZh) || tool.taglineEn || tool.tagline}</p>
     </div>
   </div>
 

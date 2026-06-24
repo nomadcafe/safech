@@ -6,6 +6,7 @@ export const twoFactorAuthTools: Tool[] = [
     name: 'Aegis Authenticator',
     slug: 'aegis-authenticator',
     tagline: 'Secure, encrypted TOTP authenticator for Android',
+    taglineZh: '安全加密的 Android TOTP 验证器',
     description:
       'Aegis Authenticator is a free, open-source two-factor authentication app for Android that stores your TOTP and HOTP tokens in a vault encrypted with a password or biometrics. Unlike many cloud authenticators, Aegis keeps everything on-device and lets you create encrypted backups you fully control, so there is no account lock-in. It supports importing from Google Authenticator, Authy, andOTP and many other apps, organises entries into groups, and offers icon packs and a tap-to-reveal mode. Aegis is a privacy-first alternative to Google Authenticator and Authy.',
     website: 'https://getaegis.app',
@@ -28,6 +29,7 @@ export const twoFactorAuthTools: Tool[] = [
     name: 'Ente Auth',
     slug: 'ente-auth',
     tagline: 'End-to-end encrypted 2FA with cross-device sync',
+    taglineZh: '端到端加密的两步验证，多设备同步',
     description:
       'Ente Auth is a free, open-source authenticator that stores your 2FA codes with end-to-end encryption and syncs them securely across Android, iOS, desktop and web. Because only you hold the keys, Ente can offer convenient multi-device sync without being able to read your secrets, combining the safety of a local vault with the convenience of the cloud. It supports importing from other authenticators, offline access, and secure encrypted backups. Ente Auth is a privacy-respecting alternative to Authy and Google Authenticator from the team behind Ente Photos.',
     website: 'https://ente.io/auth/',
@@ -51,6 +53,7 @@ export const twoFactorAuthTools: Tool[] = [
     name: '2FAS Auth',
     slug: '2fas-auth',
     tagline: 'Easy open-source 2FA app with browser extension',
+    taglineZh: '易用的开源两步验证应用，含浏览器扩展',
     description:
       '2FAS is a free, open-source two-factor authentication app for Android and iOS that focuses on ease of use without requiring an account. Tokens are stored locally and can be backed up to your own cloud storage in encrypted form. A companion browser extension lets you approve logins on your desktop with a single tap on your phone, while keeping the secrets on your device. 2FAS supports importing from other authenticators and is a straightforward, privacy-friendly alternative to Google Authenticator and Authy.',
     website: 'https://2fas.com',

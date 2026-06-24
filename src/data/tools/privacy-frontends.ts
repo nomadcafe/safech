@@ -6,6 +6,7 @@ export const privacyFrontendsTools: Tool[] = [
     name: 'Invidious',
     slug: 'invidious',
     tagline: 'Private, ad-free alternative front-end for YouTube',
+    taglineZh: '私密、无广告的 YouTube 替代前端',
     description:
       'Invidious is an open-source alternative front-end for YouTube that lets you watch videos without ads, tracking or a Google account. It does not load any Google or YouTube scripts, so your IP and behaviour are not shared with Google, and it offers features such as subscriptions without an account, RSS feeds, audio-only mode and lightweight pages. You can use a public instance or self-host your own for full control. Invidious is a privacy-respecting way to consume YouTube content.',
     website: 'https://invidious.io',
@@ -28,6 +29,7 @@ export const privacyFrontendsTools: Tool[] = [
     name: 'Piped',
     slug: 'piped',
     tagline: 'Privacy-friendly YouTube frontend with a modern UI',
+    taglineZh: '界面现代、注重隐私的 YouTube 前端',
     description:
       'Piped is an alternative privacy-friendly front-end for YouTube built with a modern, app-like interface. It proxies all requests so that neither Google nor your network can easily track what you watch, blocks ads and sponsor segments via SponsorBlock integration, and supports subscriptions, playlists and a feed without a Google account. Piped separates the front-end from the proxy backend, so multiple instances can share infrastructure, and it can be fully self-hosted. It is a sleek, tracking-free alternative to the official YouTube app.',
     website: 'https://piped.video',
@@ -50,6 +52,7 @@ export const privacyFrontendsTools: Tool[] = [
     name: 'Redlib',
     slug: 'redlib',
     tagline: 'Private, lightweight front-end for Reddit',
+    taglineZh: '私密轻量的 Reddit 前端',
     description:
       'Redlib is an open-source alternative front-end for Reddit, and the actively maintained successor to Libreddit. It renders Reddit without ads, tracking or JavaScript, never sends your requests directly to Reddit, and serves fast, lightweight pages that work even on minimal browsers. There are no accounts and no cookies, and you can browse subreddits, users and comments privately. Redlib can be self-hosted in seconds and is a clean, tracking-free way to read Reddit.',
     website: 'https://github.com/redlib-org/redlib',

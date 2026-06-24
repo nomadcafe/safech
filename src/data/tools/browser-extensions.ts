@@ -6,6 +6,7 @@ export const browserExtensionsTools: Tool[] = [
     name: 'uBlock Origin',
     slug: 'ublock-origin',
     tagline: 'Efficient, wide-spectrum ad and tracker blocker',
+    taglineZh: '高效、全面的广告与追踪拦截器',
     description:
       'uBlock Origin is a free, open-source, efficient content blocker for Firefox and Chromium-based browsers. It blocks ads, trackers, malware domains and other unwanted content using community-maintained filter lists, while using far less memory and CPU than most blockers. Beyond simple ad blocking it offers an advanced dynamic filtering and element-picker mode for power users, and it never monetises an "acceptable ads" whitelist. uBlock Origin is the de facto standard privacy add-on and a clean alternative to Adblock Plus.',
     website: 'https://github.com/gorhill/uBlock',
@@ -28,6 +29,7 @@ export const browserExtensionsTools: Tool[] = [
     name: 'Privacy Badger',
     slug: 'privacy-badger',
     tagline: 'EFF tracker blocker that learns as you browse',
+    taglineZh: 'EFF 出品、边浏览边学习的追踪拦截器',
     description:
       'Privacy Badger is a browser extension from the Electronic Frontier Foundation (EFF) that automatically learns to block invisible trackers. Instead of relying solely on filter lists, it observes which third parties track you across multiple sites and blocks them heuristically, also stripping tracking from links and disabling outgoing link tracking. It requires no configuration and complements a content blocker like uBlock Origin. As a non-profit, transparency-driven tool, Privacy Badger is a trustworthy way to reduce cross-site tracking.',
     website: 'https://privacybadger.org',
@@ -50,6 +52,7 @@ export const browserExtensionsTools: Tool[] = [
     name: 'ClearURLs',
     slug: 'clearurls',
     tagline: 'Strip tracking parameters from links automatically',
+    taglineZh: '自动清除链接中的追踪参数',
     description:
       'ClearURLs is a browser extension that automatically removes tracking elements from URLs to protect your privacy. Many links you click or share carry parameters such as utm_source, fbclid or gclid that let companies follow you across the web; ClearURLs cleans these out before the request is sent, blocks some hyperlink-auditing and ETag tracking, and can skip URL-shortener redirects. It works quietly in the background using a community-maintained ruleset and is a useful complement to ad and tracker blockers.',
     website: 'https://clearurls.xyz',
@@ -72,6 +75,7 @@ export const browserExtensionsTools: Tool[] = [
     name: 'LibRedirect',
     slug: 'libredirect',
     tagline: 'Auto-redirect to privacy-friendly front-ends',
+    taglineZh: '自动跳转到隐私友好的替代前端',
     description:
       'LibRedirect is a browser extension that automatically redirects popular websites to privacy-friendly alternative front-ends. When you open a YouTube, Reddit, X/Twitter, Instagram or Google Maps link, LibRedirect can send you to Invidious/Piped, Redlib, Nitter, or other lightweight, tracking-free front-ends instead. You choose which services to redirect and which instances to use, and it works across Firefox and Chromium browsers. It pairs perfectly with self-hosted front-ends to keep big platforms from profiling you.',
     website: 'https://libredirect.github.io',

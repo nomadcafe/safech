@@ -22,6 +22,7 @@ export const curatedClassicsTools: Tool[] = [
     slug: 'excalidraw',
     tagline: 'Virtuelles Hand-Zeichen-Whiteboard mit kollaborativer Bearbeitung',
     taglineEn: 'Virtual hand-drawn whiteboard with collaborative editing',
+    taglineZh: '手绘风格的虚拟白板，支持协作编辑',
     description:
       'Excalidraw ist ein quelloffenes virtuelles Whiteboard mit handgezeichnet wirkendem Stil. Es eignet sich hervorragend für Diagramme, Skizzen, Mockups, Architektur-Schaubilder und Brainstorming. Die Inhalte können lokal im Browser oder über einen selbst gehosteten Sync-Server in Echtzeit mit Anderen geteilt werden, ohne dass ein Account oder Cloud-Dienst nötig ist.',
     descriptionEn:
@@ -49,6 +50,7 @@ export const curatedClassicsTools: Tool[] = [
     slug: 'tldraw',
     tagline: 'Unendliches Canvas mit moderner Echtzeit-Kollaboration',
     taglineEn: 'Infinite canvas with modern real-time collaboration',
+    taglineZh: '无限画布，支持现代实时协作',
     description:
       'tldraw ist ein modernes, quelloffenes Whiteboard und SDK für unendliche Canvas-Anwendungen. Bietet Multi-User-Echtzeit-Kollaboration, Frames, Notizen, Pfeile, AI-Snapshot-Tools und ein einbettbares React-SDK für eigene Anwendungen.',
     descriptionEn:
@@ -74,6 +76,7 @@ export const curatedClassicsTools: Tool[] = [
     slug: 'drawio',
     tagline: 'Mächtiges Diagramm- und Flowchart-Tool, vollständig FOSS',
     taglineEn: 'Powerful diagram and flowchart tool, fully FOSS',
+    taglineZh: '强大的图表与流程图工具，完全开源',
     description:
       'draw.io (auch als diagrams.net bekannt) ist ein quelloffenes Diagramm-Tool für Flowcharts, UML, Netzwerkdiagramme, Mind-Maps, BPMN, AWS/Azure-Architekturen und vieles mehr. Verfügbar als Web-App, Desktop-App und Confluence/Jira-Plugin. Daten bleiben lokal oder im selbst gewählten Storage.',
     descriptionEn:
@@ -99,6 +102,7 @@ export const curatedClassicsTools: Tool[] = [
     slug: 'blender',
     tagline: 'Die führende Open-Source-3D-Suite — Modeling, Rendering, VFX',
     taglineEn: 'The leading open-source 3D suite — modelling, rendering, VFX',
+    taglineZh: '领先的开源 3D 套件——建模、渲染、特效',
     description:
       'Blender ist die weltweit führende quelloffene 3D-Software-Suite. Sie deckt den gesamten 3D-Workflow ab: Modellierung, Sculpting, Rigging, Animation, Simulation, Rendering (Cycles, EEVEE), Compositing, Motion Tracking, Video-Schnitt und Spielentwicklung. Wird in Filmstudios, Architekturbüros und für AAA-Spiele eingesetzt.',
     descriptionEn:
@@ -125,6 +129,7 @@ export const curatedClassicsTools: Tool[] = [
     slug: 'flameshot',
     tagline: 'Schnelles, leistungsstarkes Open-Source-Screenshot-Tool',
     taglineEn: 'Fast, powerful open-source screenshot tool',
+    taglineZh: '快速强大的开源截图工具',
     description:
       'Flameshot ist ein quelloffenes Screenshot-Tool mit sofortigen Annotationen — Pfeile, Text, Marker, Pixelung, Unschärfe — direkt im Auswahl-Modus. Unterstützt Upload zu Imgur und eigenen Servern, Konfiguration per CLI und globale Hotkeys. Ein klarer Ersatz für proprietäre Snipping-Tools.',
     descriptionEn:
@@ -150,6 +155,7 @@ export const curatedClassicsTools: Tool[] = [
     slug: 'scribus',
     tagline: 'Professionelles Open-Source-Desktop-Publishing',
     taglineEn: 'Professional open-source desktop publishing',
+    taglineZh: '专业的开源桌面排版工具',
     description:
       'Scribus ist ein quelloffenes Desktop-Publishing-Programm für professionellen Print-Workflow: Magazine, Bücher, Broschüren, Newsletter, Plakate. Unterstützt CMYK, ICC-Profile, druckfähigen PDF/X-Export, Spotcolors, OpenType-Features und Master-Pages — eine vollwertige FOSS-Alternative zu Adobe InDesign und QuarkXPress.',
     descriptionEn:
@@ -177,6 +183,7 @@ export const curatedClassicsTools: Tool[] = [
     slug: 'stirling-pdf',
     tagline: 'Self-hostbares Webtool für 50+ PDF-Operationen',
     taglineEn: 'Self-hostable web tool for 50+ PDF operations',
+    taglineZh: '可自托管的 Web 工具，支持 50+ 种 PDF 操作',
     description:
       'Stirling PDF ist ein quelloffenes, selbst gehostetes Web-Tool, das mehr als 50 PDF-Operationen abdeckt: Mergen, Splitten, Konvertieren, Komprimieren, OCR, Wasserzeichen, Signieren, Redaktion, Formularbearbeitung. Die Dateien verlassen den eigenen Server nie — eine Datenschutz-freundliche Alternative zu Adobe Acrobat Online und SmallPDF.',
     descriptionEn:
@@ -202,6 +209,7 @@ export const curatedClassicsTools: Tool[] = [
     slug: 'paperless-ngx',
     tagline: 'Papierloses Dokument-Management-System mit OCR',
     taglineEn: 'Paperless document management system with OCR',
+    taglineZh: '带 OCR 的无纸化文档管理系统',
     description:
       'Paperless-ngx ist ein quelloffenes Dokument-Management-System: Dokumente werden gescannt oder importiert, automatisch per OCR durchsucht, mit Tags, Korrespondenten und Dokumenttypen versehen und in einer Volltext-suchbaren Datenbank abgelegt. Mehr als 30 Sprachen, Reverse-Proxy-tauglich, mit App und API.',
     descriptionEn:
@@ -229,6 +237,7 @@ export const curatedClassicsTools: Tool[] = [
     slug: 'freshrss',
     tagline: 'Self-hostbarer RSS-Aggregator, schnell und schlank',
     taglineEn: 'Self-hostable RSS aggregator, fast and lean',
+    taglineZh: '可自托管的 RSS 聚合器，快速轻量',
     description:
       'FreshRSS ist ein quelloffener RSS- und Atom-Feed-Aggregator zum selbst Hosten. Multi-User, mit Anti-Feature-Abwehr, Volltext-Sammlern, OPML-Import, mobilen Apps via Fever- und Google-Reader-API und einer schlanken PHP-Codebasis, die auch auf einem Raspberry Pi läuft.',
     descriptionEn:
@@ -254,6 +263,7 @@ export const curatedClassicsTools: Tool[] = [
     slug: 'miniflux',
     tagline: 'Minimalistischer, sehr schneller Feed-Reader',
     taglineEn: 'Minimalist, blazing-fast feed reader',
+    taglineZh: '极简、飞快的 Feed 阅读器',
     description:
       'Miniflux ist ein quelloffener, minimalistischer RSS- und Atom-Reader, geschrieben in Go. Strikt fokussiert: keine Werbung, keine Tracker, keine sozialen Features. Single-Binary-Deployment, Multi-User, eigene API plus Google-Reader/Fever-API, OPML-Import/-Export, Volltext-Sammler.',
     descriptionEn:
@@ -280,6 +290,7 @@ export const curatedClassicsTools: Tool[] = [
     slug: 'wallabag',
     tagline: 'Self-hostbare Read-Later-App, schöner als Pocket',
     taglineEn: 'Self-hostable read-later app, nicer than Pocket',
+    taglineZh: '可自托管的稍后读应用，比 Pocket 更好用',
     description:
       'Wallabag ist ein quelloffener Read-Later-Service zum selbst Hosten — Webseiten werden in eine saubere, ablenkungsfreie Lese-Ansicht umgewandelt und sind später offline lesbar. Tagging, Volltextsuche, EPUB/MOBI/PDF-Export, mobile Apps, Browser-Extensions.',
     descriptionEn:
@@ -306,6 +317,7 @@ export const curatedClassicsTools: Tool[] = [
     slug: 'shiori',
     tagline: 'Schlanker, self-hostbarer Bookmark-Manager',
     taglineEn: 'Lean, self-hostable bookmark manager',
+    taglineZh: '轻量、可自托管的书签管理器',
     description:
       'Shiori ist ein quelloffener Bookmark-Manager, geschrieben in Go. Single-Binary-Deployment, Web-UI, CLI, Volltextsuche, Archiv mit lokal gespeicherten Webseiten-Inhalten und einem Browser-Add-on. Eine moderne, datenschutzfreundliche Alternative zu Pocket-Bookmarks.',
     descriptionEn:
@@ -331,6 +343,7 @@ export const curatedClassicsTools: Tool[] = [
     slug: 'standardnotes',
     tagline: 'Sichere, verschlüsselte Notizen mit Open-Source-Server',
     taglineEn: 'Secure, encrypted notes with an open-source server',
+    taglineZh: '安全加密的笔记，服务端开源',
     description:
       'Standard Notes ist ein quelloffener, Ende-zu-Ende-verschlüsselter Notiz-Service. Apps für alle Plattformen, plus ein selbst hostbarer Server für volle Datenkontrolle. Erweiterbar via Plug-ins (Markdown, Code-Editoren, Tabellen), Datenschutz-First-Ansatz mit Audit-Reports.',
     descriptionEn:
@@ -359,6 +372,7 @@ export const curatedClassicsTools: Tool[] = [
     slug: 'sonarr',
     tagline: 'Smart-PVR für Serien — automatischer Download und Sortierung',
     taglineEn: 'Smart PVR for TV series — automated download and sorting',
+    taglineZh: '剧集智能 PVR——自动下载与整理',
     description:
       'Sonarr ist ein quelloffener Smart-PVR für TV-Serien. Es überwacht Indexer und Trackern, lädt automatisch neue Episoden, organisiert sie nach Schema und integriert sich mit Plex, Jellyfin, Emby, Kodi sowie Download-Clients wie qBittorrent oder SABnzbd.',
     descriptionEn:
@@ -385,6 +399,7 @@ export const curatedClassicsTools: Tool[] = [
     slug: 'radarr',
     tagline: 'Smart-PVR für Filme — Sonarrs Pendant für Spielfilme',
     taglineEn: 'Smart PVR for movies — the film counterpart to Sonarr',
+    taglineZh: '电影智能 PVR——Sonarr 的电影版',
     description:
       'Radarr ist die Film-Variante von Sonarr: ein quelloffener PVR, der Indexer überwacht, neue Filme automatisch herunterlädt, sie umbenennt und in eine ordentliche Bibliothek einsortiert. Direkte Integration mit Plex, Jellyfin, Emby und gängigen Download-Clients.',
     descriptionEn:
@@ -411,6 +426,7 @@ export const curatedClassicsTools: Tool[] = [
     slug: 'prowlarr',
     tagline: 'Indexer-Manager für die *arr-Familie',
     taglineEn: 'Indexer manager for the *arr family',
+    taglineZh: '*arr 家族的索引器管理工具',
     description:
       'Prowlarr ist ein quelloffener Indexer- und Tracker-Manager, der eine zentrale Kontrolle über die Indexer von Sonarr, Radarr, Lidarr, Readarr usw. ermöglicht. Statt jeden Indexer in jeder App separat zu konfigurieren, geschieht das einmal in Prowlarr und wird automatisch synchronisiert.',
     descriptionEn:
@@ -436,6 +452,7 @@ export const curatedClassicsTools: Tool[] = [
     slug: 'kavita',
     tagline: 'Self-hostbarer Reader für Mangas, Comics und E-Books',
     taglineEn: 'Self-hostable reader for manga, comics and e-books',
+    taglineZh: '可自托管的漫画、连环画与电子书阅读器',
     description:
       'Kavita ist ein quelloffener Bibliotheks-Server für Mangas, Comics, Light Novels und E-Books. Schlanker .NET-Stack mit eingebautem Web-Reader, Multi-User-Verwaltung, Lesezeichen, OPDS, Reading-Lists und Push an mobile Apps wie Tachiyomi/Kayomi.',
     descriptionEn:
@@ -461,6 +478,7 @@ export const curatedClassicsTools: Tool[] = [
     slug: 'calibre-web',
     tagline: 'Schöne Web-Oberfläche für eine Calibre-E-Book-Bibliothek',
     taglineEn: 'Pretty web interface for a Calibre e-book library',
+    taglineZh: 'Calibre 电子书库的精美 Web 界面',
     description:
       'Calibre-Web ist eine quelloffene Web-Oberfläche zum Stöbern und Lesen einer bestehenden Calibre-E-Book-Bibliothek. Multi-User mit Login, Buch-Lesezeichen, Tagging, Volltextsuche, Konvertierung, OPDS-Feed, Send-to-Kindle und Reverse-Proxy-Support.',
     descriptionEn:
@@ -488,6 +506,7 @@ export const curatedClassicsTools: Tool[] = [
     slug: 'firefly-iii',
     tagline: 'Self-hostbare Finanzverwaltung für Privatpersonen',
     taglineEn: 'Self-hostable personal finance manager',
+    taglineZh: '可自托管的个人财务管理工具',
     description:
       'Firefly III ist ein quelloffener, selbst gehosteter Finanzmanager. Er erfasst Einnahmen, Ausgaben, Budgets, Sparziele, Kategorien, Tags und Berichte; kennt Mehrfach-Konten, Mehrwährungs-Buchhaltung, Regeln und Auto-Import via Open Banking, YNAB-CSV oder Spectre.',
     descriptionEn:
@@ -513,6 +532,7 @@ export const curatedClassicsTools: Tool[] = [
     slug: 'actual-budget',
     tagline: 'Lokales, schnelles Zero-Based-Budgeting',
     taglineEn: 'Local-first, fast zero-based budgeting',
+    taglineZh: '本地优先、快速的零基预算工具',
     description:
       'Actual ist ein quelloffener, lokal-zuerst arbeitender Budgeting-Tracker im Envelope/Zero-Based-Style. Daten leben primär auf dem Gerät, optional über einen self-hostbaren Sync-Server geteilt. Bank-Integration via SimpleFIN/GoCardless, Multi-User, Ende-zu-Ende-Verschlüsselung.',
     descriptionEn:
@@ -540,6 +560,7 @@ export const curatedClassicsTools: Tool[] = [
     slug: 'urbackup',
     tagline: 'Client/Server-Backup mit Disk-Image- und Datei-Backups',
     taglineEn: 'Client/server backup with disk-image and file backups',
+    taglineZh: '客户端/服务端备份，支持磁盘镜像与文件备份',
     description:
       'UrBackup ist ein quelloffenes Client-/Server-Backup-System. Es kombiniert image-basierte Backups (BMR-fähig) mit datei-basierten Backups, deduzipliziert über alle Clients hinweg und liefert eine Web-Oberfläche zur Verwaltung. Geeignet für gemischte Linux- und Windows-Umgebungen.',
     descriptionEn:
@@ -567,6 +588,7 @@ export const curatedClassicsTools: Tool[] = [
     slug: 'mautic',
     tagline: 'Open-Source-Marketing-Automation',
     taglineEn: 'Open-source marketing automation',
+    taglineZh: '开源营销自动化平台',
     description:
       'Mautic ist eine quelloffene Marketing-Automation-Plattform: Lead-Tracking, Drip-Kampagnen, Segmentierung, Landing-Pages, Formulare und A/B-Tests, mit Integrationen zu CRMs (HubSpot, Salesforce, SuiteCRM …), E-Commerce- und Analytics-Plattformen.',
     descriptionEn:
@@ -593,6 +615,7 @@ export const curatedClassicsTools: Tool[] = [
     slug: 'listmonk',
     tagline: 'Single-Binary Newsletter- und Mailing-List-Server',
     taglineEn: 'Single-binary newsletter and mailing-list manager',
+    taglineZh: '单文件部署的邮件订阅与邮件列表系统',
     description:
       'Listmonk ist ein quelloffener, leistungsstarker Newsletter- und Mailing-List-Server. Single-Binary in Go, schickes Web-UI, Multi-List-Verwaltung, Segmentierung, A/B-Tests, Bounce-Handling, Webhook-Events und Verarbeitung von Millionen Subscribers.',
     descriptionEn:
@@ -620,6 +643,7 @@ export const curatedClassicsTools: Tool[] = [
     slug: 'tooljet',
     tagline: 'Self-hostbare Low-Code-Plattform für interne Tools',
     taglineEn: 'Self-hostable low-code platform for internal tools',
+    taglineZh: '可自托管的低代码内部工具平台',
     description:
       'ToolJet ist eine quelloffene Low-Code-Plattform zum Bauen interner Werkzeuge: Drag-and-Drop-UI mit 50+ Komponenten, Anbindung an REST-/GraphQL-APIs, Datenbanken (Postgres, MySQL, Mongo), Cloud-Storage und SaaS-Tools — eine FOSS-Alternative zu Retool.',
     descriptionEn:
@@ -646,6 +670,7 @@ export const curatedClassicsTools: Tool[] = [
     slug: 'refine',
     tagline: 'React-Framework für CRUD-fokussierte Admin-Apps',
     taglineEn: 'React framework for CRUD-focused admin apps',
+    taglineZh: '面向 CRUD 后台应用的 React 框架',
     description:
       'Refine ist ein quelloffenes React-Framework für interne Admin-Panels und CRUD-orientierte Apps. Liefert Daten-Fetching, Auth, State-Management und 11 anpassbare UI-Frameworks (Ant Design, MUI, Mantine, Chakra, Tailwind …) — Admin-Apps in Tagen statt Wochen.',
     descriptionEn:
@@ -673,6 +698,7 @@ export const curatedClassicsTools: Tool[] = [
     slug: 'yt-dlp',
     tagline: 'CLI-Downloader für Videos und Audio von 1000+ Plattformen',
     taglineEn: 'CLI downloader for videos and audio from 1000+ sites',
+    taglineZh: '命令行下载器，支持 1000+ 站点的音视频',
     description:
       'yt-dlp ist ein quelloffenes Kommandozeilen-Tool zum Herunterladen von Videos und Audio von YouTube, Twitch, Vimeo, Soundcloud, Bandcamp, ARD/ZDF-Mediatheken und über 1000 weiteren Plattformen. Beliebter, deutlich schnellerer Fork von youtube-dl mit zahlreichen Extras.',
     descriptionEn:
@@ -698,6 +724,7 @@ export const curatedClassicsTools: Tool[] = [
     slug: 'peek',
     tagline: 'Einfacher GIF-Bildschirm-Recorder für Linux',
     taglineEn: 'Simple GIF screen recorder for Linux',
+    taglineZh: 'Linux 上简单的 GIF 录屏工具',
     description:
       'Peek ist ein quelloffener, schlanker Bildschirm-Recorder für Linux mit Fokus auf animierte GIFs. Wählbarer Aufnahme-Bereich, Aufnahme als GIF, APNG, WebM oder MP4. Ideal um schnelle UI-Demos in einem Bug-Report oder Issue-Tracker zu zeigen.',
     descriptionEn:

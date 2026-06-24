@@ -6,6 +6,7 @@ export const privacyOsTools: Tool[] = [
     name: 'GrapheneOS',
     slug: 'grapheneos',
     tagline: 'Hardened, de-Googled Android for Pixel phones',
+    taglineZh: '面向 Pixel 的加固、去 Google 化 Android 系统',
     description:
       'GrapheneOS is a security- and privacy-focused mobile operating system based on Android, designed for Google Pixel devices. It ships with no Google apps or services by default and adds substantial hardening: a hardened memory allocator, stronger sandboxing, per-app network and sensor permissions, and a compatibility layer that lets you run sandboxed Google Play without granting it special privileges. It receives fast security updates and verified boot. GrapheneOS is widely regarded as the gold standard for a private, secure smartphone and a strong alternative to stock Android.',
     website: 'https://grapheneos.org',
@@ -28,6 +29,7 @@ export const privacyOsTools: Tool[] = [
     name: 'CalyxOS',
     slug: 'calyxos',
     tagline: 'Privacy-focused Android with microG and F-Droid',
+    taglineZh: '注重隐私的 Android，内置 microG 与 F-Droid',
     description:
       'CalyxOS is a privacy-focused Android distribution that aims to be usable for everyday people while protecting their data. It comes with the optional microG framework as a free, privacy-respecting replacement for Google Play Services, ships F-Droid and Aurora Store for apps, bundles a built-in VPN and firewall (Datura), and includes encrypted backups. CalyxOS supports a range of Pixel and select other devices and is maintained by the non-profit Calyx Institute, making it an approachable de-Googled alternative to stock Android.',
     website: 'https://calyxos.org',
@@ -50,6 +52,7 @@ export const privacyOsTools: Tool[] = [
     name: 'LineageOS',
     slug: 'lineageos',
     tagline: 'Free Android distribution for a huge range of devices',
+    taglineZh: '支持海量设备的免费 Android 发行版',
     description:
       'LineageOS is a free and open-source Android distribution and the spiritual successor to CyanogenMod. It extends the life of phones and tablets with up-to-date Android, runs without Google apps by default (you choose whether to add GApps or microG), and supports an enormous catalogue of devices long after manufacturers drop support. With privacy features like granular permissions and Privacy Guard, plus a lightweight, bloat-free experience, LineageOS is a flexible alternative to stock Android for reclaiming control of your device.',
     website: 'https://lineageos.org',
@@ -72,6 +75,7 @@ export const privacyOsTools: Tool[] = [
     name: 'Tails',
     slug: 'tails',
     tagline: 'Amnesic live OS that routes everything through Tor',
+    taglineZh: '全程走 Tor 的失忆型 Live 系统',
     description:
       'Tails (The Amnesic Incognito Live System) is a portable operating system you boot from a USB stick. It routes all internet traffic through the Tor network, leaves no trace on the computer you use unless you explicitly ask it to, and resets to a clean state on every shutdown. Tails bundles a hardened browser, encrypted persistent storage, and tools for secure communication, making it ideal for journalists, activists and anyone who needs strong anonymity and amnesia. It is a powerful alternative to running a normal OS for sensitive work.',
     website: 'https://tails.net',
@@ -94,6 +98,7 @@ export const privacyOsTools: Tool[] = [
     name: 'Qubes OS',
     slug: 'qubes-os',
     tagline: 'Security through compartmentalisation with VMs',
+    taglineZh: '以虚拟机隔离实现安全的桌面系统',
     description:
       'Qubes OS is a security-oriented desktop operating system that achieves security through isolation. It runs your activities in separate, lightweight virtual machines (qubes) so that a compromise in one — for example a malicious email attachment — cannot affect the rest of your system. You can colour-code domains for work, personal and untrusted use, integrate Whonix for transparent Tor routing, and dispose of single-use disposable VMs. Qubes is the choice of high-risk users and a uniquely strong alternative to a conventional Windows or macOS desktop.',
     website: 'https://www.qubes-os.org',
@@ -116,6 +121,7 @@ export const privacyOsTools: Tool[] = [
     name: 'Whonix',
     slug: 'whonix',
     tagline: 'Anonymous OS that forces all traffic through Tor',
+    taglineZh: '强制全部流量经 Tor 的匿名系统',
     description:
       'Whonix is an operating system focused on anonymity and privacy that runs inside virtual machines. It splits into two parts: a gateway that connects only through Tor, and a workstation that can reach the network exclusively via that gateway. Because the workstation has no knowledge of your real IP address, even malware with root privileges cannot easily leak it. Whonix can run on top of VirtualBox, KVM or Qubes OS and is a robust alternative for anyone needing strong, leak-resistant Tor anonymity.',
     website: 'https://www.whonix.org',

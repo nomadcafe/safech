@@ -138,6 +138,7 @@ export const vpnTools: Tool[] = [
     name: 'Mullvad VPN',
     slug: 'mullvad-vpn',
     tagline: 'No-log VPN with anonymous accounts and open apps',
+    taglineZh: '无日志 VPN，匿名账户、客户端开源',
     description:
       'Mullvad is a privacy-first VPN service built around anonymity: you sign up with a randomly generated account number rather than an email, and you can even pay in cash or Monero. It keeps no activity logs, has passed independent security audits, supports WireGuard and OpenVPN, and offers DAITA traffic-analysis defences and quantum-resistant tunnels. All of Mullvad\'s apps are open source and it charges a flat price with no tiered upsells. Mullvad is a leading transparent alternative to NordVPN and ExpressVPN.',
     website: 'https://mullvad.net',
@@ -161,6 +162,7 @@ export const vpnTools: Tool[] = [
     name: 'Proton VPN',
     slug: 'proton-vpn',
     tagline: 'No-log VPN with a genuinely free tier and open apps',
+    taglineZh: '无日志 VPN，含真正的免费档、客户端开源',
     description:
       'Proton VPN is a Swiss-based, privacy-focused VPN from the makers of Proton Mail. It enforces a strict no-logs policy that has been independently audited, open-sources all of its client apps, and offers Secure Core routing through hardened servers, Tor-over-VPN, and a NetShield ad/tracker blocker. Uniquely it provides a free tier with no data caps or ads, funded by paid plans. Operating under strong Swiss privacy law, Proton VPN is a trustworthy alternative to NordVPN and ExpressVPN.',
     website: 'https://protonvpn.com',
@@ -184,6 +186,7 @@ export const vpnTools: Tool[] = [
     name: 'IVPN',
     slug: 'ivpn',
     tagline: 'Audited no-log VPN that refuses to upsell',
+    taglineZh: '经审计的无日志 VPN，拒绝套路营销',
     description:
       'IVPN is a privacy-focused VPN service with a strong ethical stance: a strict, independently audited no-logs policy, anonymous account IDs with no email required, and the option to pay in cash or Monero. Its apps are fully open source and include an anti-tracker that blocks ads and trackers at the network level, multi-hop routing, and a hardened kill switch. IVPN deliberately avoids the fake discounts and aggressive marketing common in the industry, making it a transparent alternative to NordVPN and ExpressVPN.',
     website: 'https://www.ivpn.net',

@@ -6,6 +6,7 @@ export const metadataRemovalTools: Tool[] = [
     name: 'MAT2',
     slug: 'mat2',
     tagline: 'Metadata anonymisation toolkit for many file types',
+    taglineZh: '支持多种文件类型的元数据匿名化工具',
     description:
       'MAT2 (Metadata Anonymisation Toolkit 2) is a command-line tool and library that removes hidden metadata from a wide range of file formats, including images, PDFs, Office documents, audio and video. Metadata such as GPS coordinates, device models, author names and editing history can quietly reveal who you are and where you were; MAT2 strips it out so you can share files safely. It powers metadata cleaning in tools like Tails and several GUI front-ends, and is a focused open-source way to avoid accidental data leaks.',
     website: 'https://0xacab.org/jvoisin/mat2',
@@ -28,6 +29,7 @@ export const metadataRemovalTools: Tool[] = [
     name: 'Metadata Cleaner',
     slug: 'metadata-cleaner',
     tagline: 'Simple GUI to strip metadata from your files',
+    taglineZh: '清除文件元数据的简洁图形工具',
     description:
       'Metadata Cleaner is a friendly graphical application for Linux that removes metadata from your files with a couple of clicks. Built on top of the MAT2 library, it gives a clean GTK interface where you drag in photos, PDFs and documents and wipe EXIF data, GPS location, author information and other hidden fields before sharing. It supports a lightweight mode for formats that cannot be fully cleaned and integrates with the GNOME desktop. It is an approachable, open-source alternative to manually editing metadata by hand.',
     website: 'https://gitlab.com/rmnvgr/metadata-cleaner',
@@ -50,6 +52,7 @@ export const metadataRemovalTools: Tool[] = [
     name: 'ExifCleaner',
     slug: 'exifcleaner',
     tagline: 'Cross-platform drag-and-drop metadata remover',
+    taglineZh: '跨平台拖拽式元数据清除工具',
     description:
       'ExifCleaner is a cross-platform desktop app that removes EXIF and other metadata from images, PDFs and videos by simply dragging them into the window. It runs on Windows, macOS and Linux, supports batch processing of many files at once, and works entirely offline so your files never leave your computer. By stripping location, camera and author data before you upload or share, ExifCleaner helps prevent accidental privacy leaks. It is an open-source alternative to manual metadata editing for everyday users.',
     website: 'https://exifcleaner.com',

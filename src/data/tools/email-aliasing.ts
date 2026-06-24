@@ -6,6 +6,7 @@ export const emailAliasingTools: Tool[] = [
     name: 'SimpleLogin',
     slug: 'simplelogin',
     tagline: 'Open-source email aliasing to hide your real address',
+    taglineZh: '开源邮箱别名，隐藏你的真实地址',
     description:
       'SimpleLogin lets you create unlimited email aliases that forward to your real inbox, so you never have to share your true address when signing up for services. Each alias can be disabled or deleted independently, which instantly stops spam and lets you pinpoint which service leaked or sold your address. It supports reverse-aliases for replying anonymously, PGP encryption of forwarded mail, custom domains and browser extensions. SimpleLogin is fully open source, can be self-hosted, and is operated from the EU by Proton, making it a strong GDPR-friendly alternative to Apple Hide My Email and Firefox Relay.',
     website: 'https://simplelogin.io',
@@ -29,6 +30,7 @@ export const emailAliasingTools: Tool[] = [
     name: 'addy.io',
     slug: 'addy-io',
     tagline: 'Anonymous email forwarding with unlimited aliases',
+    taglineZh: '匿名邮件转发，别名数量无上限',
     description:
       'addy.io (formerly AnonAddy) is an open-source anonymous email forwarding service. You can instantly create aliases on the fly, even without logging in, and any mail sent to them is forwarded to your real inbox while keeping your address hidden. Replies and outbound mail are sent through the alias so the recipient never sees your real address. It offers PGP/GPG encryption of forwarded mail, custom domains, catch-all aliases, and detailed activity logs. addy.io is self-hostable and developed in the UK/EU, making it a privacy-respecting alternative to Apple Hide My Email and Firefox Relay.',
     website: 'https://addy.io',

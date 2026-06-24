@@ -37,7 +37,7 @@ function getToolColor(name: string): string {
   return colors[Math.abs(hash) % colors.length];
 }
 const toolColor = getToolColor(tool.name);
-const tagline = tool.taglineEn || tool.tagline;
+const tagline = (lang === 'zh' && tool.taglineZh) || tool.taglineEn || tool.tagline;
 ---
 
 <a

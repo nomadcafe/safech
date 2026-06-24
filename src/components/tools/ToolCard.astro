@@ -47,7 +47,7 @@ function getToolColor(name: string): string {
 }
 
 const toolColor = getToolColor(tool.name);
-const tagline = tool.taglineEn || tool.tagline;
+const tagline = (lang === 'zh' && tool.taglineZh) || tool.taglineEn || tool.tagline;
 const replacesShown = tool.replacesTools.slice(0, 2);
 const replacesExtra = tool.replacesTools.length - replacesShown.length;
 ---

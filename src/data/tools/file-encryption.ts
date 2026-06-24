@@ -6,6 +6,7 @@ export const fileEncryptionTools: Tool[] = [
     name: 'Cryptomator',
     slug: 'cryptomator',
     tagline: 'Transparent client-side encryption for your cloud files',
+    taglineZh: '为云端文件提供透明的客户端加密',
     description:
       'Cryptomator encrypts your files before they are uploaded to any cloud storage such as Dropbox, Google Drive, OneDrive or Nextcloud. It creates a virtual encrypted drive (a vault) that you unlock with a passphrase; everything written to it is transparently encrypted with AES, including file contents and file names, so the cloud provider only ever sees opaque data. There are no accounts, no servers and no back doors, and the format is open and independently audited. Cryptomator runs on Windows, macOS, Linux, Android and iOS, making it a strong privacy alternative to BitLocker and proprietary cloud encryption.',
     website: 'https://cryptomator.org',
@@ -28,6 +29,7 @@ export const fileEncryptionTools: Tool[] = [
     name: 'VeraCrypt',
     slug: 'veracrypt',
     tagline: 'Full-disk and container encryption for desktop',
+    taglineZh: '桌面端的全盘与容器加密',
     description:
       'VeraCrypt is the actively maintained successor to TrueCrypt and provides on-the-fly disk encryption for Windows, macOS and Linux. It can create encrypted file containers, encrypt entire partitions or even the whole system drive with pre-boot authentication. VeraCrypt supports strong ciphers such as AES, Serpent and Twofish (including cascades), keyfiles, and hidden volumes that provide plausible deniability. Because everything happens locally with no accounts or cloud, it is a powerful open-source alternative to BitLocker for protecting data at rest.',
     website: 'https://veracrypt.fr',
@@ -50,6 +52,7 @@ export const fileEncryptionTools: Tool[] = [
     name: 'Picocrypt',
     slug: 'picocrypt',
     tagline: 'Tiny, modern file encryption tool you can trust',
+    taglineZh: '小巧、现代、值得信赖的文件加密工具',
     description:
       'Picocrypt is a very small, simple and modern file encryption tool that does one thing well: encrypt and decrypt files and folders with strong, audited cryptography. It uses XChaCha20 for encryption and Argon2id for key derivation, adds Reed-Solomon error correction to protect against bit rot, and verifies integrity to detect tampering. The entire tool is a single portable binary with no installation, accounts or telemetry, which makes it easy to audit and ideal for long-term archival or sharing sensitive files. It is a focused open-source alternative to proprietary archive encryption.',
     website: 'https://github.com/Picocrypt/Picocrypt',
@@ -72,6 +75,7 @@ export const fileEncryptionTools: Tool[] = [
     name: 'GnuPG',
     slug: 'gnupg',
     tagline: 'The standard for OpenPGP encryption and signing',
+    taglineZh: 'OpenPGP 加密与签名的事实标准',
     description:
       'GnuPG (GNU Privacy Guard) is the complete and free implementation of the OpenPGP standard. It lets you encrypt and sign data and communications using public-key cryptography, manage your keys, and build a web of trust. GnuPG underpins encrypted email, signed software releases and countless security tools, and is available as a command-line utility plus graphical front-ends such as Kleopatra and GPG Suite. As a battle-tested, audited and ubiquitous tool, it remains the foundation of open-source encryption for files, email and code signing.',
     website: 'https://gnupg.org',

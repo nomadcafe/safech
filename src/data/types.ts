@@ -4,6 +4,7 @@ export interface Tool {
   slug: string;
   tagline: string;
   taglineEn?: string;
+  taglineZh?: string;
   description: string;
   descriptionEn?: string;
   website: string;
