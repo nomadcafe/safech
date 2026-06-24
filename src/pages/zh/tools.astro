@@ -11,12 +11,12 @@ import { getUniquelicenses, sortTools } from '../../utils/tools';
 import { useTranslations } from '../../i18n/utils';
 
 const base = import.meta.env.BASE_URL;
-const sortedTools = sortTools(allTools, 'name');
+const sortedTools = sortTools(allTools, 'featured');
 const licenses = getUniquelicenses(allTools);
 const t = useTranslations('en');
 ---
 
-<BaseLayout title="全部工具 – SafeCh" description="浏览所有免费开源替代方案。按分类、许可证、平台等条件筛选。">
+<BaseLayout title="全部工具 – SafeCh" description="浏览所有开源替代方案。按分类、许可证、平台等条件筛选。">
   <SearchModal />
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
@@ -25,7 +25,7 @@ const t = useTranslations('en');
         全部<span class="gradient-text">工具</span>
       </h1>
       <p class="text-lg" style="color: var(--color-text-secondary)">
-        {allTools.length} 个专有软件的免费开源替代方案。
+        {allTools.length} 个专有软件的开源替代方案。
       </p>
     </div>
 
@@ -72,6 +72,9 @@ const t = useTranslations('en');
             data-tool-selfhost={String(tool.selfHostable)}
             data-tool-difficulty={tool.difficulty}
             data-tool-platforms={tool.platforms.join(',')}
+            data-tool-stars={tool.stars ?? 0}
+            data-tool-date={tool.addedDate}
+            data-tool-featured={String(tool.featured)}
           >
             <div class="tool-card-view"><ToolCard tool={tool} /></div>
             <div class="tool-row-view"><ToolRow tool={tool} /></div>

@@ -52,10 +52,18 @@ export function filterByDifficulty(
 
 export function sortTools(
   tools: Tool[],
-  sortBy: 'name' | 'stars' | 'date'
+  sortBy: 'featured' | 'name' | 'stars' | 'date'
 ): Tool[] {
   const sorted = [...tools];
   switch (sortBy) {
+    case 'featured':
+      // Featured tools first, then by popularity, then alphabetically.
+      return sorted.sort(
+        (a, b) =>
+          Number(b.featured) - Number(a.featured) ||
+          (b.stars ?? 0) - (a.stars ?? 0) ||
+          a.name.localeCompare(b.name)
+      );
     case 'name':
       return sorted.sort((a, b) => a.name.localeCompare(b.name));
     case 'stars':

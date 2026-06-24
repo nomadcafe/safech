@@ -76,6 +76,7 @@ const t = useTranslations(lang);
           class="appearance-none pl-8 pr-7 py-2 rounded-full text-sm outline-none cursor-pointer transition-colors"
           style="background: var(--color-bg-tertiary); color: var(--color-text-primary); border: 1px solid var(--color-border)"
         >
+          <option value="featured">{t('filters.sortFeatured')}</option>
           <option value="name">{t('filters.sortName')}</option>
           <option value="stars">{t('filters.sortStars')}</option>
           <option value="date">{t('filters.sortDate')}</option>
@@ -222,10 +223,42 @@ const t = useTranslations(lang);
       updateActiveCount();
     }
 
+    // Reorder the cards in place according to the selected sort key.
+    // Cards carry the sort data on data-* attributes set at build time.
+    const grid = document.querySelector('.tools-grid') as HTMLElement | null;
+    function sortCards() {
+      if (!grid) return;
+      const mode = sortSelect?.value ?? 'featured';
+      const cards = Array.from(grid.querySelectorAll('[data-tool-card]')) as HTMLElement[];
+      cards.sort((a, b) => {
+        const an = (a.dataset.toolName ?? '').toLowerCase();
+        const bn = (b.dataset.toolName ?? '').toLowerCase();
+        switch (mode) {
+          case 'name':
+            return an.localeCompare(bn);
+          case 'stars':
+            return Number(b.dataset.toolStars ?? 0) - Number(a.dataset.toolStars ?? 0);
+          case 'date':
+            return (b.dataset.toolDate ?? '').localeCompare(a.dataset.toolDate ?? '');
+          case 'featured':
+          default:
+            return (
+              Number(b.dataset.toolFeatured === 'true') - Number(a.dataset.toolFeatured === 'true') ||
+              Number(b.dataset.toolStars ?? 0) - Number(a.dataset.toolStars ?? 0) ||
+              an.localeCompare(bn)
+            );
+        }
+      });
+      // Re-append in the new order (moves existing nodes, no re-render).
+      const frag = document.createDocumentFragment();
+      cards.forEach((c) => frag.appendChild(c));
+      grid.appendChild(frag);
+    }
+
     searchInput?.addEventListener('input', applyFilters);
     categorySelect?.addEventListener('change', applyFilters);
     licenseSelect?.addEventListener('change', applyFilters);
-    sortSelect?.addEventListener('change', applyFilters);
+    sortSelect?.addEventListener('change', sortCards);
 
     filterBtns.forEach((btn) => {
       btn.addEventListener('click', () => {
