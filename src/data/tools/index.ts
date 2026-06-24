@@ -45,6 +45,8 @@ import { fileEncryptionTools } from './file-encryption';
 import { privacyFrontendsTools } from './privacy-frontends';
 import { secureSharingTools } from './secure-sharing';
 import { metadataRemovalTools } from './metadata-removal';
+import { privacyOsTools } from './privacy-os';
+import { browserExtensionsTools } from './browser-extensions';
 import { curatedClassicsTools } from './curated-classics';
 import { autoDiscoveredTools } from './auto-tools';
 
@@ -95,6 +97,8 @@ export const allTools: Tool[] = [
   ...privacyFrontendsTools,
   ...secureSharingTools,
   ...metadataRemovalTools,
+  ...privacyOsTools,
+  ...browserExtensionsTools,
   ...curatedClassicsTools,
   ...autoDiscoveredTools,
 ];

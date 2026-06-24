@@ -532,6 +532,16 @@ export const categoryTranslations: Record<string, { name: string; description: s
     description: 'Tools that strip hidden metadata such as EXIF location data, author names and timestamps from photos and documents before you share them. Protect yourself from accidental data leaks.',
     replaces: 'manual EXIF editing',
   },
+  'privacy-os': {
+    name: 'Privacy & Anonymity OS',
+    description: 'Hardened, de-Googled and amnesic operating systems for phones and desktops that minimise tracking and maximise anonymity. Privacy-first alternatives to stock Android and Windows.',
+    replaces: 'stock Android, Windows',
+  },
+  'browser-extensions': {
+    name: 'Browser Privacy Extensions',
+    description: 'Browser add-ons that block ads, trackers and fingerprinting, strip tracking parameters from links and redirect you to privacy-friendly front-ends. Take back control of your browsing.',
+    replaces: 'Adblock Plus, default tracking',
+  },
 };
 
 // Chinese category translations
@@ -765,5 +775,15 @@ export const categoryTranslationsZh: Record<string, { name: string; description:
     name: '元数据清除',
     description: '在分享前清除照片和文档中隐藏的元数据，如 EXIF 位置信息、作者姓名和时间戳，避免意外泄露隐私。',
     replaces: 'manual EXIF editing',
+  },
+  'privacy-os': {
+    name: '隐私与匿名操作系统',
+    description: '面向手机和桌面的加固、去 Google 化及失忆型操作系统，最大限度减少追踪、提升匿名性。注重隐私，可替代原生 Android 和 Windows。',
+    replaces: 'stock Android, Windows',
+  },
+  'browser-extensions': {
+    name: '浏览器隐私扩展',
+    description: '拦截广告、追踪器和指纹识别，清除链接中的追踪参数，并将你重定向到隐私前端的浏览器扩展。重新掌控你的浏览体验。',
+    replaces: 'Adblock Plus, default tracking',
   },
 };

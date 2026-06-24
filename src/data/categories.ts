@@ -507,4 +507,26 @@ export const categories: Category[] = [
     replacesCategory: 'manual EXIF editing',
     color: 'lime',
   },
+  {
+    id: 'privacy-os',
+    slug: 'privacy-os',
+    name: 'Privacy & Anonymity OS',
+    description:
+      'Hardened, de-Googled and amnesic operating systems for phones and desktops that minimise tracking and maximise anonymity. Privacy-first alternatives to stock Android and Windows.',
+    icon: 'shield',
+    emoji: '🛡️',
+    replacesCategory: 'stock Android, Windows',
+    color: 'indigo',
+  },
+  {
+    id: 'browser-extensions',
+    slug: 'browser-extensions',
+    name: 'Browser Privacy Extensions',
+    description:
+      'Browser add-ons that block ads, trackers and fingerprinting, strip tracking parameters from links and redirect you to privacy-friendly front-ends. Take back control of your browsing.',
+    icon: 'puzzle',
+    emoji: '🧩',
+    replacesCategory: 'Adblock Plus, default tracking',
+    color: 'amber',
+  },
 ];

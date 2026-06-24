@@ -173,6 +173,14 @@ export const TOOL_ICON_MAP: Record<string, string> = {
   'gnupg': 'gnuprivacyguard',
   'invidious': 'invidious',
   'piped': 'piped',
+  'grapheneos': 'grapheneos',
+  'lineageos': 'lineageos',
+  'tails': 'tails',
+  'qubes-os': 'qubesos',
+  'mullvad-vpn': 'mullvad',
+  'proton-vpn': 'protonvpn',
+  'mullvad-browser': 'mullvad',
+  'ublock-origin': 'ublockorigin',
 };
 
 export function getSimpleIcon(toolSlug: string): { svg: string; color: string } | null {
