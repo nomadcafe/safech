@@ -41,7 +41,7 @@ export const twoFactorAuthTools: Tool[] = [
     hostedService: 'https://ente.io/auth/',
     logoPlaceholderEmoji: '🔐',
     stars: 18000,
-    lastUpdated: '2026-07-06',
+    lastUpdated: '2026-07-13',
     tags: ['2fa', 'totp', 'authenticator', 'e2e', 'sync', 'cross-platform'],
     difficulty: 'einfach',
     platforms: ['web', 'linux', 'windows', 'macos', 'android', 'ios'],
