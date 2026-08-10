@@ -86,7 +86,7 @@ export const fileEncryptionTools: Tool[] = [
     selfHostable: false,
     logoPlaceholderEmoji: '🗝️',
     stars: 700,
-    lastUpdated: '2026-07-30',
+    lastUpdated: '2026-08-06',
     tags: ['encryption', 'openpgp', 'signing', 'cli', 'public-key', 'standard'],
     difficulty: 'fortgeschritten',
     platforms: ['linux', 'windows', 'macos'],
