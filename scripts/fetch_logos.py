@@ -10,8 +10,10 @@ never shows its real logo. This script closes that gap: it takes each
 tool's `logoUrl` and stores the image locally, once, at author time.
 
   - Idempotent: a slug that already has a PNG is skipped.
-  - Conservative: only writes files that decode as PNG/JPEG/WebP/SVG and
+  - Conservative: only writes files that decode as a raster image and
     stay under MAX_BYTES; anything else is reported and left alone.
+  - Downloads at whatever size the host serves; run
+    scripts/optimize_logos.mjs afterwards to normalise them to 128px.
   - Offline-safe: network failures are counted, never fatal.
 
 Usage:
@@ -21,7 +23,7 @@ Usage:
 Environment:
     REPO_ROOT   - default '.'
     DRY_RUN     - 'true' to list what would be downloaded
-    MAX_BYTES   - skip anything larger (default: 262144)
+    MAX_BYTES   - skip anything larger (default: 2097152)
     LIMIT       - stop after N downloads (default: 0 = no limit)
 """
 
@@ -39,7 +41,7 @@ REPO_ROOT = Path(os.environ.get("REPO_ROOT", ".")).resolve()
 TOOLS_DIR = REPO_ROOT / "src" / "data" / "tools"
 LOGO_DIR = REPO_ROOT / "public" / "logos"
 DRY_RUN = os.environ.get("DRY_RUN", "").lower() == "true"
-MAX_BYTES = int(os.environ.get("MAX_BYTES", 262144))
+MAX_BYTES = int(os.environ.get("MAX_BYTES", 2_097_152))
 LIMIT = int(os.environ.get("LIMIT", 0))
 
 USER_AGENT = "safech-logo-fetcher/1.0"
