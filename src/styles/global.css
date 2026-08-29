@@ -332,6 +332,111 @@
     border: 1px solid rgba(0, 0, 0, 0.08);
   }
 
+  /* Footer rule of a ToolCard. A class rather than an inline style so the
+     list view below can drop it without !important. */
+  .tc-foot {
+    border-top: 1px solid var(--color-border);
+  }
+
+  /* ---- Tools list view -------------------------------------------------
+     /tools offers a grid and a dense list. Both are the SAME ToolCard markup,
+     restyled here; rendering a separate row component per tool doubled the
+     page to ~4.9 MB of HTML. Grid view needs no rules — it is the card's
+     natural layout. */
+  #tools-container[data-view='list'] .tools-grid {
+    display: block;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    background: var(--color-bg-card);
+    overflow: hidden;
+  }
+
+  #tools-container[data-view='list'] .tools-grid > [data-tool-card] {
+    animation: none;
+    opacity: 1;
+  }
+
+  #tools-container[data-view='list'] .tool-card-v2 {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.625rem 1rem;
+    border: 0;
+    border-bottom: 1px solid var(--color-border);
+    border-radius: 0;
+    background: transparent;
+    transform: none;
+    box-shadow: none;
+  }
+
+  #tools-container[data-view='list'] .tool-card-v2:hover {
+    transform: none;
+    box-shadow: none;
+    background-color: var(--color-bg-secondary);
+  }
+
+  #tools-container[data-view='list']
+    .tools-grid
+    > [data-tool-card]:last-child
+    .tool-card-v2 {
+    border-bottom: none;
+  }
+
+  #tools-container[data-view='list'] .tc-head {
+    flex: 1 1 auto;
+    min-width: 0;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  #tools-container[data-view='list'] .tc-head .icon-chip {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 0.5rem;
+  }
+
+  #tools-container[data-view='list'] .tc-tagline {
+    -webkit-line-clamp: 1;
+    margin-top: 0.125rem;
+  }
+
+  #tools-container[data-view='list'] .tc-meta {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  #tools-container[data-view='list'] .tc-replaces,
+  #tools-container[data-view='list'] .tc-foot {
+    margin-top: 0;
+    flex: 0 0 auto;
+  }
+
+  #tools-container[data-view='list'] .tc-foot {
+    padding-top: 0;
+    border-top: none;
+    gap: 0.75rem;
+  }
+
+  #tools-container[data-view='list'] .tc-foot-left {
+    flex-wrap: nowrap;
+  }
+
+  #tools-container[data-view='list'] .tc-arrow {
+    position: static;
+    flex: 0 0 auto;
+    transform: none;
+  }
+
+  /* Narrow screens: keep the row to icon + name + tagline + license. */
+  @media (max-width: 767px) {
+    #tools-container[data-view='list'] .tc-replaces,
+    #tools-container[data-view='list'] .tc-foot-right,
+    #tools-container[data-view='list'] .tc-arrow {
+      display: none;
+    }
+  }
+
   .skip-link {
     position: absolute;
     top: -40px;

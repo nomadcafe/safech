@@ -2,7 +2,6 @@
 import BaseLayout from '../../components/layout/BaseLayout.astro';
 import SearchModal from '../../components/ui/SearchModal.astro';
 import ToolCard from '../../components/tools/ToolCard.astro';
-import ToolRow from '../../components/tools/ToolRow.astro';
 import ToolFilters from '../../components/tools/ToolFilters.astro';
 import { Icon } from 'astro-icon/components';
 import { allTools } from '../../data/tools/index';
@@ -76,8 +75,7 @@ const t = useTranslations('en');
             data-tool-date={tool.addedDate}
             data-tool-featured={String(tool.featured)}
           >
-            <div class="tool-card-view"><ToolCard tool={tool} /></div>
-            <div class="tool-row-view"><ToolRow tool={tool} /></div>
+            <ToolCard tool={tool} />
           </div>
         ))}
       </div>
@@ -86,31 +84,9 @@ const t = useTranslations('en');
 </BaseLayout>
 
 <style>
-  /* Default (grid view): show cards, hide rows. */
-  #tools-container[data-view="grid"] .tool-row-view { display: none; }
-  #tools-container[data-view="grid"] .tool-card-view { display: block; }
-
-  /* List view: collapse the grid into a single column of dense rows. */
-  #tools-container[data-view="list"] .tools-grid {
-    display: block;
-    border: 1px solid var(--color-border);
-    border-radius: 0.75rem;
-    background: var(--color-bg-card);
-    overflow: hidden;
-  }
-  #tools-container[data-view="list"] .tools-grid > [data-tool-card] {
-    animation: none;
-    opacity: 1;
-  }
-  #tools-container[data-view="list"] .tool-card-view { display: none; }
-  #tools-container[data-view="list"] .tool-row-view { display: block; }
-  #tools-container[data-view="list"] .tool-row-view :global(.tool-row) {
-    border-bottom: 1px solid var(--color-border);
-  }
-  #tools-container[data-view="list"] .tools-grid > [data-tool-card]:last-child .tool-row-view :global(.tool-row) {
-    border-bottom: none;
-  }
-
+  /* The list view is a CSS restyle of the very same ToolCard markup — see
+     "Tools list view" in global.css. Rendering a second row component per tool
+     used to double this page to ~4.9 MB of HTML. */
   .view-toggle-btn[aria-pressed="true"] {
     background: var(--color-bg-tertiary);
   }
