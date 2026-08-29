@@ -2,7 +2,7 @@
   "name": "safech",
   "type": "module",
   "version": "1.0.0",
-  "description": "SafeCh – Sichere, DSGVO-konforme Open-Source-Alternativen zu proprietärer Software.",
+  "description": "SafeCh – Safe, GDPR-friendly open-source alternatives to proprietary software.",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",

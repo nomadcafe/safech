@@ -49,7 +49,10 @@
   }
 
   html {
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    /* Inter carries no CJK glyphs, so the zh pages fall through to these
+       per-glyph. Latin text is unaffected. */
+    font-family: 'Inter', system-ui, -apple-system, 'PingFang SC',
+      'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
     scroll-behavior: smooth;
     overflow-x: hidden;
   }
