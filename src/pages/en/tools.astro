@@ -8,14 +8,31 @@ import { allTools } from '../../data/tools/index';
 import { categories } from '../../data/categories';
 import { getUniquelicenses, sortTools } from '../../utils/tools';
 import { useTranslations } from '../../i18n/utils';
+import { breadcrumbJsonLd, collectionJsonLd } from '../../utils/structured-data';
 
 const base = import.meta.env.BASE_URL;
 const sortedTools = sortTools(allTools, 'featured');
 const licenses = getUniquelicenses(allTools);
 const t = useTranslations('en');
+
+const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
+// No ItemList here on purpose: 639 entries would add ~80 KB to a page we just
+// spent a commit shrinking. The per-tool markup already carries the links.
+const jsonLd = [
+  collectionJsonLd({
+    name: 'All Tools',
+    description: 'Browse all open-source alternatives. Filter by category, license, platform and more.',
+    url: pageUrl,
+    lang: 'en',
+  }),
+  breadcrumbJsonLd([
+    { name: 'SafeCh', url: new URL(`${base}en/`, Astro.site).href },
+    { name: t('nav.tools'), url: pageUrl },
+  ]),
+];
 ---
 
-<BaseLayout title="All Tools – SafeCh" description="Browse all open-source alternatives. Filter by category, license, platform and more.">
+<BaseLayout title="All Tools – SafeCh" description="Browse all open-source alternatives. Filter by category, license, platform and more." jsonLd={jsonLd}>
   <SearchModal />
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">

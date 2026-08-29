@@ -8,17 +8,25 @@ interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  /** schema.org nodes for this page; merged into one @graph document. */
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const { title, description = t('layout.defaultDescription'), ogImage } = Astro.props;
+const { title, description = t('layout.defaultDescription'), ogImage, jsonLd } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const base = import.meta.env.BASE_URL;
 const ogImageUrl = ogImage ?? `${Astro.site}${base}og-image.png`.replace(/\/\//g, '/').replace('https:/', 'https://');
 
 const enUrl = new URL(getLocalizedPath(Astro.url, 'en'), Astro.site);
 const zhUrl = new URL(getLocalizedPath(Astro.url, 'zh'), Astro.site);
+
+const jsonLdNodes = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+// `</` inside a <script> would close the tag early; JSON-LD is data, not markup.
+const jsonLdGraph = jsonLdNodes.length
+  ? JSON.stringify({ '@context': 'https://schema.org', '@graph': jsonLdNodes }).replace(/</g, '\\u003c')
+  : null;
 ---
 
 <!doctype html>
@@ -47,6 +55,7 @@ const zhUrl = new URL(getLocalizedPath(Astro.url, 'zh'), Astro.site);
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:locale" content={lang === 'zh' ? 'zh_CN' : 'en_US'} />
+    <meta property="og:site_name" content="SafeCh" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -56,10 +65,20 @@ const zhUrl = new URL(getLocalizedPath(Astro.url, 'zh'), Astro.site);
 
     <title>{title}</title>
 
+    {jsonLdGraph && <script type="application/ld+json" is:inline set:html={jsonLdGraph} />}
+
     <!-- Theme initialization (prevent flash) -->
     <script is:inline>
       (function() {
-        const theme = localStorage.getItem('theme') || 'light';
+        var stored = null;
+        try {
+          stored = localStorage.getItem('theme');
+        } catch (e) {
+          /* privacy mode: fall through to the OS preference */
+        }
+        var prefersDark =
+          window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var theme = stored || (prefersDark ? 'dark' : 'light');
         document.documentElement.setAttribute('data-theme', theme);
       })();
     </script>

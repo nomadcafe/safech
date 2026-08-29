@@ -4,6 +4,8 @@ import SearchModal from '../../../components/ui/SearchModal.astro';
 import ToolDetail from '../../../components/tools/ToolDetail.astro';
 import { allTools } from '../../../data/tools/index';
 import { categories } from '../../../data/categories';
+import { getCategoryName } from '../../../i18n/utils';
+import { breadcrumbJsonLd, categoryNamesFor, toolJsonLd } from '../../../utils/structured-data';
 
 export function getStaticPaths() {
   return allTools.map((tool) => ({
@@ -18,9 +20,26 @@ const tool = allTools.find((t) => t.slug === slug);
 if (!tool) {
   return Astro.redirect(`${base}en/tools/`);
 }
+
+// `description` still holds German for the 270 curated tools; the page body
+// already prefers descriptionEn, and the meta tags must not disagree.
+const metaDescription = tool.descriptionEn ?? tool.description;
+const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
+const jsonLd = [
+  toolJsonLd(tool, {
+    url: pageUrl,
+    lang: 'en',
+    categoryNames: categoryNamesFor(tool, categories, catSlug => getCategoryName(catSlug, 'en')),
+  }),
+  breadcrumbJsonLd([
+    { name: 'SafeCh', url: new URL(`${base}en/`, Astro.site).href },
+    { name: 'Tools', url: new URL(`${base}en/tools/`, Astro.site).href },
+    { name: tool.name, url: pageUrl },
+  ]),
+];
 ---
 
-<BaseLayout title={`${tool.name} – SafeCh`} description={tool.description}>
+<BaseLayout title={`${tool.name} – SafeCh`} description={metaDescription} jsonLd={jsonLd}>
   <SearchModal />
 
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">

@@ -7,8 +7,17 @@ import { allTools } from '../../data/tools/index';
 import { categories } from '../../data/categories';
 import { getCategoriesWithToolCount } from '../../utils/categories';
 import { sample } from '../../utils/random';
+import { useTranslations } from '../../i18n/utils';
+import { organizationJsonLd, websiteJsonLd } from '../../utils/structured-data';
 
 const base = import.meta.env.BASE_URL;
+const t = useTranslations('zh');
+const siteUrl = new URL(base, Astro.site).href;
+const homeUrl = new URL(`${base}zh/`, Astro.site).href;
+const jsonLd = [
+  organizationJsonLd(siteUrl),
+  websiteJsonLd(siteUrl, homeUrl, 'zh', t('layout.defaultDescription')),
+];
 const categoriesWithCount = getCategoriesWithToolCount(categories, allTools);
 const totalTools = allTools.length;
 const totalCategories = categories.length;
@@ -24,7 +33,7 @@ const toolPool = sample(allTools, TOOL_POOL);
 const categoryPool = sample(categoriesWithCount, CATEGORY_POOL);
 ---
 
-<BaseLayout title="SafeCh – 你的自由。你的代码。你的未来。">
+<BaseLayout title="SafeCh – 你的自由。你的代码。你的未来。" jsonLd={jsonLd}>
   <SearchModal />
 
   <!-- Hero -->
