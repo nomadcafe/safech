@@ -6,6 +6,7 @@ import ToolCard from '../../components/tools/ToolCard.astro';
 import { allTools } from '../../data/tools/index';
 import { categories } from '../../data/categories';
 import { getCategoriesWithToolCount } from '../../utils/categories';
+import { sample } from '../../utils/random';
 
 const base = import.meta.env.BASE_URL;
 const categoriesWithCount = getCategoriesWithToolCount(categories, allTools);
@@ -13,8 +14,14 @@ const totalTools = allTools.length;
 const totalCategories = categories.length;
 const uniqueLicenses = new Set(allTools.map(t => t.license)).size;
 
-const allToolsShuffled = [...allTools].sort(() => Math.random() - 0.5);
-const allCategoriesShuffled = [...categoriesWithCount].sort(() => Math.random() - 0.5);
+// Candidate pools for the "different on every visit" sections. Only these are
+// rendered; the inline script below picks VISIBLE_COUNT of them per visit.
+// Rendering all 639 tools here cost ~2.3 MB of HTML and ~49k DOM nodes.
+const TOOL_POOL = 24;
+const CATEGORY_POOL = 18;
+const VISIBLE_COUNT = 6;
+const toolPool = sample(allTools, TOOL_POOL);
+const categoryPool = sample(categoriesWithCount, CATEGORY_POOL);
 ---
 
 <BaseLayout title="SafeCh – 你的自由。你的代码。你的未来。">
@@ -106,8 +113,8 @@ const allCategoriesShuffled = [...categoriesWithCount].sort(() => Math.random() 
       </p>
     </div>
     <div id="random-tools-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 stagger-fade">
-      {allToolsShuffled.map((tool, i) => (
-        <div class="random-tool-item" data-index={i} style={i >= 6 ? 'display:none' : ''}>
+      {toolPool.map((tool, i) => (
+        <div class="random-tool-item" data-index={i} style={i >= VISIBLE_COUNT ? 'display:none' : ''}>
           <ToolCard tool={tool} />
         </div>
       ))}
@@ -133,8 +140,8 @@ const allCategoriesShuffled = [...categoriesWithCount].sort(() => Math.random() 
       </p>
     </div>
     <div id="random-categories-grid" class="grid grid-cols-2 md:grid-cols-3 gap-4 stagger-fade">
-      {allCategoriesShuffled.map((cat, i) => (
-        <div class="random-category-item" data-index={i} style={i >= 6 ? 'display:none' : ''}>
+      {categoryPool.map((cat, i) => (
+        <div class="random-category-item" data-index={i} style={i >= VISIBLE_COUNT ? 'display:none' : ''}>
           <CategoryCard category={cat} />
         </div>
       ))}
