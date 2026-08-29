@@ -31,8 +31,12 @@ const categoryPool = sample(categoriesWithCount, CATEGORY_POOL);
   <section class="hero-section relative overflow-hidden gradient-bg-hero min-h-screen flex items-center justify-center pt-16" style="isolation: isolate">
     <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
       <picture class="hero-bg hero-bg-dark absolute inset-0">
+        <source media="(max-width: 767px)" type="image/avif" srcset={`${base}hero/mobile-dark.avif`} />
+        <source media="(max-width: 767px)" type="image/webp" srcset={`${base}hero/mobile-dark.webp`} />
         <source media="(max-width: 767px)" srcset={`${base}hero/mobile-dark.png`} />
-        <img src={`${base}hero/desktop-dark.png`} alt="" class="absolute inset-0 w-full h-full object-cover object-center" loading="eager" decoding="async" fetchpriority="high" />
+        <source type="image/avif" srcset={`${base}hero/desktop-dark.avif`} />
+        <source type="image/webp" srcset={`${base}hero/desktop-dark.webp`} />
+        <img src={`${base}hero/desktop-dark.png`} alt="" width="1672" height="941" class="absolute inset-0 w-full h-full object-cover object-center" loading="eager" decoding="async" fetchpriority="high" />
       </picture>
       <video
         class="hero-bg hero-bg-dark-video absolute inset-0 w-full h-full"
@@ -41,14 +45,18 @@ const categoryPool = sample(categoriesWithCount, CATEGORY_POOL);
         loop
         playsinline
         preload="metadata"
-        poster={`${base}hero/mobile-dark.png`}
+        poster={`${base}hero/mobile-dark.webp`}
         aria-hidden="true"
       >
         <source src={`${base}hero/mobile-dark.mp4`} type="video/mp4" />
       </video>
       <picture class="hero-bg hero-bg-light absolute inset-0">
+        <source media="(max-width: 767px)" type="image/avif" srcset={`${base}hero/mobile-light.avif`} />
+        <source media="(max-width: 767px)" type="image/webp" srcset={`${base}hero/mobile-light.webp`} />
         <source media="(max-width: 767px)" srcset={`${base}hero/mobile-light.png`} />
-        <img src={`${base}hero/desktop-light.png`} alt="" class="absolute inset-0 w-full h-full object-cover object-center" loading="eager" decoding="async" />
+        <source type="image/avif" srcset={`${base}hero/desktop-light.avif`} />
+        <source type="image/webp" srcset={`${base}hero/desktop-light.webp`} />
+        <img src={`${base}hero/desktop-light.png`} alt="" width="1920" height="1080" class="absolute inset-0 w-full h-full object-cover object-center" loading="eager" decoding="async" />
       </picture>
     </div>
     <div class="hero-scrim absolute inset-0 pointer-events-none" aria-hidden="true"></div>
