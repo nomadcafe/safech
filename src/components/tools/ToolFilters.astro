@@ -143,7 +143,12 @@ const t = useTranslations(lang);
     -webkit-backdrop-filter: blur(14px);
     border-bottom-color: var(--color-border);
   }
-  [data-theme='light'] .tool-filters.is-pinned {
+  /* :global on the ancestor — Astro scopes a bare attribute selector as if it
+     were an element, producing [data-astro-cid-x][data-theme=light], which no
+     element can satisfy: data-theme lives on <html>, the scope attribute does
+     not. Without this the light override never applies and the pinned bar
+     stays dark on a white page. */
+  :global([data-theme='light']) .tool-filters.is-pinned {
     background-color: rgba(255, 255, 255, 0.82);
   }
 
@@ -288,7 +293,11 @@ const t = useTranslations(lang);
     // begins overlapping content (i.e. its sticky offset has kicked in).
     if (root && inner) {
       const sentinel = document.createElement('div');
-      sentinel.style.cssText = 'position:absolute; top:0; height:1px; width:1px;';
+      // Must sit in normal flow directly above the bar: an absolutely
+      // positioned top:0 resolved against the document, so it was already
+      // outside the -65px rootMargin at scroll 0 and the bar rendered pinned
+      // before it had stuck to anything.
+      sentinel.style.cssText = 'height:1px; width:100%;';
       root.parentElement?.insertBefore(sentinel, root);
       const io = new IntersectionObserver(
         (entries) => {
