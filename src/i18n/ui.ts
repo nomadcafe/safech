@@ -137,9 +137,11 @@ export const ui = {
     // CategoryCard
     'category.replaces': 'Replaces:',
     'category.tools': 'Tools',
+    'category.gridHeading': 'Categories',
 
     // ToolGrid
     'grid.noTools': 'No tools found.',
+    'grid.heading': 'Tools',
 
     // Category page
     'catPage.home': 'Home',
@@ -345,9 +347,11 @@ export const ui = {
     // CategoryCard
     'category.replaces': '替代：',
     'category.tools': '工具',
+    'category.gridHeading': '分类',
 
     // ToolGrid
     'grid.noTools': '未找到工具。',
+    'grid.heading': '工具',
 
     // Category page
     'catPage.home': '首页',

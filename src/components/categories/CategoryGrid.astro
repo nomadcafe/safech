@@ -1,6 +1,7 @@
 ---
 import type { Category } from '../../data/types';
 import CategoryCard from './CategoryCard.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 
 interface Props {
   categories: Category[];
@@ -8,11 +9,16 @@ interface Props {
 }
 
 const { categories, title } = Astro.props;
+const t = useTranslations(getLangFromUrl(Astro.url));
 ---
 
 <section>
-  {title && (
+  {title ? (
     <h2 class="text-2xl font-bold mb-6" style="color: var(--color-text-primary)">{title}</h2>
+  ) : (
+    /* Card titles are <h3>. Without an <h2> here the document jumps h1 -> h3,
+       which breaks heading navigation for screen readers. */
+    <h2 class="sr-only">{t('category.gridHeading')}</h2>
   )}
   <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 stagger-fade">
     {categories.map((category) => (
