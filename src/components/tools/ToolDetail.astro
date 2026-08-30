@@ -31,7 +31,6 @@ const monthsAgo = lastUpdatedDate ? Math.floor((Date.now() - lastUpdatedDate.get
 const isStale = monthsAgo > 18;
 
 const toolCategories = categories.filter(c => tool.categories.includes(c.slug));
-const toolPath = t('path.tool');
 const categoryPath = t('path.category');
 
 const platformMeta: Record<string, { icon: string; label: string }> = {
@@ -357,9 +356,19 @@ const categoryIconMap: Record<string, string> = {
       img.naturalWidth > 0 && img.naturalWidth < placeholderThreshold;
 
     const giveUp = () => {
-      settled = true;
-      clearLoading();
+      settle();
       if (card) card.style.display = 'none';
+    };
+
+    // A retry can still be pending when we settle; leaving it queued fires a
+    // pointless refetch against a card we are done with.
+    const settle = () => {
+      settled = true;
+      if (timer !== undefined) {
+        window.clearTimeout(timer);
+        timer = undefined;
+      }
+      clearLoading();
     };
 
     const refetch = () => {
@@ -382,8 +391,7 @@ const categoryIconMap: Record<string, string> = {
         timer = window.setTimeout(refetch, delay);
         return;
       }
-      settled = true;
-      clearLoading();
+      settle();
     };
 
     const onError = () => {
