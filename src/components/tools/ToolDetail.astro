@@ -190,11 +190,36 @@ const categoryIconMap: Record<string, string> = {
       {t('detail.preview')}
     </h2>
     <div class="relative rounded-lg overflow-hidden border" style="border-color: var(--color-border)">
+      {/* The screenshot comes from Automattic's mshots service, so loading it
+          hands a third party the visitor's IP and this page's address. On a
+          site that promises no third-party calls that cannot happen by
+          default, so the request waits for a click. */}
+      <div
+        class="tool-preview-consent flex flex-col items-center justify-center gap-3 px-6 py-10 text-center"
+        style="background: var(--color-bg-tertiary); min-height: 200px;"
+      >
+        <Icon name="lucide:image-off" size={22} style="color: var(--color-text-muted)" />
+        <p class="text-xs max-w-md leading-relaxed" style="color: var(--color-text-muted)">
+          {t('detail.previewNotice')}
+        </p>
+        <button
+          type="button"
+          class="tool-preview-load inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium bg-red-600 hover:bg-red-500 text-white transition-colors"
+        >
+          <Icon name="lucide:monitor" size={14} />
+          {t('detail.previewLoad')}
+        </button>
+        <label class="inline-flex items-center gap-2 text-xs cursor-pointer" style="color: var(--color-text-muted)">
+          <input type="checkbox" class="tool-preview-remember" />
+          {t('detail.previewRemember')}
+        </label>
+      </div>
       <img
-        src={previewImageUrl}
+        data-preview-src={previewImageUrl}
         alt={`${tool.name} Preview`}
         class="w-full h-auto tool-preview-img"
         loading="lazy"
+        hidden
         style="background: #111; min-height: 200px;"
       />
       <div class="tool-preview-shimmer absolute inset-0 pointer-events-none flex items-center justify-center text-xs" style="color: var(--color-text-muted); background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent); display: none;">
@@ -204,6 +229,9 @@ const categoryIconMap: Record<string, string> = {
         </span>
       </div>
     </div>
+    <p class="tool-preview-credit text-[11px] mt-2" style="color: var(--color-text-muted); display: none;">
+      {t('detail.previewSource')}
+    </p>
   </div>
 
   <div class="card p-6 mb-8">
@@ -324,7 +352,7 @@ const categoryIconMap: Record<string, string> = {
 
   document.querySelectorAll('.tool-preview-img').forEach(node => {
     const img = node as HTMLImageElement;
-    const originalSrc = img.src;
+    const originalSrc = img.dataset.previewSrc ?? '';
     // mshots returns a small "still generating" placeholder on the first
     // request to a fresh URL (typically 400x300 px). It can also return
     // a transient error mid-generation. Poll on either condition until
@@ -409,12 +437,40 @@ const categoryIconMap: Record<string, string> = {
 
     img.addEventListener('load', onLoad);
     img.addEventListener('error', onError);
-    if (img.complete) {
-      if (img.naturalWidth === 0) onError();
-      else onLoad();
-    } else if (isMshots) {
-      // Show loading hint immediately while the first request is in flight.
+
+    const consent = card?.querySelector('.tool-preview-consent') as HTMLElement | null;
+    const loadBtn = card?.querySelector('.tool-preview-load') as HTMLButtonElement | null;
+    const remember = card?.querySelector('.tool-preview-remember') as HTMLInputElement | null;
+    const credit = card?.querySelector('.tool-preview-credit') as HTMLElement | null;
+
+    const REMEMBER_KEY = 'preview-consent';
+
+    // Only this call reaches s.wordpress.com. Nothing before it does.
+    const startLoading = () => {
+      if (consent) consent.style.display = 'none';
+      img.hidden = false;
+      if (credit) credit.style.display = '';
       showLoading();
+      img.src = originalSrc;
+    };
+
+    loadBtn?.addEventListener('click', () => {
+      if (remember?.checked) {
+        try {
+          localStorage.setItem(REMEMBER_KEY, '1');
+        } catch {
+          /* ignore quota / privacy-mode errors */
+        }
+      }
+      startLoading();
+    });
+
+    let remembered = false;
+    try {
+      remembered = localStorage.getItem(REMEMBER_KEY) === '1';
+    } catch {
+      /* no stored choice available; keep the request gated */
     }
+    if (remembered) startLoading();
   });
 </script>
