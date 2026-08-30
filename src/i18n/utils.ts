@@ -20,6 +20,23 @@ export function useTranslations(lang: Lang) {
   };
 }
 
+/**
+ * Like useTranslations, but fills `{placeholders}`. Sentences that interleave
+ * counts with prose ("48 categories with 639+ tools") cannot be split into
+ * fragments without breaking word order in one language or the other.
+ */
+export function useFormatter(lang: Lang) {
+  const t = useTranslations(lang);
+  return function tf(
+    key: keyof (typeof ui)[typeof defaultLang],
+    vars: Record<string, string | number>
+  ): string {
+    return t(key).replace(/\{(\w+)\}/g, (match, name: string) =>
+      name in vars ? String(vars[name]) : match
+    );
+  };
+}
+
 export function getHomeHref(lang: Lang): string {
   const base = import.meta.env.BASE_URL;
   if (lang === 'zh') return `${base}zh/`;

@@ -149,6 +149,63 @@ export const ui = {
     'difficulty.fortgeschritten': '●●● Advanced',
 
     // Tool/Category path prefixes
+    // Page: categories
+    // Page: self-hosting
+    'page.selfHosting.ctaTools': 'Discover all self-hostable tools →',
+
+    // Page: home
+    'page.home.title': 'SafeCh – Your Freedom. Your Code. Your Future.',
+    'page.home.badge': 'GDPR-friendly · 100% Open Source',
+    'page.home.headline': 'Forget proprietary software.',
+    'page.home.headlineAccent': 'Freedom is free.',
+    'page.home.lede': '{tools}+ safe, GDPR-friendly FOSS alternatives to US products like Google, Microsoft & Adobe. Self-hostable, transparent, open-source.',
+    'page.home.ctaTools': 'Discover all tools',
+    'page.home.ctaCategories': 'Browse categories',
+    'page.home.statTools': '{tools} Tools',
+    'page.home.statCategories': '{categories} Categories',
+    'page.home.statLicenses': '{licenses} Licenses',
+    'page.home.toolsHeadingLead': 'Discover ',
+    'page.home.toolsHeadingAccent': 'FOSS Alternatives',
+    'page.home.toolsSubtitle': 'Randomly selected open-source tools — different on every visit',
+    'page.home.viewAllTools': 'View all {tools} tools →',
+    'page.home.categoriesHeadingLead': 'Browse ',
+    'page.home.categoriesHeadingAccent': 'Categories',
+    'page.home.categoriesSubtitle': 'Explore our {categories} categories — different on every visit',
+    'page.home.viewAllCategories': 'View all categories →',
+    'page.home.finalHeading': 'Ready to find your open-source match?',
+    'page.home.finalBody': 'Browse {tools}+ safe, GDPR-friendly tools and take back control of your data today.',
+    'page.home.finalCompare': 'Find alternatives',
+    'page.home.finalSelfHost': 'Learn self-hosting',
+
+    'page.categories.title': 'All Categories – SafeCh',
+    'page.categories.description': 'Browse all categories of open-source alternatives to proprietary software.',
+    'page.categories.headingLead': 'All ',
+    'page.categories.headingAccent': 'Categories',
+    'page.categories.intro': '{categories} categories with {tools}+ open-source tools — find the perfect alternative for your use case.',
+
+    // Page: 404
+    'page.404.title': '404 – Page Not Found – SafeCh',
+    'page.404.heading': 'Page not found',
+    'page.404.body': "This page doesn't exist — just like the excuses for using proprietary software.",
+    'page.404.home': '← Back to Home',
+    'page.404.allTools': 'View all tools',
+
+    // Page: comparison
+    'page.comparison.title': 'Comparison: Proprietary vs. FOSS – SafeCh',
+    'page.comparison.description': 'Find the right open-source alternative to proprietary software. Compare Google, Microsoft, Adobe and more.',
+    'page.comparison.headingLead': 'Proprietary → ',
+    'page.comparison.headingAccent': 'FOSS',
+    'page.comparison.intro': 'Which proprietary tool do you want to replace? Find the best open-source alternative.',
+    'page.comparison.searchPlaceholder': 'Search proprietary tool (e.g. Google Drive, Slack, Photoshop)...',
+
+    // Page: tools
+    'page.tools.title': 'All Tools – SafeCh',
+    'page.tools.name': 'All Tools',
+    'page.tools.description': 'Browse all open-source alternatives. Filter by category, license, platform and more.',
+    'page.tools.headingLead': 'All ',
+    'page.tools.headingAccent': 'Tools',
+    'page.tools.intro': '{tools} open-source alternatives to proprietary software.',
+
     'path.tool': 'en/tool',
     'path.category': 'en/category',
   },
@@ -296,6 +353,63 @@ export const ui = {
     'difficulty.fortgeschritten': '●●● 进阶',
 
     // Tool/Category path prefixes
+    // Page: categories
+    // Page: self-hosting
+    'page.selfHosting.ctaTools': '探索所有可自托管的工具 →',
+
+    // Page: home
+    'page.home.title': 'SafeCh – 你的自由。你的代码。你的未来。',
+    'page.home.badge': '符合 GDPR · 100% 开源',
+    'page.home.headline': '告别专有软件。',
+    'page.home.headlineAccent': '自由，本该如此。',
+    'page.home.lede': '{tools}+ 个安全、符合 GDPR 的 FOSS 工具，替代 Google、Microsoft、Adobe 等美国产品。可自托管、透明、开源。',
+    'page.home.ctaTools': '发现所有工具',
+    'page.home.ctaCategories': '浏览分类',
+    'page.home.statTools': '{tools} 个工具',
+    'page.home.statCategories': '{categories} 个分类',
+    'page.home.statLicenses': '{licenses} 种许可证',
+    'page.home.toolsHeadingLead': '发现 ',
+    'page.home.toolsHeadingAccent': 'FOSS 替代品',
+    'page.home.toolsSubtitle': '随机精选的开源工具 —— 每次访问都不一样',
+    'page.home.viewAllTools': '查看全部 {tools} 个工具 →',
+    'page.home.categoriesHeadingLead': '浏览 ',
+    'page.home.categoriesHeadingAccent': '分类',
+    'page.home.categoriesSubtitle': '探索我们的 {categories} 个分类 —— 每次访问都不一样',
+    'page.home.viewAllCategories': '查看所有分类 →',
+    'page.home.finalHeading': '找到适合你的开源替代品',
+    'page.home.finalBody': '浏览 {tools}+ 款安全、符合 GDPR 的工具，从今天起重新掌控你的数据与隐私。',
+    'page.home.finalCompare': '查找替代品',
+    'page.home.finalSelfHost': '了解自托管',
+
+    'page.categories.title': '全部分类 – SafeCh',
+    'page.categories.description': '浏览专有软件的所有开源替代方案分类。',
+    'page.categories.headingLead': '全部',
+    'page.categories.headingAccent': '分类',
+    'page.categories.intro': '{categories} 个分类，{tools}+ 个开源工具 — 为你的使用场景找到完美的替代方案。',
+
+    // Page: 404
+    'page.404.title': '404 – 页面未找到 – SafeCh',
+    'page.404.heading': '页面未找到',
+    'page.404.body': '这个页面不存在 — 就像使用专有软件的那些借口一样。',
+    'page.404.home': '← 返回首页',
+    'page.404.allTools': '查看全部工具',
+
+    // Page: comparison
+    'page.comparison.title': '对比：专有软件 vs. FOSS – SafeCh',
+    'page.comparison.description': '为专有软件找到合适的开源替代品。对比 Google、Microsoft、Adobe 等。',
+    'page.comparison.headingLead': '专有软件 → ',
+    'page.comparison.headingAccent': 'FOSS',
+    'page.comparison.intro': '你想替换哪款专有软件？找到最合适的开源替代品。',
+    'page.comparison.searchPlaceholder': '搜索专有软件（如 Google Drive、Slack、Photoshop）...',
+
+    // Page: tools
+    'page.tools.title': '全部工具 – SafeCh',
+    'page.tools.name': '全部工具',
+    'page.tools.description': '浏览所有开源替代方案。按分类、许可证、平台等条件筛选。',
+    'page.tools.headingLead': '全部',
+    'page.tools.headingAccent': '工具',
+    'page.tools.intro': '{tools} 个专有软件的开源替代方案。',
+
     'path.tool': 'zh/tool',
     'path.category': 'zh/category',
   },

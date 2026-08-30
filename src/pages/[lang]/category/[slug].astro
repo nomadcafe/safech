@@ -8,11 +8,12 @@ import { getCategoryBySlug } from '../../../utils/categories';
 import { getToolsByCategory } from '../../../utils/tools';
 import { getLangFromUrl, useTranslations, getHomeHref, getCategoryName, getCategoryDescription, getCategoryReplaces } from '../../../i18n/utils';
 import { breadcrumbJsonLd, collectionJsonLd } from '../../../utils/structured-data';
+import { languages } from '../../../i18n/ui';
 
 export function getStaticPaths() {
-  return categories.map((cat) => ({
-    params: { slug: cat.slug },
-  }));
+  return Object.keys(languages).flatMap(lang =>
+    categories.map(cat => ({ params: { lang, slug: cat.slug } }))
+  );
 }
 
 const { slug } = Astro.params;
@@ -20,7 +21,7 @@ const base = import.meta.env.BASE_URL;
 const category = getCategoryBySlug(categories, slug!);
 
 if (!category) {
-  return Astro.redirect(`${base}zh/categories/`);
+  return Astro.redirect(`${base}${Astro.params.lang}/categories/`);
 }
 
 const tools = getToolsByCategory(allTools, slug!);
@@ -62,7 +63,7 @@ const jsonLd = [
       <ol class="flex items-center gap-2" style="color: var(--color-text-muted)">
         <li><a href={homeHref} class="hover:text-red-400">{t('catPage.home')}</a></li>
         <li>/</li>
-        <li><a href={`${base}zh/categories/`} class="hover:text-red-400">{t('catPage.categories')}</a></li>
+        <li><a href={`${base}${t('nav.href.categories')}`} class="hover:text-red-400">{t('catPage.categories')}</a></li>
         <li>/</li>
         <li style="color: var(--color-text-primary)">{displayName}</li>
       </ol>

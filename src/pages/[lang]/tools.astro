@@ -7,41 +7,45 @@ import { Icon } from 'astro-icon/components';
 import { allTools } from '../../data/tools/index';
 import { categories } from '../../data/categories';
 import { getUniquelicenses, sortTools } from '../../utils/tools';
-import { useTranslations } from '../../i18n/utils';
+import { localePaths } from '../../i18n/paths';
+import { getLangFromUrl, useTranslations, useFormatter, getHomeHref } from '../../i18n/utils';
 import { breadcrumbJsonLd, collectionJsonLd } from '../../utils/structured-data';
 
-const base = import.meta.env.BASE_URL;
+export const getStaticPaths = localePaths;
+
 const sortedTools = sortTools(allTools, 'featured');
 const licenses = getUniquelicenses(allTools);
-const t = useTranslations('en');
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const tf = useFormatter(lang);
 
 const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
 // No ItemList here on purpose: 639 entries would add ~80 KB to a page we just
 // spent a commit shrinking. The per-tool markup already carries the links.
 const jsonLd = [
   collectionJsonLd({
-    name: 'All Tools',
-    description: 'Browse all open-source alternatives. Filter by category, license, platform and more.',
+    name: t('page.tools.name'),
+    description: t('page.tools.description'),
     url: pageUrl,
-    lang: 'en',
+    lang,
   }),
   breadcrumbJsonLd([
-    { name: 'SafeCh', url: new URL(`${base}en/`, Astro.site).href },
+    { name: 'SafeCh', url: new URL(getHomeHref(lang), Astro.site).href },
     { name: t('nav.tools'), url: pageUrl },
   ]),
 ];
 ---
 
-<BaseLayout title="All Tools – SafeCh" description="Browse all open-source alternatives. Filter by category, license, platform and more." jsonLd={jsonLd}>
+<BaseLayout title={t('page.tools.title')} description={t('page.tools.description')} jsonLd={jsonLd}>
   <SearchModal />
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
     <div class="mb-8">
       <h1 class="text-4xl font-bold mb-4" style="color: var(--color-text-primary)">
-        All <span class="gradient-text">Tools</span>
+        {t('page.tools.headingLead')}<span class="gradient-text">{t('page.tools.headingAccent')}</span>
       </h1>
       <p class="text-lg" style="color: var(--color-text-secondary)">
-        {allTools.length} open-source alternatives to proprietary software.
+        {tf('page.tools.intro', { tools: allTools.length })}
       </p>
     </div>
 

@@ -5,20 +5,27 @@ import CategoryGrid from '../../components/categories/CategoryGrid.astro';
 import { allTools } from '../../data/tools/index';
 import { categories } from '../../data/categories';
 import { getCategoriesWithToolCount } from '../../utils/categories';
+import { localePaths } from '../../i18n/paths';
+import { getLangFromUrl, useTranslations, useFormatter } from '../../i18n/utils';
 
+export const getStaticPaths = localePaths;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const tf = useFormatter(lang);
 const categoriesWithCount = getCategoriesWithToolCount(categories, allTools);
 ---
 
-<BaseLayout title="All Categories – SafeCh" description="Browse all categories of open-source alternatives to proprietary software.">
+<BaseLayout title={t('page.categories.title')} description={t('page.categories.description')}>
   <SearchModal />
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
     <div class="mb-12">
       <h1 class="text-4xl font-bold mb-4" style="color: var(--color-text-primary)">
-        All <span class="gradient-text">Categories</span>
+        {t('page.categories.headingLead')}<span class="gradient-text">{t('page.categories.headingAccent')}</span>
       </h1>
       <p class="text-lg" style="color: var(--color-text-secondary)">
-        {categoriesWithCount.length} categories with {allTools.length}+ open-source tools — find the perfect alternative for your use case.
+        {tf('page.categories.intro', { categories: categoriesWithCount.length, tools: allTools.length })}
       </p>
     </div>
 

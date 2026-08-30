@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../../components/layout/BaseLayout.astro';
+import SearchModal from '../../components/ui/SearchModal.astro';
+import { localePaths } from '../../i18n/paths';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import { selfHostingContent } from '../../i18n/content/self-hosting';
+
+export const getStaticPaths = localePaths;
+
+const base = import.meta.env.BASE_URL;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const page = selfHostingContent[lang];
+const toolBase = `${base}${t('path.tool')}/`;
+---
+
+<BaseLayout title={page.title} description={page.description}>
+  <SearchModal />
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+    <h1 class="text-4xl font-bold mb-4" style="color: var(--color-text-primary)" set:html={page.heading} />
+    <p class="text-lg mb-12" style="color: var(--color-text-secondary)" set:html={page.subtitle} />
+
+    <article class="prose-custom space-y-8">
+      {page.sections.map(section => (
+        <section class="card p-6">
+          <h2 class="text-xl font-semibold mb-4" style="color: var(--color-text-primary)" set:html={section.heading} />
+          <Fragment set:html={section.body.replaceAll('{toolBase}', toolBase)} />
+        </section>
+      ))}
+
+      <div class="text-center pt-4">
+        <a
+          href={`${base}${t('nav.href.tools')}`}
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium no-underline hover:no-underline bg-red-600 hover:bg-red-500 text-white transition-all"
+        >
+          {t('page.selfHosting.ctaTools')}
+        </a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>

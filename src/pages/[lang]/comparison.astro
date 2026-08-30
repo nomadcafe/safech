@@ -2,8 +2,14 @@
 import BaseLayout from '../../components/layout/BaseLayout.astro';
 import SearchModal from '../../components/ui/SearchModal.astro';
 import { allTools } from '../../data/tools/index';
+import { localePaths } from '../../i18n/paths';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+export const getStaticPaths = localePaths;
 
 const base = import.meta.env.BASE_URL;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const replacementMap = new Map<string, typeof allTools>();
 allTools.forEach(tool => {
@@ -24,18 +30,19 @@ const popularReplacements = [
 ];
 
 const sortedEntries = Array.from(replacementMap.entries()).sort((a, b) => a[0].localeCompare(b[0]));
+const toolPath = t('path.tool');
 ---
 
-<BaseLayout title="Comparison: Proprietary vs. FOSS – SafeCh" description="Find the right open-source alternative to proprietary software. Compare Google, Microsoft, Adobe and more.">
+<BaseLayout title={t('page.comparison.title')} description={t('page.comparison.description')}>
   <SearchModal />
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
     <div class="text-center mb-12">
       <h1 class="text-4xl font-bold mb-4" style="color: var(--color-text-primary)">
-        Proprietary → <span class="gradient-text">FOSS</span>
+        {t('page.comparison.headingLead')}<span class="gradient-text">{t('page.comparison.headingAccent')}</span>
       </h1>
       <p class="text-lg max-w-2xl mx-auto" style="color: var(--color-text-secondary)">
-        Which proprietary tool do you want to replace? Find the best open-source alternative.
+        {t('page.comparison.intro')}
       </p>
     </div>
 
@@ -44,7 +51,7 @@ const sortedEntries = Array.from(replacementMap.entries()).sort((a, b) => a[0].l
       <input
         type="text"
         id="compare-search"
-        placeholder="Search proprietary tool (e.g. Google Drive, Slack, Photoshop)..."
+        placeholder={t('page.comparison.searchPlaceholder')}
         class="w-full px-5 py-3 rounded-xl text-base outline-none"
         style="background: var(--color-bg-secondary); color: var(--color-text-primary); border: 1px solid var(--color-border)"
       />
@@ -81,7 +88,7 @@ const sortedEntries = Array.from(replacementMap.entries()).sort((a, b) => a[0].l
             <div class="flex-1 flex flex-wrap gap-2">
               {alternatives.map(alt => (
                 <a
-                  href={`${base}en/tool/${alt.slug}/`}
+                  href={`${base}${toolPath}/${alt.slug}/`}
                   class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium no-underline hover:no-underline transition-colors"
                   style="background: var(--color-accent-green-glow); border: 1px solid rgba(34,197,94,0.3); color: var(--color-accent-green-text)"
                 >

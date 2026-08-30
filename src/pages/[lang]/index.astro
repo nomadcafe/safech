@@ -7,16 +7,21 @@ import { allTools } from '../../data/tools/index';
 import { categories } from '../../data/categories';
 import { getCategoriesWithToolCount } from '../../utils/categories';
 import { sample } from '../../utils/random';
-import { useTranslations } from '../../i18n/utils';
+import { localePaths } from '../../i18n/paths';
+import { getLangFromUrl, useTranslations, useFormatter, getHomeHref } from '../../i18n/utils';
 import { organizationJsonLd, websiteJsonLd } from '../../utils/structured-data';
 
+export const getStaticPaths = localePaths;
+
 const base = import.meta.env.BASE_URL;
-const t = useTranslations('en');
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const tf = useFormatter(lang);
 const siteUrl = new URL(base, Astro.site).href;
-const homeUrl = new URL(`${base}en/`, Astro.site).href;
+const homeUrl = new URL(getHomeHref(lang), Astro.site).href;
 const jsonLd = [
   organizationJsonLd(siteUrl),
-  websiteJsonLd(siteUrl, homeUrl, 'en', t('layout.defaultDescription')),
+  websiteJsonLd(siteUrl, homeUrl, lang, t('layout.defaultDescription')),
 ];
 const categoriesWithCount = getCategoriesWithToolCount(categories, allTools);
 const totalTools = allTools.length;
@@ -33,7 +38,7 @@ const toolPool = sample(allTools, TOOL_POOL);
 const categoryPool = sample(categoriesWithCount, CATEGORY_POOL);
 ---
 
-<BaseLayout title="SafeCh – Your Freedom. Your Code. Your Future." jsonLd={jsonLd}>
+<BaseLayout title={t('page.home.title')} jsonLd={jsonLd}>
   <SearchModal />
 
   <!-- Hero -->
@@ -72,48 +77,47 @@ const categoryPool = sample(categoriesWithCount, CATEGORY_POOL);
     <div class="hero-fade-bottom absolute left-0 right-0 bottom-0 pointer-events-none" aria-hidden="true"></div>
     <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
       <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm mb-8 animate-fade-in" style="background: var(--color-accent-green-glow); border: 1px solid rgba(34,197,94,0.3); color: var(--color-accent-green-text)">
-        <svg class="w-4 h-4 inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 .56-.89l7-4a1 1 0 0 1 .88 0l7 4A1 1 0 0 1 20 6z"/><path d="m9 12 2 2 4-4"/></svg> GDPR-friendly · 100% Open Source
+        <svg class="w-4 h-4 inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 .56-.89l7-4a1 1 0 0 1 .88 0l7 4A1 1 0 0 1 20 6z"/><path d="m9 12 2 2 4-4"/></svg> {t('page.home.badge')}
       </div>
 
       <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 animate-fade-in-up" style="color: var(--color-text-primary)">
-        Forget proprietary software.
+        {t('page.home.headline')}
         <br />
-        <span class="gradient-text">Freedom is free.</span>
+        <span class="gradient-text">{t('page.home.headlineAccent')}</span>
       </h1>
 
       <p class="text-lg sm:text-xl max-w-2xl mx-auto mb-10 animate-fade-in-up" style="color: var(--color-text-secondary); animation-delay: 0.1s">
-        {totalTools}+ safe, GDPR-friendly FOSS alternatives to US products like Google, Microsoft & Adobe.
-        Self-hostable, transparent, open-source.
+        {tf('page.home.lede', { tools: totalTools })}
       </p>
 
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 animate-fade-in-up" style="animation-delay: 0.2s">
         <a
-          href={`${base}en/tools/`}
+          href={`${base}${t('nav.href.tools')}`}
           class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium no-underline hover:no-underline bg-red-600 hover:bg-red-500 text-white shadow-lg shadow-red-500/25 hover:shadow-red-500/40 transition-all"
         >
-          Discover all tools
+          {t('page.home.ctaTools')}
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
           </svg>
         </a>
         <a
-          href={`${base}en/categories/`}
+          href={`${base}${t('nav.href.categories')}`}
           class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium no-underline hover:no-underline border border-red-500/50 text-red-400 hover:bg-red-500/10 transition-all"
         >
-          Browse categories
+          {t('page.home.ctaCategories')}
         </a>
       </div>
 
       <!-- Stats -->
       <div class="flex flex-wrap items-center justify-center gap-4 animate-fade-in-up" style="animation-delay: 0.3s">
         <span class="px-4 py-2 rounded-full text-sm font-medium" style="background: var(--color-bg-secondary); border: 1px solid var(--color-border); color: var(--color-text-secondary)">
-          {totalTools} Tools
+          {tf('page.home.statTools', { tools: totalTools })}
         </span>
         <span class="px-4 py-2 rounded-full text-sm font-medium" style="background: var(--color-bg-secondary); border: 1px solid var(--color-border); color: var(--color-text-secondary)">
-          {totalCategories} Categories
+          {tf('page.home.statCategories', { categories: totalCategories })}
         </span>
         <span class="px-4 py-2 rounded-full text-sm font-medium" style="background: var(--color-bg-secondary); border: 1px solid var(--color-border); color: var(--color-text-secondary)">
-          {uniqueLicenses} Licenses
+          {tf('page.home.statLicenses', { licenses: uniqueLicenses })}
         </span>
       </div>
     </div>
@@ -123,10 +127,10 @@ const categoryPool = sample(categoriesWithCount, CATEGORY_POOL);
   <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
     <div class="text-center mb-12">
       <h2 class="text-3xl font-bold mb-3" style="color: var(--color-text-primary)">
-        Discover <span class="gradient-text">FOSS Alternatives</span>
+        {t('page.home.toolsHeadingLead')}<span class="gradient-text">{t('page.home.toolsHeadingAccent')}</span>
       </h2>
       <p style="color: var(--color-text-secondary)">
-        Randomly selected open-source tools — different on every visit
+        {t('page.home.toolsSubtitle')}
       </p>
     </div>
     <div id="random-tools-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 stagger-fade">
@@ -138,10 +142,10 @@ const categoryPool = sample(categoriesWithCount, CATEGORY_POOL);
     </div>
     <div class="text-center mt-8">
       <a
-        href={`${base}en/tools/`}
+        href={`${base}${t('nav.href.tools')}`}
         class="inline-flex items-center gap-2 text-sm font-medium text-red-400 hover:text-red-300 no-underline hover:no-underline"
       >
-        View all {totalTools} tools →
+        {tf('page.home.viewAllTools', { tools: totalTools })}
       </a>
     </div>
   </section>
@@ -150,10 +154,10 @@ const categoryPool = sample(categoriesWithCount, CATEGORY_POOL);
   <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20" style="border-top: 1px solid var(--color-border)">
     <div class="text-center mb-12">
       <h2 class="text-3xl font-bold mb-3" style="color: var(--color-text-primary)">
-        Browse <span class="gradient-text">Categories</span>
+        {t('page.home.categoriesHeadingLead')}<span class="gradient-text">{t('page.home.categoriesHeadingAccent')}</span>
       </h2>
       <p style="color: var(--color-text-secondary)">
-        Explore our {totalCategories} categories — different on every visit
+        {tf('page.home.categoriesSubtitle', { categories: totalCategories })}
       </p>
     </div>
     <div id="random-categories-grid" class="grid grid-cols-2 md:grid-cols-3 gap-4 stagger-fade">
@@ -165,10 +169,10 @@ const categoryPool = sample(categoriesWithCount, CATEGORY_POOL);
     </div>
     <div class="text-center mt-8">
       <a
-        href={`${base}en/categories/`}
+        href={`${base}${t('nav.href.categories')}`}
         class="inline-flex items-center gap-2 text-sm font-medium text-red-400 hover:text-red-300 no-underline hover:no-underline"
       >
-        View all categories →
+        {t('page.home.viewAllCategories')}
       </a>
     </div>
   </section>
@@ -177,23 +181,23 @@ const categoryPool = sample(categoriesWithCount, CATEGORY_POOL);
   <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
     <div class="card p-8 md:p-12 text-center" style="border-color: var(--color-border-accent)">
       <h2 class="text-2xl md:text-3xl font-bold mb-4" style="color: var(--color-text-primary)">
-        Ready to find your open-source match?
+        {t('page.home.finalHeading')}
       </h2>
       <p class="text-lg mb-8 max-w-2xl mx-auto" style="color: var(--color-text-secondary)">
-        Browse {totalTools}+ safe, GDPR-friendly tools and take back control of your data today.
+        {tf('page.home.finalBody', { tools: totalTools })}
       </p>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
         <a
-          href={`${base}en/comparison/`}
+          href={`${base}${t('nav.href.comparison')}`}
           class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium no-underline hover:no-underline bg-red-600 hover:bg-red-500 text-white transition-all"
         >
-          Find alternatives
+          {t('page.home.finalCompare')}
         </a>
         <a
-          href={`${base}en/self-hosting/`}
+          href={`${base}${t('nav.href.guides')}`}
           class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium no-underline hover:no-underline border border-red-500/50 text-red-400 hover:bg-red-500/10 transition-all"
         >
-          Learn self-hosting
+          {t('page.home.finalSelfHost')}
         </a>
       </div>
     </div>

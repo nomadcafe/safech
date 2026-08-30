@@ -4,21 +4,24 @@ import SearchModal from '../../../components/ui/SearchModal.astro';
 import ToolDetail from '../../../components/tools/ToolDetail.astro';
 import { allTools } from '../../../data/tools/index';
 import { categories } from '../../../data/categories';
-import { getCategoryName } from '../../../i18n/utils';
 import { breadcrumbJsonLd, categoryNamesFor, toolJsonLd } from '../../../utils/structured-data';
+import { languages } from '../../../i18n/ui';
+import { getLangFromUrl, useTranslations, getHomeHref, getCategoryName } from '../../../i18n/utils';
 
 export function getStaticPaths() {
-  return allTools.map((tool) => ({
-    params: { slug: tool.slug },
-  }));
+  return Object.keys(languages).flatMap(lang =>
+    allTools.map(tool => ({ params: { lang, slug: tool.slug } }))
+  );
 }
 
 const { slug } = Astro.params;
 const base = import.meta.env.BASE_URL;
-const tool = allTools.find((t) => t.slug === slug);
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const tool = allTools.find((entry) => entry.slug === slug);
 
 if (!tool) {
-  return Astro.redirect(`${base}zh/tools/`);
+  return Astro.redirect(`${base}${t('nav.href.tools')}`);
 }
 
 // `description` still holds German for the 270 curated tools; the page body
@@ -28,12 +31,12 @@ const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
 const jsonLd = [
   toolJsonLd(tool, {
     url: pageUrl,
-    lang: 'zh',
-    categoryNames: categoryNamesFor(tool, categories, catSlug => getCategoryName(catSlug, 'zh')),
+    lang,
+    categoryNames: categoryNamesFor(tool, categories, catSlug => getCategoryName(catSlug, lang)),
   }),
   breadcrumbJsonLd([
-    { name: 'SafeCh', url: new URL(`${base}zh/`, Astro.site).href },
-    { name: '工具', url: new URL(`${base}zh/tools/`, Astro.site).href },
+    { name: 'SafeCh', url: new URL(getHomeHref(lang), Astro.site).href },
+    { name: t('nav.tools'), url: new URL(`${base}${t('nav.href.tools')}`, Astro.site).href },
     { name: tool.name, url: pageUrl },
   ]),
 ];

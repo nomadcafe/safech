@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../components/layout/BaseLayout.astro';
+import SearchModal from '../../components/ui/SearchModal.astro';
+import { localePaths } from '../../i18n/paths';
+import { getLangFromUrl } from '../../i18n/utils';
+import { aboutContent } from '../../i18n/content/about';
+
+export const getStaticPaths = localePaths;
+
+const lang = getLangFromUrl(Astro.url);
+const page = aboutContent[lang];
+---
+
+<BaseLayout title={page.title} description={page.description}>
+  <SearchModal />
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+    <h1 class="text-4xl font-bold mb-4" style="color: var(--color-text-primary)" set:html={page.heading} />
+    <p class="text-lg mb-12" style="color: var(--color-text-secondary)" set:html={page.subtitle} />
+
+    <div class="space-y-8">
+      {page.sections.map(section => (
+        <section class="card p-6">
+          <h2 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary)" set:html={section.heading} />
+          <Fragment set:html={section.body} />
+        </section>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
