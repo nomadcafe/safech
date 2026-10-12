@@ -17,7 +17,7 @@ export const metadataRemovalTools: Tool[] = [
     selfHostable: false,
     logoPlaceholderEmoji: '🧹',
     stars: 1500,
-    lastUpdated: '2026-09-09',
+    lastUpdated: '2026-10-08',
     tags: ['metadata', 'exif', 'anonymisation', 'cli', 'privacy', 'documents'],
     difficulty: 'mittel',
     platforms: ['linux', 'macos'],
