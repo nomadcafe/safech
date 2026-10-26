@@ -18,7 +18,7 @@ export const emailAliasingTools: Tool[] = [
     hostedService: 'https://simplelogin.io/pricing/',
     logoPlaceholderEmoji: '🎭',
     stars: 6700,
-    lastUpdated: '2026-10-14',
+    lastUpdated: '2026-10-26',
     tags: ['email', 'aliasing', 'anti-spam', 'privacy', 'pgp', 'self-hosted', 'eu'],
     difficulty: 'einfach',
     platforms: ['web', 'linux', 'docker', 'android', 'ios'],

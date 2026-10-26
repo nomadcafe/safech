@@ -40,7 +40,7 @@ export const secureSharingTools: Tool[] = [
     selfHostable: true,
     logoPlaceholderEmoji: '📋',
     stars: 7000,
-    lastUpdated: '2026-10-19',
+    lastUpdated: '2026-10-26',
     tags: ['pastebin', 'zero-knowledge', 'aes', 'self-hosted', 'burn-after-reading', 'privacy'],
     difficulty: 'einfach',
     platforms: ['web', 'linux', 'docker'],

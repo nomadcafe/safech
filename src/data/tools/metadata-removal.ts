@@ -40,7 +40,7 @@ export const metadataRemovalTools: Tool[] = [
     selfHostable: false,
     logoPlaceholderEmoji: '🪮',
     stars: 700,
-    lastUpdated: '2026-10-19',
+    lastUpdated: '2026-10-25',
     tags: ['metadata', 'exif', 'gui', 'gtk', 'linux', 'privacy'],
     difficulty: 'einfach',
     platforms: ['linux'],
