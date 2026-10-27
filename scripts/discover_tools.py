@@ -1141,8 +1141,10 @@ def filter_and_categorize(
             else:
                 tagline = tagline[:117] + "..."
 
-        # Website
-        website = homepage.strip() if homepage.strip() else html_url
+        # Website. `homepage` is free text on GitHub; only accept http(s) so a
+        # `javascript:` or other scheme never becomes an href on the site.
+        homepage = homepage.strip()
+        website = homepage if re.match(r"https?://", homepage, re.I) else html_url
 
         # Tags from topics (max 7, cleaned)
         tags = [t.lower().replace(" ", "-") for t in topics[:7]]

@@ -102,3 +102,16 @@ export const allTools: Tool[] = [
   ...curatedClassicsTools,
   ...autoDiscoveredTools,
 ];
+
+// Tool URLs end up in href/src attributes, and auto-discovered entries copy
+// GitHub's free-text `homepage` field verbatim. Fail the build on anything that
+// is not http(s) so a `javascript:` URL can never reach a page.
+const URL_FIELDS = ['website', 'github', 'hostedService', 'logoUrl', 'previewImage'] as const;
+for (const tool of allTools) {
+  for (const field of URL_FIELDS) {
+    const value = tool[field];
+    if (value !== undefined && !/^https?:\/\//i.test(value)) {
+      throw new Error(`Tool "${tool.slug}" has a non-http(s) ${field}: ${value}`);
+    }
+  }
+}
