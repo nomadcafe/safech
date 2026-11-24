@@ -90,6 +90,9 @@ def sniff(data: bytes) -> str | None:
 
 
 def download(url: str) -> bytes | None:
+    # urlopen also speaks file:// and ftp://; logos only ever come from the web.
+    if not re.match(r"https?://", url, re.I):
+        raise urllib.error.URLError(f"refusing non-http(s) URL: {url}")
     request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     with urllib.request.urlopen(request, timeout=TIMEOUT) as response:
         return response.read(MAX_BYTES + 1)

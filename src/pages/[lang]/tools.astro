@@ -122,7 +122,12 @@ const jsonLd = [
     if (!container || buttons.length === 0) return;
 
     const STORAGE_KEY = 'tools-view-mode';
-    const saved = localStorage.getItem(STORAGE_KEY);
+    let saved: string | null = null;
+    try {
+      saved = localStorage.getItem(STORAGE_KEY);
+    } catch {
+      /* privacy mode: fall back to grid */
+    }
     const initial = saved === 'list' || saved === 'grid' ? saved : 'grid';
 
     function setView(mode: string) {

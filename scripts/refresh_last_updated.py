@@ -92,7 +92,9 @@ def fetch_pushed_at(owner: str, repo: str) -> str | None:
         if r.status_code == 200:
             data = r.json()
             pushed = data.get("pushed_at") or data.get("updated_at")
-            return pushed[:10] if pushed else None
+            date = (pushed or "")[:10]
+            # Written unescaped into TS source; accept only YYYY-MM-DD.
+            return date if re.fullmatch(r"\d{4}-\d{2}-\d{2}", date) else None
 
         if r.status_code in (301, 302):
             new_loc = r.json().get("url") or r.headers.get("Location")
@@ -233,7 +235,9 @@ def regenerate_auto_tools(updates: dict[str, str]) -> bool:
     sys.path.insert(0, str(Path(__file__).resolve().parent))
     from discover_tools import _ts_escape, _ts_string_array  # noqa: WPS433
 
-    json_block = json.dumps(tools, indent=2, ensure_ascii=False)
+    # `*/` in any GitHub-sourced string would close the comment and turn the
+    # rest into live TS that runs at build time. `\/` is a valid JSON escape.
+    json_block = json.dumps(tools, indent=2, ensure_ascii=False).replace("*/", "*\\/")
     out_lines = [
         "import type { Tool } from '../types';",
         "",

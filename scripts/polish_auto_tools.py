@@ -402,7 +402,9 @@ def main() -> None:
                 icon_added += 1
 
     # ── Re-emit auto-tools.ts ─────────────────────────────────────────
-    json_block = json.dumps(tools, indent=2, ensure_ascii=False)
+    # `*/` in any GitHub-sourced string would close the comment and turn the
+    # rest into live TS that runs at build time. `\/` is a valid JSON escape.
+    json_block = json.dumps(tools, indent=2, ensure_ascii=False).replace("*/", "*\\/")
     out_lines = [
         "import type { Tool } from '../types';",
         "",
